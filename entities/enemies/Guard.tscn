@@ -1,16 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/textures/shadow_triangle.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/guard.png" type="Texture" id=2]
-[ext_resource path="res://Guard.gd" type="Script" id=3]
+[ext_resource path="res://entities/enemies/Guard.gd" type="Script" id=3]
 
-[node name="Guard" type="Sprite"]
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 32.9999
+height = 0.594727
+
+[node name="Guard" type="KinematicBody2D"]
 position = Vector2( 1249, 478 )
 scale = Vector2( 0.636364, 1.68182 )
-texture = ExtResource( 2 )
 script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Body" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="ViewField" type="Sprite" parent="."]
 position = Vector2( -210.689, -19.7637 )
 rotation = 1.5708
 scale = Vector2( 0.22197, 0.732852 )
@@ -27,6 +33,10 @@ collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PoolVector2Array( 28.2859, -47.4323, -465.143, 150.667, -466.714, -259.483 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3.05176e-05 )
+shape = SubResource( 1 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

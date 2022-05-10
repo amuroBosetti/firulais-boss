@@ -1,4 +1,4 @@
-extends Sprite
+extends KinematicBody2D
 
 var raycast
 var target = null
