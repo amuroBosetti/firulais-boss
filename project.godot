@@ -24,6 +24,10 @@ config/name="Ipv-museo"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=800
+
 [input]
 
 move_right={
