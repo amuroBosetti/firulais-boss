@@ -35,7 +35,7 @@ func _process(delta):
 			target.respawn_player()
 
 func _on_Area2D_body_entered(body):
-	if target == null:
+	if body is Player and target == null:
 		target = body
 		raycast.enabled = true
 		
