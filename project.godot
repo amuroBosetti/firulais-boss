@@ -9,12 +9,24 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "TileMap",
+"class": "GuarLimit",
+"language": "GDScript",
+"path": "res://GuardLimit.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Guard",
+"language": "GDScript",
+"path": "res://entities/enemies/Guard.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://entities/player/Player.gd"
 } ]
 _global_script_class_icons={
+"GuarLimit": "",
+"Guard": "",
 "Player": ""
 }
 

@@ -5,4 +5,3 @@ func _ready():
 		"idle": $Idle,
 		"walk": $Walk
 	}
-	current_state = $Walk

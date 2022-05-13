@@ -1,9 +1,11 @@
 extends KinematicBody2D
+class_name Guard
 
 export (float) var SPEED = 90
 export (float) var GRAVITY:float = 60
 
-onready var move = false
+onready var state_machine = $StateMachine
+onready var spawn_position = global_position
 
 var raycast:RayCast2D
 var target = null
@@ -12,7 +14,8 @@ var direction:int = -1
 
 func _ready():
 	raycast = $RayCast2D
-
+	state_machine.set_parent(self)
+	
 func _process(delta):
 	if target != null:
 		raycast.set_cast_to(to_local(target.global_position))

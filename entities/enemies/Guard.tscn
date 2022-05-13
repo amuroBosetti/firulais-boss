@@ -46,14 +46,15 @@ polygon = PoolVector2Array( 28.2859, -47.4323, -465.143, 150.667, -466.714, -259
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 6 )
 
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
 
 [node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
-wait_time = 2.0
-
-[node name="Walk" type="Node" parent="StateMachine"]
-script = ExtResource( 5 )
+wait_time = 4.0
+one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
