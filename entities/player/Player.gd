@@ -2,10 +2,10 @@ extends KinematicBody2D
 class_name Player
 
 export (float) var ACCELERATION:float = 20.0
-export (float) var H_SPEED_LIMIT:float = 600.0
-export (float) var FRICTION_WEIGHT:float = 0.1
-export (float) var JUMP_SPEED:float = 500.0 
-export (float) var GRAVITY:float = 15
+export (float) var H_SPEED_LIMIT:float = 400.0
+export (float) var FRICTION_WEIGHT:float = 0.5
+export (float) var JUMP_SPEED:float = 700.0 
+export (float) var GRAVITY:float = 20
 
 onready var spawn_position = self.global_position
 onready var state_machine = $StateMachine
@@ -21,7 +21,7 @@ func respawn_player():
 	
 func _apply_movement():
 	velocity.y += GRAVITY
-	move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity, Vector2.UP)
 
 func _handle_deacceleration():
 	velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
