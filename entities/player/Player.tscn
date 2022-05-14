@@ -40,6 +40,9 @@ script = ExtResource( 3 )
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": "IdleState"
+}
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
