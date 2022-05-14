@@ -9,7 +9,7 @@
 [ext_resource path="res://entities/enemies/Guard.tscn" type="PackedScene" id=7]
 [ext_resource path="res://entities/world/Shadow.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/textures/floor.png" type="Texture" id=9]
-[ext_resource path="res://GuardLimit.gd" type="Script" id=10]
+[ext_resource path="res://entities/world/GuardLimit.gd" type="Script" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -65,13 +65,6 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [node name="Main" type="Node"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 284, 474 )
-offset = Vector2( 0, -200 )
-current = true
-zoom = Vector2( 1.8, 1.8 )
-limit_left = 0
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -83,7 +76,7 @@ texture = ExtResource( 1 )
 expand = true
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 35, 111 )
+position = Vector2( 94, 132 )
 
 [node name="Environment" type="Node" parent="."]
 
@@ -93,7 +86,7 @@ position = Vector2( 35, 111 )
 position = Vector2( 5174, 0 )
 
 [node name="Platform" parent="Environment" instance=ExtResource( 6 )]
-position = Vector2( 354, 245 )
+position = Vector2( 540, 248 )
 
 [node name="Platform3" parent="Environment" instance=ExtResource( 6 )]
 position = Vector2( 1148, 248 )
@@ -102,10 +95,10 @@ position = Vector2( 1148, 248 )
 position = Vector2( 751, 248 )
 
 [node name="TextEdit" type="TextEdit" parent="Environment"]
-margin_left = 1148.0
-margin_top = 351.0
-margin_right = 1252.0
-margin_bottom = 422.0
+margin_left = 492.0
+margin_top = 335.0
+margin_right = 596.0
+margin_bottom = 406.0
 text = " ACA NO TE VE
  		 ||||
 		 \\ / \\ /"
@@ -114,7 +107,7 @@ text = " ACA NO TE VE
 position = Vector2( 930, 40 )
 
 [node name="Guard" parent="." instance=ExtResource( 7 )]
-position = Vector2( 767, 521 )
+position = Vector2( 740, 521 )
 
 [node name="Shadow" parent="." instance=ExtResource( 8 )]
 position = Vector2( 548, 502 )
@@ -132,5 +125,5 @@ tile_set = SubResource( 4 )
 collision_layer = 2
 collision_mask = 2
 format = 1
-tile_data = PoolIntArray( 458765, 0, 0, 458777, 0, 0, 524301, 0, 0, 524313, 0, 0 )
+tile_data = PoolIntArray( 458757, 0, 0, 458764, 0, 0, 524293, 0, 0, 524300, 0, 0 )
 script = ExtResource( 10 )

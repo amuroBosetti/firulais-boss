@@ -11,3 +11,4 @@ var count = 0
 func update(delta:float):
 	parent._handle_deacceleration()
 	parent._apply_movement()
+	parent._handle_camera_movement_input()

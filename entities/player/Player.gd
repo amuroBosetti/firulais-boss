@@ -9,9 +9,11 @@ export (float) var GRAVITY:float = 20
 
 onready var spawn_position = self.global_position
 onready var state_machine = $StateMachine
+onready var player_camera = $Position2D
 
 var velocity:Vector2 = Vector2.ZERO
 var move_direction:int = 0
+var camera_movement = 0
 
 func _ready():
 	state_machine.set_parent(self)
@@ -30,3 +32,11 @@ func _handle_move_input():
 	move_direction = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	if move_direction != 0:
 		velocity.x = clamp(velocity.x + (move_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
+
+func _handle_camera_movement_input():
+	if Input.is_action_pressed("control_camera"):
+		camera_movement += 0.5
+		player_camera.position.x = position.x + min(camera_movement, 50)
+	if Input.is_action_just_released("control_camera"):
+		player_camera.position.x -= position.x
+		camera_movement = 0
