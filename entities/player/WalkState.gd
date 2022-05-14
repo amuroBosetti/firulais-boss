@@ -2,7 +2,7 @@ extends "res://entities/AbstractState.gd"
 
 func handle_input(event:InputEvent):
 	if event.is_action_pressed("jump") && parent.is_on_floor():
-		emit_signal("finished", "jump")
+		emit_signal("finished", "jump_up")
 
 
 func update(delta:float):

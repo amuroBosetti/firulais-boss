@@ -3,9 +3,9 @@ class_name Player
 
 export (float) var ACCELERATION:float = 20.0
 export (float) var H_SPEED_LIMIT:float = 400.0
-export (float) var FRICTION_WEIGHT:float = 0.5
-export (float) var JUMP_SPEED:float = 700.0 
-export (float) var GRAVITY:float = 20
+export (float) var FRICTION_WEIGHT:float = 0.3
+export (float) var JUMP_SPEED:float = 500.0 
+export (float) var GRAVITY:float = 30
 
 onready var spawn_position = self.global_position
 onready var state_machine = $StateMachine

@@ -86,13 +86,13 @@ position = Vector2( 94, 132 )
 position = Vector2( 5174, 0 )
 
 [node name="Platform" parent="Environment" instance=ExtResource( 6 )]
-position = Vector2( 540, 248 )
+position = Vector2( 615, 248 )
 
 [node name="Platform3" parent="Environment" instance=ExtResource( 6 )]
-position = Vector2( 1148, 248 )
+position = Vector2( 1231, 248 )
 
 [node name="Platform2" parent="Environment" instance=ExtResource( 6 )]
-position = Vector2( 751, 248 )
+position = Vector2( 829, 248 )
 
 [node name="TextEdit" type="TextEdit" parent="Environment"]
 margin_left = 492.0
@@ -104,7 +104,7 @@ text = " ACA NO TE VE
 		 \\ / \\ /"
 
 [node name="Camera" parent="." instance=ExtResource( 5 )]
-position = Vector2( 930, 40 )
+position = Vector2( 1040, 40 )
 
 [node name="Guard" parent="." instance=ExtResource( 7 )]
 position = Vector2( 740, 521 )
