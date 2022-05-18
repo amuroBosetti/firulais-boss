@@ -1,7 +1,12 @@
 extends Sprite
 
 func _on_Area2D_body_entered(body):
-	body.set_collision_layer_bit(0, false)
+	print("entered")
+	if body is Player:
+		body.make_hidden()
 
 func _on_Area2D_body_exited(body):
-	body.set_collision_layer_bit(0, true)
+	print("exited")
+	if body is Player:
+		body.make_visible()
+

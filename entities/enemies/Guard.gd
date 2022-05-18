@@ -26,7 +26,7 @@ func _process(delta):
 func _apply_movement():
 	velocity.x = SPEED * direction
 	velocity.y += GRAVITY
-	move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity, Vector2.UP)
 
 func _on_Area2D_body_entered(body):
 	if body is Player and target == null:

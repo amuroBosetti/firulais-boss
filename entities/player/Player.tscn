@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/textures/player.png" type="Texture" id=1]
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=2]
@@ -7,16 +7,19 @@
 [ext_resource path="res://entities/player/WalkState.gd" type="Script" id=5]
 [ext_resource path="res://entities/player/JumpState.gd" type="Script" id=6]
 [ext_resource path="res://entities/player/JumpDown.gd" type="Script" id=7]
+[ext_resource path="res://assets/textures/player_hidden.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 61 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 5
 script = ExtResource( 2 )
+visible_texture = ExtResource( 1 )
+hidden_texture = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.8125, 1.92188 )
-texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
