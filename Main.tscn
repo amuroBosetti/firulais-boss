@@ -203,7 +203,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
 text = "Espera a que el guardia se de la vuelta 
     y  USA LAS SOMBRAS PARA ESCONDERTE
-Si estas verde es porque no puende verte "
+Si estas verde es porque no puenden verte "
 
 [node name="Label5" type="Label" parent="Environment"]
 margin_left = 1892.0
@@ -228,10 +228,10 @@ text = " Activa y desactiva la camara
        tecla E o Control "
 
 [node name="Label7" type="Label" parent="Environment"]
-margin_left = 4714.0
-margin_top = 180.0
-margin_right = 5084.0
-margin_bottom = 427.0
+margin_left = 5744.0
+margin_top = 107.0
+margin_right = 6114.0
+margin_bottom = 354.0
 rect_pivot_offset = Vector2( -1908, 17 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
@@ -246,9 +246,11 @@ position = Vector2( 4676, 481 )
 [node name="CameraSwitch" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2339, 259 )
 scale = Vector2( 0.705882, 2.83333 )
+CAMERA = NodePath("../Camera")
 
 [node name="Camera" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2876, -3 )
+rotation = 0.436332
 scale = Vector2( 0.941178, 3.02778 )
 MOVEMENT_DEGREE = 20.0
 

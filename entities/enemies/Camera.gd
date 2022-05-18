@@ -4,17 +4,21 @@ class_name MonitorCamera
 export (float) var MOVEMENT_SPEED:float = 0.5
 export (float) var MOVEMENT_DEGREE:float = 45
 
-var camera_rotation_degrees = 0
-var rotation_degrees_count = 0
-var direction = 1
+var camera_rotation_degrees:float
+var rotation_degrees_count:float = 0
+var max_degree_movement:float
+var min_degree_movement:float
+var direction:int = 1
 var active = true
-var show_field_of_view = true
 
 var target = null
-var raycast
+var raycast:RayCast2D
 
 func _ready():
 	raycast = $RayCast2D
+	camera_rotation_degrees = rotation_degrees
+	max_degree_movement = camera_rotation_degrees + MOVEMENT_DEGREE
+	min_degree_movement = camera_rotation_degrees - MOVEMENT_DEGREE
 
 func _process(delta):
 	
@@ -27,16 +31,16 @@ func _process(delta):
 			if raycast.is_colliding() && raycast.get_collider() == target:
 				target.respawn_player()
 
-	if rotation_degrees_count > -MOVEMENT_DEGREE and rotation_degrees_count < MOVEMENT_DEGREE:
+	if rotation_degrees_count > -max_degree_movement and rotation_degrees_count < max_degree_movement:
 		camera_rotation_degrees = rotation_degrees_count 
 	
-	if rotation_degrees_count >= MOVEMENT_DEGREE:
-		camera_rotation_degrees = MOVEMENT_DEGREE
-	if rotation_degrees_count > MOVEMENT_DEGREE + 20:
+	if rotation_degrees_count >= max_degree_movement:
+		camera_rotation_degrees = max_degree_movement
+	if rotation_degrees_count > max_degree_movement + 20:
 		direction = -1
-	if rotation_degrees_count <= -MOVEMENT_DEGREE:
-		camera_rotation_degrees = -MOVEMENT_DEGREE
-	if rotation_degrees_count < -MOVEMENT_DEGREE - 20:
+	if rotation_degrees_count <= min_degree_movement:
+		camera_rotation_degrees = min_degree_movement
+	if rotation_degrees_count < min_degree_movement - 20:
 		direction = 1
 	
 	self.rotation_degrees = camera_rotation_degrees

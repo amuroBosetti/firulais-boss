@@ -3,7 +3,11 @@ class_name CameraSwitch
 
 signal interactable
 
-onready var camera = get_node("../Camera")
+export (NodePath) var CAMERA:NodePath 
+var camera:Node2D
+
+func _ready():
+	camera = get_node(CAMERA)
 
 func _interact():
 	camera._interact()
