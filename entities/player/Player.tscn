@@ -14,6 +14,7 @@ extents = Vector2( 24, 61 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 5
+collision_mask = 5
 script = ExtResource( 2 )
 visible_texture = ExtResource( 1 )
 hidden_texture = ExtResource( 8 )
