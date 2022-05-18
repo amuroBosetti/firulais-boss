@@ -51,11 +51,3 @@ func _handle_move_input():
 	move_direction = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	if move_direction != 0:
 		velocity.x = clamp(velocity.x + (move_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
-
-func _handle_camera_movement_input():
-	if Input.is_action_pressed("control_camera"):
-		camera_movement += 0.5
-		player_camera.position.x = position.x + min(camera_movement, 50)
-	if Input.is_action_just_released("control_camera"):
-		player_camera.position.x -= position.x
-		camera_movement = 0
