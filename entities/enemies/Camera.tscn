@@ -12,18 +12,18 @@ script = ExtResource( 2 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="FieldOfView" type="Area2D" parent="."]
 collision_layer = 0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FieldOfView"]
 position = Vector2( 1.98773, -3.41968 )
 scale = Vector2( 0.996066, 1.05042 )
 polygon = PoolVector2Array( -14.796, 11.1515, -290.715, 94.4797, 285.301, 93.8076, 13.6493, 11.1515 )
 
-[node name="Sprite" type="Sprite" parent="Area2D"]
+[node name="Sprite" type="Sprite" parent="FieldOfView"]
 position = Vector2( 1.52588e-05, 49.2354 )
 scale = Vector2( 0.726904, 0.133945 )
 texture = ExtResource( 3 )
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="FieldOfView" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="FieldOfView" to="." method="_on_Area2D_body_exited"]

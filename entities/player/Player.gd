@@ -11,15 +11,16 @@ export (float) var FRICTION_WEIGHT:float = 0.3
 export (float) var JUMP_SPEED:float = 500.0 
 export (float) var GRAVITY:float = 30
 
-onready var spawn_position = self.global_position
-onready var state_machine = $StateMachine
-onready var player_camera = $Position2D
+onready var spawn_position:Vector2 = self.global_position
+onready var state_machine:Node = $StateMachine
 onready var player_sprite : Sprite = $Sprite
 
 var velocity:Vector2 = Vector2.ZERO
 var move_direction:int = 0
-var camera_movement = 0
-var hidden : bool = false 
+var camera_movement:float = 0
+var hidden:bool = false 
+var target = null
+
 
 func make_hidden():
 	if !hidden:
@@ -51,3 +52,12 @@ func _handle_move_input():
 	move_direction = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	if move_direction != 0:
 		velocity.x = clamp(velocity.x + (move_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
+
+func _physics_process(delta):
+	if target != null:
+		if target.has_method('_interact'):
+			if Input.is_action_just_pressed("interact"):
+				target._interact()
+
+func _on_CameraSwitch_interactable(body):
+	target = body

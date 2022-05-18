@@ -13,17 +13,17 @@
 extents = Vector2( 24, 61 )
 
 [node name="Player" type="KinematicBody2D"]
-collision_layer = 5
-collision_mask = 5
+collision_layer = 21
+collision_mask = 21
 script = ExtResource( 2 )
 visible_texture = ExtResource( 1 )
 hidden_texture = ExtResource( 8 )
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.8125, 1.92188 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.8125, 1.92188 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )

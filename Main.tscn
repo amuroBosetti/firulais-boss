@@ -5,13 +5,13 @@
 [ext_resource path="res://assets/textures/gray_square.png" type="Texture" id=3]
 [ext_resource path="res://entities/world/Limit_V.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/enemies/Camera.tscn" type="PackedScene" id=5]
-[ext_resource path="res://entities/world/Platform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://entities/enemies/Guard.tscn" type="PackedScene" id=7]
 [ext_resource path="res://entities/world/Shadow.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/textures/tilemap.png" type="Texture" id=9]
 [ext_resource path="res://entities/world/GuardLimit.gd" type="Script" id=10]
 [ext_resource path="res://assets/fonts/Koulen-Regular.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://entities/world/Checkpoint.tscn" type="PackedScene" id=12]
+[ext_resource path="res://entities/enemies/CameraSwitch.tscn" type="PackedScene" id=13]
 
 [sub_resource type="DynamicFont" id=11]
 size = 32
@@ -161,15 +161,6 @@ expand = true
 [node name="Limit_V2" parent="Environment" instance=ExtResource( 4 )]
 position = Vector2( 5174, 0 )
 
-[node name="Platform" parent="Environment" instance=ExtResource( 6 )]
-position = Vector2( 2668, 236 )
-
-[node name="Platform3" parent="Environment" instance=ExtResource( 6 )]
-position = Vector2( 2454, 236 )
-
-[node name="Platform2" parent="Environment" instance=ExtResource( 6 )]
-position = Vector2( 3074, 233 )
-
 [node name="Label" type="Label" parent="Environment"]
 margin_left = 391.0
 margin_top = 191.0
@@ -182,72 +173,93 @@ text = "USA LAS FLECHAS O LAS
         PARA MOVERTE"
 
 [node name="Label2" type="Label" parent="Environment"]
-margin_left = 1391.0
-margin_top = 132.0
-margin_right = 1678.0
-margin_bottom = 315.0
+margin_left = 1383.0
+margin_top = -48.0
+margin_right = 1703.0
+margin_bottom = 197.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
-text = " SALTA CON LA FLECHA 
-HACIA ARRIBA O LA \"W\""
+text = "   SALTA CON LA FLECHA 
+  HACIA ARRIBA O LA \"W\"
+Mantene presionado para 
+      saltar mas alto!"
 
 [node name="Label3" type="Label" parent="Environment"]
-margin_left = 2275.0
-margin_top = -177.0
-margin_right = 2589.0
-margin_bottom = -50.0
+margin_left = 2492.0
+margin_top = -289.0
+margin_right = 2806.0
+margin_bottom = -162.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
 text = "NO DEJES QUE TE VEAN LOS 
  GUARDIAS Y LAS CAMARAS"
 
 [node name="Label4" type="Label" parent="Environment"]
-margin_left = 2769.0
-margin_top = 251.0
-margin_right = 3291.0
-margin_bottom = 377.0
+margin_left = 3628.0
+margin_top = 189.0
+margin_right = 4150.0
+margin_bottom = 315.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
 text = "      USA LAS SOMBRAS PARA ESCONDERTE
 Si estas verde es porque no puende verte "
 
 [node name="Label5" type="Label" parent="Environment"]
-margin_left = 1889.0
-margin_top = 7.0
-margin_right = 2176.0
-margin_bottom = 190.0
+margin_left = 1892.0
+margin_top = -92.0
+margin_right = 2179.0
+margin_bottom = 91.0
+rect_pivot_offset = Vector2( -687, -27 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
 text = "CHECK               POINT"
 
+[node name="Label6" type="Label" parent="Environment"]
+margin_left = 2191.0
+margin_top = -74.0
+margin_right = 2502.0
+margin_bottom = 173.0
+rect_pivot_offset = Vector2( -687, -27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = " Activa y desactiva la camara 
+  desde los switch con la
+       tecla E o Control "
+
 [node name="Checkpoint" parent="Environment" instance=ExtResource( 12 )]
 
 [node name="Checkpoint2" parent="Environment" instance=ExtResource( 12 )]
-position = Vector2( 3686, 481 )
+position = Vector2( 4676, 481 )
+
+[node name="CameraSwitch" parent="." instance=ExtResource( 13 )]
+position = Vector2( 2339, 259 )
+scale = Vector2( 0.705882, 2.83333 )
 
 [node name="Camera" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2852, -19 )
+position = Vector2( 2876, -3 )
+scale = Vector2( 0.941178, 3.02778 )
+MOVEMENT_SPEED = 2.0
+MOVEMENT_DEGREE = 55.0
 
 [node name="Guard" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3026, 521 )
+position = Vector2( 3896, 521 )
 
 [node name="Shadow" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3029, 504 )
+position = Vector2( 3887, 512 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 collision_layer = 0
 collision_mask = 15
 format = 1
-tile_data = PoolIntArray( 327710, 0, 0, 327711, 0, 0, 327712, 0, 0, 393243, 0, 0, 393244, 0, 0, 393245, 0, 0, 393246, 0, 0, 393247, 0, 0, 393248, 0, 0, 458777, 0, 0, 458778, 0, 0, 458779, 0, 0, 458780, 0, 0, 458781, 0, 0, 458782, 0, 0, 458783, 0, 0, 458784, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 0, 0, 589857, 0, 0, 589858, 0, 0, 589859, 0, 0, 589860, 0, 0, 589861, 0, 0, 589862, 0, 0, 589863, 0, 0, 589864, 0, 0, 589865, 0, 0, 589866, 0, 0, 589867, 0, 0, 589868, 0, 0, 589869, 0, 0, 589870, 0, 0, 589871, 0, 0, 589872, 0, 0, 589873, 0, 0, 589874, 0, 0, 589875, 0, 0, 589876, 0, 0, 589877, 0, 0, 589878, 0, 0, 589879, 0, 0, 589880, 0, 0, 589881, 0, 0, 589882, 0, 0, 589883, 0, 0, 589884, 0, 0, 589885, 0, 0, 589886, 0, 0, 589887, 0, 0, 589888, 0, 0, 589889, 0, 0, 589890, 0, 0, 589891, 0, 0, 589892, 0, 0, 589893, 0, 0, 589894, 0, 0, 589895, 0, 0, 589896, 0, 0, 589897, 0, 0, 589898, 0, 0, 589899, 0, 0, 589900, 0, 0, 589901, 0, 0, 589902, 0, 0, 589903, 0, 0 )
+tile_data = PoolIntArray( 327710, 0, 0, 327711, 0, 0, 327712, 0, 0, 327713, 0, 0, 327714, 0, 0, 327715, 0, 0, 327716, 0, 0, 327717, 0, 0, 327718, 0, 0, 327719, 1, 0, 327720, 1, 0, 327721, 1, 0, 327722, 1, 0, 393241, 0, 0, 393242, 0, 0, 393243, 0, 0, 393244, 0, 0, 393245, 0, 0, 393246, 0, 0, 393247, 0, 0, 393248, 0, 0, 393249, 0, 0, 393250, 0, 0, 393251, 0, 0, 393252, 0, 0, 393253, 0, 0, 393254, 0, 0, 458777, 0, 0, 458778, 0, 0, 458779, 0, 0, 458780, 0, 0, 458781, 0, 0, 458782, 0, 0, 458783, 0, 0, 458784, 0, 0, 458785, 0, 0, 458786, 0, 0, 458787, 0, 0, 458788, 0, 0, 458789, 0, 0, 458790, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 0, 0, 589857, 0, 0, 589858, 0, 0, 589859, 0, 0, 589860, 0, 0, 589861, 0, 0, 589862, 0, 0, 589863, 0, 0, 589864, 0, 0, 589865, 0, 0, 589866, 0, 0, 589867, 0, 0, 589868, 0, 0, 589869, 0, 0, 589870, 0, 0, 589871, 0, 0, 589872, 0, 0, 589873, 0, 0, 589874, 0, 0, 589875, 0, 0, 589876, 0, 0, 589877, 0, 0, 589878, 0, 0, 589879, 0, 0, 589880, 0, 0, 589881, 0, 0, 589882, 0, 0, 589883, 0, 0, 589884, 0, 0, 589885, 0, 0, 589886, 0, 0, 589887, 0, 0, 589888, 0, 0, 589889, 0, 0, 589890, 0, 0, 589891, 0, 0, 589892, 0, 0, 589893, 0, 0, 589894, 0, 0, 589895, 0, 0, 589896, 0, 0, 589897, 0, 0, 589898, 0, 0, 589899, 0, 0, 589900, 0, 0, 589901, 0, 0, 589902, 0, 0, 589903, 0, 0 )
 
 [node name="GuardLimit" type="TileMap" parent="."]
-visible = false
 tile_set = SubResource( 4 )
 collision_layer = 2
 collision_mask = 2
 format = 1
-tile_data = PoolIntArray( 458794, 0, 0, 458803, 0, 0, 524330, 0, 0, 524339, 0, 0 )
+tile_data = PoolIntArray( 458807, 0, 0, 458817, 0, 0, 524343, 0, 0, 524353, 0, 0 )
 script = ExtResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
@@ -262,3 +274,5 @@ drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 drag_margin_top = 0.6
 editor_draw_drag_margin = true
+
+[connection signal="interactable" from="CameraSwitch" to="Player" method="_on_CameraSwitch_interactable"]
