@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Laser.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/laser.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/laserEnd.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 41, 3.5 )
+
+[node name="Laser" type="Area2D"]
+position = Vector2( 485, 515 )
+collision_layer = 0
+script = ExtResource( 1 )
+CYCLETIME = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -0.5 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.25, 0 )
+texture = ExtResource( 2 )
+
+[node name="Position2DA" type="Position2D" parent="Sprite"]
+position = Vector2( -43.75, 0 )
+
+[node name="Position2DB" type="Position2D" parent="Sprite"]
+position = Vector2( 44.25, 0 )
+
+[node name="LaserEndA" type="Sprite" parent="."]
+position = Vector2( -44, 0 )
+texture = ExtResource( 3 )
+
+[node name="LaserEndB" type="Sprite" parent="."]
+position = Vector2( 44, 0 )
+texture = ExtResource( 3 )
+flip_h = true
+
+[connection signal="body_entered" from="." to="." method="_on_Laser_body_entered"]
