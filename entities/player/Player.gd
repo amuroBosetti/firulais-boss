@@ -17,6 +17,7 @@ onready var state_machine:Node = $StateMachine
 onready var normal_sprite:Sprite = $Normal
 onready var hidden_sprite:Sprite = $Hidden 
 onready var hidden:bool = false 
+onready var animation_player:AnimationPlayer = $AnimationPlayer
 
 var velocity:Vector2 = Vector2.ZERO
 var move_direction:int = 0
@@ -72,3 +73,6 @@ func _physics_process(delta):
 
 func _on_CameraSwitch_interactable(body):
 	target = body
+	
+func play_animation(animation_name:String):
+	animation_player.play(animation_name)

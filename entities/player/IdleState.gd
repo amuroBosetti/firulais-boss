@@ -3,6 +3,9 @@ class_name IdleState
 
 var count = 0
 
+func enter():
+	parent.play_animation("idle")
+
 func handle_input(event:InputEvent):
 	if event.is_action_pressed("move_left") || event.is_action_pressed("move_right"):
 		emit_signal("finished", "walk")
