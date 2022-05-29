@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/textures/background.png" type="Texture" id=1]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
@@ -15,6 +15,13 @@
 [ext_resource path="res://entities/enemies/CameraSwitch.tscn" type="PackedScene" id=13]
 [ext_resource path="res://entities/enemies/Laser.tscn" type="PackedScene" id=14]
 [ext_resource path="res://TimerLasers.gd" type="Script" id=15]
+[ext_resource path="res://CameraAnimation.gd" type="Script" id=16]
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 497.5, 371 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 497.062, 247.812 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 32
@@ -446,14 +453,45 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [node name="Main" type="Node"]
 
+[node name="CameraAnimation" type="Node2D" parent="."]
+script = ExtResource( 16 )
+
+[node name="CameraLimit2" type="Area2D" parent="CameraAnimation"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAnimation/CameraLimit2"]
+position = Vector2( 1495.5, 232 )
+shape = SubResource( 25 )
+
+[node name="CameraPosition" type="Position2D" parent="CameraAnimation/CameraLimit2"]
+position = Vector2( 1500, 232 )
+
+[node name="CameraLimit" type="Area2D" parent="CameraAnimation"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAnimation/CameraLimit"]
+position = Vector2( 497.75, 335.25 )
+shape = SubResource( 24 )
+
+[node name="Tween" type="Tween" parent="CameraAnimation"]
+
+[node name="Camera" type="Camera2D" parent="CameraAnimation"]
+position = Vector2( 0, 254 )
+offset = Vector2( 150, 0 )
+current = true
+limit_left = -150
+limit_bottom = 640
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 0.29
+drag_margin_top = 0.6
+drag_margin_right = 0.0
+editor_draw_drag_margin = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-margin_left = -5.0
-margin_top = 1.0
-margin_right = 1118.0
-margin_bottom = 601.0
+margin_right = 1210.0
+margin_bottom = 590.0
 texture = ExtResource( 1 )
 expand = true
 
@@ -621,22 +659,9 @@ CYCLETIME = 2
 SCALE_LENGTH = 4.0
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 333, 463 )
+position = Vector2( 330, 465 )
 collision_layer = 13
 collision_mask = 4
-
-[node name="Camera" type="Camera2D" parent="Player"]
-offset = Vector2( 150, 0 )
-current = true
-zoom = Vector2( 1.8, 1.8 )
-limit_left = -150
-limit_bottom = 640
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-drag_margin_left = 0.29
-drag_margin_top = 0.6
-drag_margin_right = 0.0
-editor_draw_drag_margin = true
 
 [node name="Vase" parent="." instance=ExtResource( 8 )]
 position = Vector2( 3899, 501 )
@@ -645,5 +670,7 @@ scale = Vector2( 1, 1 )
 [node name="Guard" parent="." instance=ExtResource( 7 )]
 position = Vector2( 3896, 520 )
 
+[connection signal="body_entered" from="CameraAnimation/CameraLimit2" to="CameraAnimation" method="_on_CameraLimit2_body_entered"]
+[connection signal="body_entered" from="CameraAnimation/CameraLimit" to="CameraAnimation" method="_on_CameraLimit_body_entered"]
 [connection signal="interactable" from="CCTVSwitchSwitch" to="Player" method="_on_CameraSwitch_interactable"]
 [connection signal="timeout" from="TimerLasers" to="TimerLasers" method="_on_TimerLasers_timeout"]
