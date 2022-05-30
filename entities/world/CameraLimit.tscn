@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 127, 83 )
+
+[node name="CameraLimit" type="Node"]
+
+[node name="InfluenceArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InfluenceArea"]
+position = Vector2( 117, 73 )
+shape = SubResource( 1 )
