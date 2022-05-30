@@ -16,12 +16,8 @@
 [ext_resource path="res://entities/enemies/Laser.tscn" type="PackedScene" id=14]
 [ext_resource path="res://TimerLasers.gd" type="Script" id=15]
 [ext_resource path="res://CameraAnimation.gd" type="Script" id=16]
-
-[sub_resource type="RectangleShape2D" id=25]
-extents = Vector2( 497.5, 371 )
-
-[sub_resource type="RectangleShape2D" id=24]
-extents = Vector2( 497.062, 247.812 )
+[ext_resource path="res://Main.gd" type="Script" id=17]
+[ext_resource path="res://entities/world/SnapCamera.tscn" type="PackedScene" id=18]
 
 [sub_resource type="DynamicFont" id=11]
 size = 32
@@ -452,24 +448,29 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 12/z_index = 0
 
 [node name="Main" type="Node"]
+script = ExtResource( 17 )
 
 [node name="CameraAnimation" type="Node2D" parent="."]
 script = ExtResource( 16 )
 
-[node name="CameraLimit2" type="Area2D" parent="CameraAnimation"]
+[node name="SnapCamera" parent="CameraAnimation" instance=ExtResource( 18 )]
+position = Vector2( 1548, 186 )
+ZOOM = Vector2( 1.3, 1.3 )
+SCALE = Vector2( 0.8, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAnimation/CameraLimit2"]
-position = Vector2( 1495.5, 232 )
-shape = SubResource( 25 )
+[node name="SnapCamera2" parent="CameraAnimation" instance=ExtResource( 18 )]
+position = Vector2( 2502, -43 )
+ZOOM = Vector2( 1.6, 1.6 )
 
-[node name="CameraPosition" type="Position2D" parent="CameraAnimation/CameraLimit2"]
-position = Vector2( 1500, 232 )
+[node name="SnapCamera3" parent="CameraAnimation" instance=ExtResource( 18 )]
+position = Vector2( 3508, 188 )
+ZOOM = Vector2( 1.3, 1.3 )
+SCALE = Vector2( 1.2, 1 )
 
-[node name="CameraLimit" type="Area2D" parent="CameraAnimation"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAnimation/CameraLimit"]
-position = Vector2( 497.75, 335.25 )
-shape = SubResource( 24 )
+[node name="SnapCamera4" parent="CameraAnimation" instance=ExtResource( 18 )]
+position = Vector2( 5986, 180 )
+ZOOM = Vector2( 1.3, 1.3 )
+SCALE = Vector2( 1.6, 1 )
 
 [node name="Tween" type="Tween" parent="CameraAnimation"]
 
@@ -481,9 +482,12 @@ limit_left = -150
 limit_bottom = 640
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 3.0
 drag_margin_left = 0.29
 drag_margin_top = 0.6
 drag_margin_right = 0.0
+drag_margin_bottom = 0.03
 editor_draw_drag_margin = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -670,7 +674,9 @@ scale = Vector2( 1, 1 )
 [node name="Guard" parent="." instance=ExtResource( 7 )]
 position = Vector2( 3896, 520 )
 
-[connection signal="body_entered" from="CameraAnimation/CameraLimit2" to="CameraAnimation" method="_on_CameraLimit2_body_entered"]
-[connection signal="body_entered" from="CameraAnimation/CameraLimit" to="CameraAnimation" method="_on_CameraLimit_body_entered"]
+[connection signal="snapCamera" from="CameraAnimation/SnapCamera" to="CameraAnimation" method="_on_SnapCamera_snapCamera"]
+[connection signal="snapCamera" from="CameraAnimation/SnapCamera2" to="CameraAnimation" method="_on_SnapCamera_snapCamera"]
+[connection signal="snapCamera" from="CameraAnimation/SnapCamera3" to="CameraAnimation" method="_on_SnapCamera_snapCamera"]
+[connection signal="snapCamera" from="CameraAnimation/SnapCamera4" to="CameraAnimation" method="_on_SnapCamera_snapCamera"]
 [connection signal="interactable" from="CCTVSwitchSwitch" to="Player" method="_on_CameraSwitch_interactable"]
 [connection signal="timeout" from="TimerLasers" to="TimerLasers" method="_on_TimerLasers_timeout"]
