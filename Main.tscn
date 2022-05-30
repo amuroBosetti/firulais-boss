@@ -454,22 +454,26 @@ script = ExtResource( 17 )
 script = ExtResource( 16 )
 
 [node name="SnapCamera" parent="CameraAnimation" instance=ExtResource( 18 )]
-position = Vector2( 1548, 186 )
-ZOOM = Vector2( 1.3, 1.3 )
+position = Vector2( 1602, 186 )
+ENTRANCE_ZOOM = Vector2( 1.3, 1.3 )
+EXIT_ZOOM = Vector2( 1.3, 1.3 )
 SCALE = Vector2( 0.8, 1 )
 
 [node name="SnapCamera2" parent="CameraAnimation" instance=ExtResource( 18 )]
 position = Vector2( 2502, -43 )
-ZOOM = Vector2( 1.6, 1.6 )
+ENTRANCE_ZOOM = Vector2( 1.6, 1.6 )
+EXIT_ZOOM = Vector2( 1.6, 1.6 )
 
 [node name="SnapCamera3" parent="CameraAnimation" instance=ExtResource( 18 )]
 position = Vector2( 3508, 188 )
-ZOOM = Vector2( 1.3, 1.3 )
+ENTRANCE_ZOOM = Vector2( 1.3, 1.3 )
+EXIT_ZOOM = Vector2( 1.3, 1.3 )
 SCALE = Vector2( 1.2, 1 )
 
 [node name="SnapCamera4" parent="CameraAnimation" instance=ExtResource( 18 )]
 position = Vector2( 5986, 180 )
-ZOOM = Vector2( 1.3, 1.3 )
+ENTRANCE_ZOOM = Vector2( 1.3, 1.3 )
+EXIT_ZOOM = Vector2( 1.3, 1.3 )
 SCALE = Vector2( 1.6, 1 )
 
 [node name="Tween" type="Tween" parent="CameraAnimation"]
