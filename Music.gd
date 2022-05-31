@@ -6,7 +6,8 @@ var track = audioA
 var change_track = false
 
 func _process(delta):
-	if change_track and stepify((get_playback_position() / 3), 0.02)  == round(get_playback_position() / 3): # stepify_beat == beat:
+	if change_track and stepify((get_playback_position() / 3), 0.02) \
+									== round(get_playback_position() / 3): # stepify_beat == beat:
 		_play()
 		change_track = false
 

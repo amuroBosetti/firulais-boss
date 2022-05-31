@@ -463,28 +463,34 @@ script = ExtResource( 20 )
 script = ExtResource( 16 )
 
 [node name="SnapCamera" parent="CameraAnimation" instance=ExtResource( 18 )]
-position = Vector2( 1602, 186 )
+position = Vector2( 1578, 222 )
 ENTRANCE_ZOOM = 1.4
-EXIT_ZOOM = 1.4
 SCALE = Vector2( 0.8, 1 )
 
 [node name="SnapCamera2" parent="CameraAnimation" instance=ExtResource( 18 )]
-position = Vector2( 2292, 126 )
+position = Vector2( 2289, 165 )
 ENTRANCE_ZOOM = 1.6
 EXIT_ZOOM = 1.6
 SCALE = Vector2( 0.5, 0.8 )
 
 [node name="SnapCamera5" parent="CameraAnimation" instance=ExtResource( 18 )]
-position = Vector2( 3831, 292 )
-ENTRANCE_ZOOM = 1.3
+position = Vector2( 3846, 294 )
+ENTRANCE_ZOOM = 1.5
 EXIT_ZOOM = 1.3
-SCALE = Vector2( 1.4, 1 )
+SCALE = Vector2( 1.8, 1 )
 
 [node name="SnapCamera4" parent="CameraAnimation" instance=ExtResource( 18 )]
-position = Vector2( 5965, 269 )
-ENTRANCE_ZOOM = 1.4
-EXIT_ZOOM = 1.3
-SCALE = Vector2( 1.6, 1 )
+position = Vector2( 6175, 188 )
+ENTRANCE_ZOOM = 1.5
+EXIT_ZOOM = 1.1
+SCALE = Vector2( 1.85, 1 )
+CAMERA_POSITION = Vector2( 0, 150 )
+
+[node name="SnapCamera6" parent="CameraAnimation" instance=ExtResource( 18 )]
+position = Vector2( 7889, 260 )
+ENTRANCE_ZOOM = 0.9
+EXIT_ZOOM = 1.1
+CAMERA_POSITION = Vector2( 0, 100 )
 
 [node name="Tween" type="Tween" parent="CameraAnimation"]
 
@@ -497,7 +503,7 @@ limit_bottom = 640
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
-smoothing_speed = 3.0
+smoothing_speed = 2.0
 drag_margin_left = 0.29
 drag_margin_top = 0.6
 drag_margin_right = 0.0
@@ -543,10 +549,10 @@ text = "NO DEJES QUE TE VEAN LOS
  GUARDIAS Y LAS CAMARAS"
 
 [node name="Label4" type="Label" parent="Environment"]
-margin_left = 3274.0
-margin_top = 76.0
-margin_right = 3811.0
-margin_bottom = 263.0
+margin_left = 3554.0
+margin_top = 82.0
+margin_right = 4091.0
+margin_bottom = 269.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
 text = "  Espera a que el guardia se de la vuelta 
@@ -576,10 +582,10 @@ text = " Activa y desactiva la camara
        tecla E o Control "
 
 [node name="Label7" type="Label" parent="Environment"]
-margin_left = 7754.0
-margin_top = 96.0
-margin_right = 8124.0
-margin_bottom = 343.0
+margin_left = 7709.0
+margin_top = 162.0
+margin_right = 8079.0
+margin_bottom = 409.0
 rect_pivot_offset = Vector2( -5381, -438 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
@@ -587,10 +593,10 @@ text = "¡Enhorabuena, has superado
    todos los obstaculos!"
 
 [node name="Label8" type="Label" parent="Environment"]
-margin_left = 5450.0
-margin_top = 163.0
-margin_right = 5836.0
-margin_bottom = 302.0
+margin_left = 5682.0
+margin_top = 125.0
+margin_right = 6068.0
+margin_bottom = 264.0
 rect_pivot_offset = Vector2( -5381, -438 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
@@ -699,6 +705,7 @@ shape = SubResource( 24 )
 [connection signal="snapCamera" from="CameraAnimation/SnapCamera2" to="CameraAnimation" method="_on_SnapCamera_snapCamera"]
 [connection signal="snapCamera" from="CameraAnimation/SnapCamera5" to="CameraAnimation" method="_on_SnapCamera_snapCamera"]
 [connection signal="snapCamera" from="CameraAnimation/SnapCamera4" to="CameraAnimation" method="_on_SnapCamera_snapCamera"]
+[connection signal="snapCamera" from="CameraAnimation/SnapCamera6" to="CameraAnimation" method="_on_SnapCamera_snapCamera"]
 [connection signal="interactable" from="CCTVSwitchSwitch" to="Player" method="_on_CameraSwitch_interactable"]
 [connection signal="timeout" from="TimerLasers" to="TimerLasers" method="_on_TimerLasers_timeout"]
 [connection signal="body_entered" from="ChangeTrack" to="ChangeTrack" method="_on_ChangeTrack_body_entered"]
