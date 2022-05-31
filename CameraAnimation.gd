@@ -15,6 +15,8 @@ func _set_camera_on(position_, zoom, followPlayer):
 	tween.interpolate_property(camera, "position", camera.position, position_, 1)
 	tween.start()
 	attach_camera_to_player = followPlayer
+	camera.drag_margin_h_enabled = followPlayer
+	camera.drag_margin_v_enabled = followPlayer
 
 func _on_SnapCamera_snapCamera(position_, zoom, followPlayer):
 	_set_camera_on(position_, zoom, followPlayer)
