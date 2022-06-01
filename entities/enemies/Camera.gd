@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 class_name MonitorCamera
 
 export (float) var MOVEMENT_SPEED:float = 0.5
@@ -12,25 +12,27 @@ var direction:int = 1
 var active = true
 
 var target = null
-var raycast:RayCast2D
+onready var raycast : RayCast2D = $RayCast2D
+onready var camera_sprite : AnimatedSprite = $Camera
 
 func _ready():
-	raycast = $RayCast2D
 	camera_rotation_degrees = rotation_degrees
 	max_degree_movement = camera_rotation_degrees + MOVEMENT_DEGREE
 	min_degree_movement = camera_rotation_degrees - MOVEMENT_DEGREE
 
 func _process(delta):
+	if active && target != null:
+		raycast.set_cast_to(to_local(target.global_position))
+		raycast.enabled = true
+		if raycast.is_colliding() && raycast.get_collider() == target:
+			target.respawn_player()
+	set_next_rotation_step(delta)
+
 	
+func set_next_rotation_step(delta):
 	if active:
 		rotation_degrees_count += direction * (MOVEMENT_SPEED + delta)
-
-		if target != null:
-			raycast.set_cast_to(to_local(target.global_position))
-			raycast.enabled = true
-			if raycast.is_colliding() && raycast.get_collider() == target:
-				target.respawn_player()
-
+	
 	if rotation_degrees_count > -max_degree_movement and rotation_degrees_count < max_degree_movement:
 		camera_rotation_degrees = rotation_degrees_count 
 	
@@ -57,4 +59,8 @@ func _on_Area2D_body_exited(body):
 
 func _interact():
 	active = !active
+	if active:
+		camera_sprite.animation = "active"
+	else: 
+		camera_sprite.animation = "inactive"
 	$FieldOfView/Sprite.set_deferred("visible", active)

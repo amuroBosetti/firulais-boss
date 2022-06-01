@@ -643,7 +643,6 @@ tile_data = PoolIntArray( 327710, 7, 0, 327711, 5, 0, 327712, 5, 0, 327713, 5, 0
 [node name="CCTV" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2721, 17 )
 rotation = 0.502655
-MOVEMENT_DEGREE = 20.0
 
 [node name="CCTVSwitchSwitch" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2196, 236 )
