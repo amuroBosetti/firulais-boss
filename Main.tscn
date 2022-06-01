@@ -484,13 +484,11 @@ position = Vector2( 6175, 188 )
 ENTRANCE_ZOOM = 1.5
 EXIT_ZOOM = 1.1
 SCALE = Vector2( 1.85, 1 )
-CAMERA_POSITION = Vector2( 0, 150 )
 
 [node name="SnapCamera6" parent="CameraAnimation" instance=ExtResource( 18 )]
 position = Vector2( 7889, 260 )
 ENTRANCE_ZOOM = 0.9
 EXIT_ZOOM = 1.1
-CAMERA_POSITION = Vector2( 0, 100 )
 
 [node name="Tween" type="Tween" parent="CameraAnimation"]
 

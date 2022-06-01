@@ -13,7 +13,7 @@ onready var camera_offset:Vector2 = get_node("../Camera").offset
 func _on_SnapCamera_body_entered(body):
 	if body is Player:
 		emit_signal("snapCamera", 
-					$CollisionShape2D.global_position - camera_offset,
+					$CameraPosition.global_position - camera_offset,
 					Vector2(ENTRANCE_ZOOM,ENTRANCE_ZOOM), 
 					false)
 

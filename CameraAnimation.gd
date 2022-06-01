@@ -10,13 +10,13 @@ func _process(delta):
 	if attach_camera_to_player:
 		camera.set_position(player.get_position())
 
-func _set_camera_on(position_, zoom, followPlayer):
+func _set_camera_on(_position, zoom, followPlayer):
 	tween.interpolate_property(camera, "zoom", camera.zoom, zoom, 1, Tween.TRANS_LINEAR)
-	tween.interpolate_property(camera, "position", camera.position, position_, 1)
+	tween.interpolate_property(camera, "position", camera.position, _position, 1)
 	tween.start()
 	attach_camera_to_player = followPlayer
 	camera.drag_margin_h_enabled = followPlayer
 	camera.drag_margin_v_enabled = followPlayer
 
-func _on_SnapCamera_snapCamera(position_, zoom, followPlayer):
-	_set_camera_on(position_, zoom, followPlayer)
+func _on_SnapCamera_snapCamera(_position, zoom, followPlayer):
+	_set_camera_on(_position, zoom, followPlayer)
