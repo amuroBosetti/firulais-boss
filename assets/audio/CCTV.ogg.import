@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CCTV.ogg-89ef2ac9ce299c2e0c50d9b729b31d94.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/CCTV.ogg"
+dest_files=[ "res://.import/CCTV.ogg-89ef2ac9ce299c2e0c50d9b729b31d94.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
