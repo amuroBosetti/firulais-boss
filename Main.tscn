@@ -451,7 +451,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 12/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=24]
-extents = Vector2( 182.75, 1058 )
+extents = Vector2( 182.75, 1047 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 17 )
@@ -643,6 +643,7 @@ tile_data = PoolIntArray( 327710, 7, 0, 327711, 5, 0, 327712, 5, 0, 327713, 5, 0
 [node name="CCTV" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2721, 17 )
 rotation = 0.502655
+WAIT_TIME = 3.0
 
 [node name="CCTVSwitchSwitch" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2196, 236 )
@@ -694,7 +695,7 @@ collision_mask = 4
 script = ExtResource( 21 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeTrack"]
-position = Vector2( 558, -67.25 )
+position = Vector2( 569, -67.25 )
 rotation = 1.5708
 shape = SubResource( 24 )
 
