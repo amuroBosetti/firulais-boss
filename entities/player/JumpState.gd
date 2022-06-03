@@ -4,7 +4,7 @@ onready var jump_timer : Timer = $JumpTimer
 	
 func enter():
 	jump_timer.start()
-	parent.play_animation("idle")
+	parent.play_animation("jump_up")
 
 func update(delta:float):
 	parent._handle_move_input()

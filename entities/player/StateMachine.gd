@@ -8,3 +8,7 @@ func _ready():
 		"jump_down": $JumpDown
 #		"captured": $Captured,
 	}
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	_on_animation_finished(anim_name)

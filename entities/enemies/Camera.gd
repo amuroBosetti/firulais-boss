@@ -82,7 +82,7 @@ func _on_Area2D_body_entered(body):
 	if body is Player and target == null:
 		target = body
 		raycast.enabled = true
-		
+
 func _on_Area2D_body_exited(body):
 	if target == body:
 		target = null

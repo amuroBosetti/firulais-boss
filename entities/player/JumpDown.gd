@@ -1,4 +1,7 @@
 extends "res://entities/AbstractState.gd"
+
+func enter():
+	parent.play_animation("jump_transition")
 	
 func update(delta:float):
 	parent._handle_move_input()
@@ -13,3 +16,7 @@ func update(delta:float):
 			emit_signal("finished", "walk")
 		else:
 			emit_signal("finished", "idle")
+
+func _on_animation_finished(anim_name:String):
+	if anim_name == "jump_transition":
+		parent.play_animation("jump_down")
