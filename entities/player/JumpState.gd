@@ -28,4 +28,5 @@ func update(delta:float):
 
 
 func _on_JumpTimer_timeout():
-	emit_signal("finished", "jump_down")
+	if parent.current_state() == self:
+		emit_signal("finished", "jump_down")

@@ -67,3 +67,6 @@ func _on_CameraSwitch_interactable(body):
 	
 func play_animation(animation_name:String):
 	animation_player.play(animation_name)
+
+func current_state():
+	return state_machine.current_state
