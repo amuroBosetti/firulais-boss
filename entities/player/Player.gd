@@ -26,7 +26,6 @@ func make_hidden():
 		hidden_sprite.set_deferred("visible", hidden)
 		normal_sprite.set_deferred("visible", !hidden) 
 		
-			
 func make_visible():
 	if hidden:
 		set_collision_layer_bit(0, true)
@@ -61,6 +60,8 @@ func _physics_process(delta):
 		if target.has_method('_interact'):
 			if Input.is_action_just_pressed("interact"):
 				target._interact()
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
 
 func _on_CameraSwitch_interactable(body):
 	target = body

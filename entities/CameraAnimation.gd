@@ -10,6 +10,11 @@ func _process(delta):
 	if attach_camera_to_player:
 		camera.set_position(player.get_position())
 
+func _initialize():
+	attach_camera_to_player = true
+	camera.position = player.position
+	camera.current = true
+
 func _set_camera_on(_position, zoom, followPlayer):
 	tween.interpolate_property(camera, "zoom", camera.zoom, zoom, 1, Tween.TRANS_LINEAR)
 	tween.interpolate_property(camera, "position", camera.position, _position, 1)
