@@ -11,6 +11,7 @@ func _ready():
 
 func _interact():
 	camera._interact()
+	$Sprite.flip_v = !$Sprite.flip_v
 
 func _on_CameraSwitch_body_entered(body):
 	emit_signal("interactable",self)
