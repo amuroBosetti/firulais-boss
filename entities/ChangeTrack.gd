@@ -4,7 +4,9 @@ signal change_tracka
 signal change_trackb
 
 func _on_ChangeTrack_body_entered(body):
-	emit_signal("change_trackb")
+	if body is Player:
+		emit_signal("change_trackb")
 
 func _on_ChangeTrack_body_exited(body):
-	emit_signal("change_tracka")
+	if body is Player:
+		emit_signal("change_tracka")
