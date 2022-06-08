@@ -21,6 +21,7 @@ onready var camera_sprite : AnimatedSprite = $Camera
 onready var sfx:AudioStreamPlayer2D = $Rolling
 onready var sfx_switch:AudioStreamPlayer = $Switch
 onready var tween : Tween = $Tween
+onready var shadow: Sprite = $FieldOfView/Sprite
 
 func _ready():
 	camera_rotation_degrees = rotation_degrees
@@ -30,7 +31,7 @@ func _ready():
 	sfx_switch.stream.loop = false
 	_animate_movement(direction)
 
-func _process(delta):
+func _process(_delta):
 	_apply_raycast()
 	_play_sfx()
 
@@ -59,12 +60,12 @@ func _interact():
 		camera_sprite.animation = "inactive"
 		tween.stop_all()
 		tween.remove(self, "rotation_degrees")
-	$FieldOfView/Sprite.set_deferred("visible", active)
+	shadow.set_deferred("visible", active)
 
-func _animate_movement(direction):
+func _animate_movement(_direction):
 	if not tween.is_active() and waiting == false:
 		moving = true
-		var bound = max_degree_movement if direction == 1 else min_degree_movement
+		var bound = max_degree_movement if _direction == 1 else min_degree_movement
 		var seconds = abs((abs(bound - rotation_degrees) * max_animation_duration) / (max_degree_movement - min_degree_movement))
 		tween.interpolate_property(self, "rotation_degrees", rotation_degrees, bound, seconds)
 		tween.start()

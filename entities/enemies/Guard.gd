@@ -3,9 +3,10 @@ class_name Guard
 
 export (float) var SPEED = 90
 export (float) var GRAVITY:float = 60
+export (float) var WAIT_TIME:float = 4
 
 onready var state_machine = $StateMachine
-onready var spawn_position = global_position
+onready var idle_timer:Timer = $StateMachine/Idle/IdleTimer
 
 var raycast:RayCast2D
 var target = null
@@ -14,6 +15,7 @@ var direction:int = -1
 
 func _ready():
 	raycast = $RayCast2D
+	idle_timer.wait_time =  WAIT_TIME
 	state_machine.set_parent(self)
 	
 func _process(delta):

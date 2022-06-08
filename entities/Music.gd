@@ -5,7 +5,7 @@ var audioB:AudioStream = load("res://assets/audio/arteB.ogg")
 var track = audioA 
 var change_track = false
 
-func _process(delta):
+func _process(_delta):
 	if change_track and stepify((get_playback_position() / 3), 0.02) \
 									== round(get_playback_position() / 3): # stepify_beat == beat:
 		_play()
@@ -19,14 +19,15 @@ func _change_track(audio_stream:AudioStream):
 	track = audio_stream
 	change_track = true
 
-func _on_ChangeTrack_change_tracka():
+func _on_ChangeTrack_tracka():
 	if get_stream() != audioA:
 		_change_track(audioA)
 	else: 
 		change_track = false
 
-func _on_ChangeTrack_change_trackb():
+func _on_ChangeTrack_trackb():
 	if get_stream() != audioB:
 		_change_track(audioB)
 	else: 
 		change_track = false
+

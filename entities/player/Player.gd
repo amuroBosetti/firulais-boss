@@ -55,11 +55,10 @@ func _handle_move_input():
 		$Hidden.flip_h = move_direction == -1
 		$Normal.flip_h = move_direction == -1
 
-func _physics_process(delta):
-	if target != null:
-		if target.has_method('_interact'):
-			if Input.is_action_just_pressed("interact"):
-				target._interact()
+func _physics_process(_delta):
+	if target != null and target.has_method('_interact'):
+		if Input.is_action_just_pressed("interact"):
+			target._interact()
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 

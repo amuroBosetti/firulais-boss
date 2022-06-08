@@ -3,7 +3,7 @@ extends "res://entities/AbstractState.gd"
 func enter():
 	parent.play_animation("jump_transition")
 	
-func update(delta:float):
+func update(_delta:float):
 	parent._handle_move_input()
 
 	if parent.move_direction == 0:

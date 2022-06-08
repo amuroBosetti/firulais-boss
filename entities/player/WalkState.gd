@@ -7,7 +7,7 @@ func handle_input(event:InputEvent):
 func enter():
 	parent.play_animation("walk")
 
-func update(delta:float):
+func update(_delta:float):
 	parent._handle_move_input()
 	parent._apply_movement()
 	if parent.move_direction == 0:

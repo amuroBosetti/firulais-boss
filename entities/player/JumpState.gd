@@ -6,7 +6,7 @@ func enter():
 	jump_timer.start()
 	parent.play_animation("jump_up")
 
-func update(delta:float):
+func update(_delta:float):
 	parent._handle_move_input()
 
 	parent.velocity.y = -parent.JUMP_SPEED

@@ -12,7 +12,7 @@ func handle_input(event:InputEvent):
 	if event.is_action_pressed("jump") && parent.is_on_floor():
 		emit_signal("finished", "jump_up")
 
-func update(delta:float):
+func update(_delta:float):
 	if Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right"):
 		emit_signal("finished", "walk")
 	parent._handle_deacceleration()

@@ -3,16 +3,13 @@ extends Node2D
 onready var camera : Camera2D = $Camera
 onready var player : Player = get_parent().get_node('Player')
 onready var tween : Tween = $Tween
+onready var attach_camera_to_player : bool = true
 
-var attach_camera_to_player : bool = true
-
-func _process(delta):
+func _process(_delta):
 	if attach_camera_to_player:
 		camera.set_position(player.get_position())
 
 func _initialize():
-	attach_camera_to_player = true
-	camera.position = player.position
 	camera.current = true
 
 func _set_camera_on(_position, zoom, followPlayer):

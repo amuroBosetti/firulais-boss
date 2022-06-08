@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/textures/background.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/firulaisLogo.png" type="Texture" id=2]
 [ext_resource path="res://FirulaisLogo.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/bark.ogg" type="AudioStream" id=4]
 
 [node name="FirulaisLogo" type="Node"]
 script = ExtResource( 3 )
@@ -36,3 +37,6 @@ texture = ExtResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 540, 300 )
 current = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
