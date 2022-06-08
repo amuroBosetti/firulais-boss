@@ -1,4 +1,4 @@
 extends Node
 
 func _ready():
-	get_tree().change_scene("res://FirulaisLogo.tscn")
+	get_tree().change_scene("res://InGame.tscn")
