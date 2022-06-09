@@ -3,7 +3,7 @@
 [ext_resource path="res://entities/world/SnapCamera.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=25]
-extents = Vector2( 393, 371 )
+extents = Vector2( 466, 440 )
 
 [node name="SnapCamera" type="Area2D"]
 collision_layer = 4
