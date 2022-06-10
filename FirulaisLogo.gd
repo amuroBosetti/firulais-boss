@@ -10,7 +10,7 @@ func _ready():
 	fade.hide()
 	yield(get_tree().create_timer(1), "timeout")
 	audio.play()
-	yield(get_tree().create_timer(3), "timeout")
+	yield(get_tree().create_timer(2), "timeout")
 	fade_to_black()
 	yield(get_tree().create_timer(2), "timeout")
 	get_tree().change_scene("res://InGame.tscn")
