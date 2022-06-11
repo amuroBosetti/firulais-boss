@@ -1,57 +1,53 @@
 extends Node
 
-onready var start = $Start
-onready var close = $Close
-onready var fade = $Fade
-onready var fade_tween = $Tween
-onready var audio = $AudioStreamPlayer
-
 export (Color) var BASE:Color = Color(1.0, 1.0, 1.0, 1.0)
 export (Color) var SELECTED:Color = Color(1.0, 1.0, 1.0, 1.0)
 
-func _ready():
-	audio.stream.loop = false
-	fade.color.a = 0
-	fade.hide()
-	start.set_mouse_filter(1)
-	close.set_mouse_filter(1)
-	start.set("custom_colors/font_color", BASE)
-	close.set("custom_colors/font_color", BASE)
+onready var start = $Start
+onready var close = $Close
 
+var options:Array 
+var index = null
+
+func _ready():
+	start.color_base = BASE
+	start.color_selected = SELECTED
+	close.color_base = BASE
+	close.color_selected = SELECTED
+	options = [start, close]
+
+func _process(_delta):
+	if Input.is_action_just_pressed("up"):
+		_select(1)
+	if Input.is_action_just_pressed("down"):
+		_select(-1)
+	if Input.is_action_just_pressed("accept"):
+		if index != null:
+			options[index]._execute()
+
+func _select(index_movement:int):
+	if index == null:
+		index = 1
+	options[index].deselect()
+	index = (index + index_movement) % options.size()
+	options[index].select()
+	
 func _on_Start_mouse_entered():
-	_change_font_color(start, SELECTED)
+	start.select()
+	close.deselect()
+	index = 0
 
 func _on_Start_mouse_exited():
-	_change_font_color(start, BASE)
+	start.deselect()
+	close.deselect()
+	index = null
 
 func _on_Close_mouse_entered():
-	_change_font_color(close, SELECTED)
-
+	close.select()
+	start.deselect()
+	index = 1
+	
 func _on_Close_mouse_exited():
-	_change_font_color(close, BASE)
-
-func _on_Close_gui_input(event):
-	if _event_is_click(event):
-		get_tree().quit()
-
-func _on_Start_gui_input(event):
-	if _event_is_click(event):
-		audio.play()
-		_change_scene("res://InGame.tscn")
-
-func _event_is_click(event):
-	if event is InputEventMouseButton:
-		return event.button_index == BUTTON_LEFT and event.pressed
-
-func _change_font_color(label:Label, color:Color):
-	label.set("custom_colors/font_color", color)
-
-func _change_scene(scene_path:String):
-	fade_to_black()
-	yield(get_tree().create_timer(2), "timeout")
-	get_tree().change_scene(scene_path)
-
-func fade_to_black():
-	fade.show()
-	fade_tween.interpolate_property(fade, "color", fade.color, Color.black, 1)
-	fade_tween.start()
+	start.deselect()
+	close.deselect()
+	index = null
