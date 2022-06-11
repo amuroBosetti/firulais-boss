@@ -13,7 +13,7 @@ func _ready():
 	yield(get_tree().create_timer(2), "timeout")
 	fade_to_black()
 	yield(get_tree().create_timer(2), "timeout")
-	get_tree().change_scene("res://InGame.tscn")
+	get_tree().change_scene("res://Menu.tscn")
 
 func fade_to_black():
 	fade.show()
