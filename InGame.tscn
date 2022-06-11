@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://entities/enemies/TimerLasers.gd" type="Script" id=1]
 [ext_resource path="res://entities/Music.gd" type="Script" id=2]
@@ -25,6 +25,11 @@
 [ext_resource path="res://assets/textures/ElJaquer.png" type="Texture" id=23]
 [ext_resource path="res://entities/world/Zoom.tscn" type="PackedScene" id=24]
 [ext_resource path="res://entities/CameraFade.gd" type="Script" id=25]
+[ext_resource path="res://entities/Pause.gd" type="Script" id=26]
+
+[sub_resource type="DynamicFont" id=24]
+size = 50
+font_data = ExtResource( 22 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 32
@@ -459,6 +464,29 @@ script = ExtResource( 10 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 script = ExtResource( 2 )
+
+[node name="Pause" type="Node" parent="."]
+pause_mode = 2
+script = ExtResource( 26 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Pause"]
+
+[node name="ColorRect" type="ColorRect" parent="Pause/CanvasLayer"]
+visible = false
+margin_left = -52.0
+margin_top = -32.0
+margin_right = 1101.0
+margin_bottom = 644.0
+color = Color( 0.0862745, 0.0823529, 0.0823529, 0.52549 )
+
+[node name="Label" type="Label" parent="Pause/CanvasLayer"]
+visible = false
+margin_left = 500.0
+margin_top = 250.0
+margin_right = 610.0
+margin_bottom = 342.0
+custom_fonts/font = SubResource( 24 )
+text = "PAUSE"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
