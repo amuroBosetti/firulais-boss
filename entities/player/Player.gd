@@ -6,18 +6,22 @@ export (float) var H_SPEED_LIMIT:float = 400.0
 export (float) var FRICTION_WEIGHT:float = 0.3
 export (float) var JUMP_SPEED:float = 500.0 
 export (float) var GRAVITY:float = 30
+export (NodePath) var CAMERA_MANAGER:NodePath
 
-onready var spawn_position:Vector2 = self.global_position
+onready var spawn_position:Vector2 = global_position
 onready var state_machine:Node = $StateMachine
 onready var normal_sprite:Sprite = $Normal
 onready var hidden_sprite:Sprite = $Hidden 
 onready var hidden:bool = false 
 onready var animation_player:AnimationPlayer = $AnimationPlayer
+onready var caught_state:Node = $StateMachine/Caught
+onready var camera_manager = get_node(CAMERA_MANAGER)
 
 var velocity:Vector2 = Vector2.ZERO
 var move_direction:int = 0
 var camera_movement:float = 0
 var target = null
+var caught = false
 
 func make_hidden():
 	if !hidden:
@@ -34,12 +38,25 @@ func make_visible():
 		normal_sprite.set_deferred("visible", !hidden) 
 		
 func _ready():
+	caught = false
 	state_machine.set_parent(self)
 	hidden_sprite.set_deferred("visible", hidden)
 	normal_sprite.set_deferred("visible", !hidden) 
 	
-func respawn_player():
-	self.position = spawn_position
+func _caught():
+	if !caught:
+		caught = true
+		state_machine._change_state("caught")
+		camera_manager.fade_out()
+	
+func _respawn():
+	camera_manager.fade_in()
+	position = spawn_position
+	yield(get_tree().create_timer(0.1), "timeout")
+	caught = false
+
+func _on_CameraFade_fade_in_completed():
+	current_state()._exit()
 	
 func _apply_movement():
 	velocity.y += GRAVITY
@@ -70,3 +87,4 @@ func play_animation(animation_name:String):
 
 func current_state():
 	return state_machine.current_state
+

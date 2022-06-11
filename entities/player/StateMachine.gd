@@ -5,8 +5,8 @@ func _ready():
 		"idle": $Idle,
 		"walk": $Walk,
 		"jump_up": $JumpUp,
-		"jump_down": $JumpDown
-#		"captured": $Captured,
+		"jump_down": $JumpDown,
+		"caught": $Caught
 	}
 
 

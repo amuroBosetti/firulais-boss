@@ -1,8 +1,6 @@
 extends "res://entities/AbstractState.gd"
 class_name IdleState
 
-var count = 0
-
 func enter():
 	parent.play_animation("idle")
 

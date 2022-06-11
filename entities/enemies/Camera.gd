@@ -40,7 +40,7 @@ func _apply_raycast():
 		raycast.set_cast_to(to_local(target.global_position))
 		raycast.enabled = true
 		if raycast.is_colliding() && raycast.get_collider() == target:
-			target.respawn_player()
+			target._caught()
 
 func _play_sfx():
 	if active and moving:

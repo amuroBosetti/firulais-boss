@@ -43,4 +43,4 @@ func enable_laser(enable:bool):
 
 func _on_Laser_body_entered(body):
 	if body is Player:
-		body.respawn_player()
+		body._caught()

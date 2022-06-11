@@ -23,7 +23,7 @@ func _process(delta):
 		raycast.set_cast_to(to_local(target.global_position))
 		raycast.enabled = true
 		if raycast.is_colliding() && raycast.get_collider() == target:
-			target.respawn_player()
+			target._caught()
 
 func _apply_movement():
 	velocity.x = SPEED * direction

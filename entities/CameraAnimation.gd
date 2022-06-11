@@ -4,6 +4,7 @@ onready var camera : Camera2D = $Camera
 onready var player : Player = get_parent().get_node('Player')
 onready var tween : Tween = $Tween
 onready var attach_camera_to_player : bool = true
+onready var fade:Node = $CameraFade
 
 func _process(_delta):
 	if attach_camera_to_player:
@@ -22,3 +23,9 @@ func _set_camera_on(_position, zoom, followPlayer):
 
 func _on_SnapCamera_snapCamera(_position, zoom, followPlayer):
 	_set_camera_on(_position, zoom, followPlayer)
+
+func fade_in():
+	fade.fade_in()
+	
+func fade_out():
+	fade.fade_out()

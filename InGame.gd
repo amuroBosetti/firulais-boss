@@ -1,6 +1,5 @@
 extends Node
 
 func _ready():
-	$CameraAnimation._initialize()
+	$CameraManager._initialize()
 	$Music._play()
-
