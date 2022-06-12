@@ -837,6 +837,36 @@ TIME_START = 2
 CYCLETIME = 2
 SCALE_LENGTH = 4.0
 
+[node name="CCTV" type="Node" parent="."]
+
+[node name="CCTV-Intro" parent="CCTV" instance=ExtResource( 13 )]
+position = Vector2( 2141, -23.9999 )
+rotation = 0.502655
+WAIT_TIME = 3.0
+
+[node name="Switch-Intro" parent="CCTV" instance=ExtResource( 17 )]
+position = Vector2( 1734, 181 )
+CAMERA = NodePath("../CCTV-Intro")
+
+[node name="CCTV-lvl-1-A" parent="CCTV" instance=ExtResource( 13 )]
+position = Vector2( 6733, 210 )
+MOVEMENT_DEGREE = 60.0
+WAIT_TIME = 3.0
+
+[node name="CCTV-lvl-1-B" parent="CCTV" instance=ExtResource( 13 )]
+position = Vector2( 9173, -19 )
+rotation = 0.698132
+MOVEMENT_DEGREE = 30.0
+WAIT_TIME = 2.0
+
+[node name="Switch-lvl-1-B" parent="CCTV" instance=ExtResource( 17 )]
+position = Vector2( 6864, -44 )
+CAMERA = NodePath("../CCTV-lvl-1-B")
+
+[node name="CCTV-lvl-1-C" parent="CCTV" instance=ExtResource( 13 )]
+position = Vector2( 17893, -57 )
+WAIT_TIME = 2.0
+
 [node name="Player" parent="." instance=ExtResource( 20 )]
 position = Vector2( 77, 486 )
 collision_layer = 13
@@ -868,36 +898,6 @@ scale = Vector2( 1, 1 )
 [node name="Vase-lvl-1-D" parent="Vases" instance=ExtResource( 18 )]
 position = Vector2( 17487, 741 )
 scale = Vector2( 1, 1 )
-
-[node name="CCTV" type="Node" parent="."]
-
-[node name="CCTV-Intro" parent="CCTV" instance=ExtResource( 13 )]
-position = Vector2( 2141, -23.9999 )
-rotation = 0.502655
-WAIT_TIME = 3.0
-
-[node name="Switch-Intro" parent="CCTV" instance=ExtResource( 17 )]
-position = Vector2( 1734, 181 )
-CAMERA = NodePath("../CCTV-Intro")
-
-[node name="CCTV-lvl-1-A" parent="CCTV" instance=ExtResource( 13 )]
-position = Vector2( 6733, 210 )
-MOVEMENT_DEGREE = 60.0
-WAIT_TIME = 3.0
-
-[node name="CCTV-lvl-1-B" parent="CCTV" instance=ExtResource( 13 )]
-position = Vector2( 9173, -19 )
-rotation = 0.698132
-MOVEMENT_DEGREE = 30.0
-WAIT_TIME = 2.0
-
-[node name="Switch-lvl-1-B" parent="CCTV" instance=ExtResource( 17 )]
-position = Vector2( 6864, -44 )
-CAMERA = NodePath("../CCTV-lvl-1-B")
-
-[node name="CCTV-lvl-1-C" parent="CCTV" instance=ExtResource( 13 )]
-position = Vector2( 17893, -57 )
-WAIT_TIME = 2.0
 
 [node name="Guards" type="Node" parent="."]
 
