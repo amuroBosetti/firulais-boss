@@ -56,6 +56,7 @@ polygon = PoolVector2Array( -14.796, 11.1515, -290.715, 94.4797, 285.301, 93.807
 [node name="Sprite" type="Sprite" parent="FieldOfView"]
 position = Vector2( 1.52588e-05, 49.2354 )
 scale = Vector2( 0.726904, 0.133945 )
+z_index = 3
 texture = ExtResource( 3 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

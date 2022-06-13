@@ -837,6 +837,39 @@ TIME_START = 2
 CYCLETIME = 2
 SCALE_LENGTH = 4.0
 
+[node name="Player" parent="." instance=ExtResource( 20 )]
+position = Vector2( 77, 486 )
+z_index = 1
+collision_layer = 13
+collision_mask = 4
+CAMERA_MANAGER = NodePath("../CameraManager")
+
+[node name="Vases" type="Node" parent="."]
+
+[node name="Vase-IntroA" parent="Vases" instance=ExtResource( 18 )]
+position = Vector2( 2442, 504 )
+scale = Vector2( 1, 1 )
+
+[node name="Vase-IntroB" parent="Vases" instance=ExtResource( 18 )]
+position = Vector2( 3412, 503 )
+scale = Vector2( 1, 1 )
+
+[node name="Vase-lvl-1-A" parent="Vases" instance=ExtResource( 18 )]
+position = Vector2( 6738, 502 )
+scale = Vector2( 1, 1 )
+
+[node name="Vase-lvl-1-B" parent="Vases" instance=ExtResource( 18 )]
+position = Vector2( 8193, 54 )
+scale = Vector2( 1, 1 )
+
+[node name="Vase-lvl-1-C" parent="Vases" instance=ExtResource( 18 )]
+position = Vector2( 7259, -9 )
+scale = Vector2( 1, 1 )
+
+[node name="Vase-lvl-1-D" parent="Vases" instance=ExtResource( 18 )]
+position = Vector2( 17487, 741 )
+scale = Vector2( 1, 1 )
+
 [node name="CCTV" type="Node" parent="."]
 
 [node name="CCTV-Intro" parent="CCTV" instance=ExtResource( 13 )]
@@ -866,38 +899,6 @@ CAMERA = NodePath("../CCTV-lvl-1-B")
 [node name="CCTV-lvl-1-C" parent="CCTV" instance=ExtResource( 13 )]
 position = Vector2( 17893, -57 )
 WAIT_TIME = 2.0
-
-[node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( 77, 486 )
-collision_layer = 13
-collision_mask = 4
-CAMERA_MANAGER = NodePath("../CameraManager")
-
-[node name="Vases" type="Node" parent="."]
-
-[node name="Vase-IntroA" parent="Vases" instance=ExtResource( 18 )]
-position = Vector2( 2442, 504 )
-scale = Vector2( 1, 1 )
-
-[node name="Vase-IntroB" parent="Vases" instance=ExtResource( 18 )]
-position = Vector2( 3412, 501 )
-scale = Vector2( 1, 1 )
-
-[node name="Vase-lvl-1-A" parent="Vases" instance=ExtResource( 18 )]
-position = Vector2( 6738, 502 )
-scale = Vector2( 1, 1 )
-
-[node name="Vase-lvl-1-B" parent="Vases" instance=ExtResource( 18 )]
-position = Vector2( 8193, 54 )
-scale = Vector2( 1, 1 )
-
-[node name="Vase-lvl-1-C" parent="Vases" instance=ExtResource( 18 )]
-position = Vector2( 7259, -9 )
-scale = Vector2( 1, 1 )
-
-[node name="Vase-lvl-1-D" parent="Vases" instance=ExtResource( 18 )]
-position = Vector2( 17487, 741 )
-scale = Vector2( 1, 1 )
 
 [node name="Guards" type="Node" parent="."]
 
