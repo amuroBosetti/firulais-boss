@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://entities/enemies/TimerLasers.gd" type="Script" id=1]
 [ext_resource path="res://entities/Music.gd" type="Script" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://entities/CameraFade.gd" type="Script" id=25]
 [ext_resource path="res://entities/Pause.gd" type="Script" id=26]
 [ext_resource path="res://entities/world/Ledge.tscn" type="PackedScene" id=27]
+[ext_resource path="res://assets/textures/jump-sign.png" type="Texture" id=28]
 
 [sub_resource type="DynamicFont" id=24]
 size = 50
@@ -568,33 +569,17 @@ scale = Vector2( 0.53, 0.53 )
 texture = ExtResource( 6 )
 hframes = 8
 
-[node name="W" type="Sprite" parent="Environment/ControlPicturess"]
-position = Vector2( 999, 146 )
-scale = Vector2( 0.53, 0.53 )
-texture = ExtResource( 6 )
-hframes = 8
-frame = 5
-
-[node name="Up" type="Sprite" parent="Environment/ControlPicturess"]
-position = Vector2( 1141, 146 )
-scale = Vector2( 0.53, 0.53 )
-texture = ExtResource( 6 )
-hframes = 8
-frame = 6
-
-[node name="Space" type="Sprite" parent="Environment/ControlPicturess"]
-position = Vector2( 1288, 151 )
-scale = Vector2( 0.53, 0.53 )
-texture = ExtResource( 6 )
-hframes = 8
-frame = 7
-
 [node name="E" type="Sprite" parent="Environment/ControlPicturess"]
 position = Vector2( 1686, -65 )
 scale = Vector2( 0.53, 0.53 )
 texture = ExtResource( 6 )
 hframes = 8
 frame = 4
+
+[node name="JumpSign" type="Sprite" parent="Environment/ControlPicturess"]
+position = Vector2( 1215.5, 239.5 )
+scale = Vector2( 0.53, 0.53 )
+texture = ExtResource( 28 )
 
 [node name="pictures" type="Node" parent="Environment"]
 
