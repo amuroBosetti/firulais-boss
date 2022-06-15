@@ -15,6 +15,7 @@ onready var hidden_sprite:Sprite = $Hidden
 onready var hidden:bool = false 
 onready var animation_player:AnimationPlayer = $AnimationPlayer
 onready var caught_state:Node = $StateMachine/Caught
+onready var jump_down_state:Node = $StateMachine/JumpDown
 onready var camera_manager = get_node(CAMERA_MANAGER)
 
 var velocity:Vector2 = Vector2.ZERO
@@ -22,6 +23,7 @@ var move_direction:int = 0
 var camera_movement:float = 0
 var target = null
 var caught = false
+var hanging_position:Vector2
 
 func make_hidden():
 	if !hidden:
@@ -73,11 +75,17 @@ func _handle_move_input():
 		$Normal.flip_h = move_direction == -1
 
 func _physics_process(_delta):
+	hanging_position = $Position2D.global_position
 	if target != null and target.has_method('_interact'):
 		if Input.is_action_just_pressed("interact"):
 			target._interact()
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
+
+func _hang(y_ledge:int):
+	if current_state() == jump_down_state:
+		global_position.y = y_ledge + 90 
+		state_machine._change_state("hang")
 
 func _on_CameraSwitch_interactable(body):
 	target = body

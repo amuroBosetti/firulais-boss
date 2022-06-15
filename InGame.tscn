@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://entities/enemies/TimerLasers.gd" type="Script" id=1]
 [ext_resource path="res://entities/Music.gd" type="Script" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://entities/world/Zoom.tscn" type="PackedScene" id=24]
 [ext_resource path="res://entities/CameraFade.gd" type="Script" id=25]
 [ext_resource path="res://entities/Pause.gd" type="Script" id=26]
+[ext_resource path="res://entities/world/Ledge.tscn" type="PackedScene" id=27]
 
 [sub_resource type="DynamicFont" id=24]
 size = 50
@@ -928,6 +929,20 @@ scale = Vector2( 0.4, 1 )
 [node name="ChangeTrack-lvl-1-B" parent="ChangeTrack" instance=ExtResource( 12 )]
 position = Vector2( 7328, -56 )
 scale = Vector2( 1.1, 1 )
+
+[node name="Ledges" type="Node" parent="."]
+
+[node name="Ledge-intro" parent="Ledges" instance=ExtResource( 27 )]
+position = Vector2( 1529, 270 )
+collision_layer = 4
+collision_mask = 4
+DIRECTION = "Left"
+
+[node name="Ledge-lvl-1" parent="Ledges" instance=ExtResource( 27 )]
+position = Vector2( 8330, 142 )
+collision_layer = 4
+collision_mask = 4
+DIRECTION = "Rigth"
 
 [connection signal="snapCamera" from="CameraManager/Snap-Jump" to="CameraManager" method="_on_SnapCamera_snapCamera"]
 [connection signal="snapCamera" from="CameraManager/Snap-Switch" to="CameraManager" method="_on_SnapCamera_snapCamera"]

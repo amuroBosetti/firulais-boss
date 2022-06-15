@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/world/Ledge.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8.5, 14 )
+
+[node name="Ledge" type="Area2D"]
+position = Vector2( 1567, 288 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -8, -14 )
+
+[connection signal="body_entered" from="." to="." method="_on_Ledge_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Ledge_body_exited"]
