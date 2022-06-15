@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="el-arte-del-robo-firulais-boss"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://InGame.tscn"
 config/icon="res://icon.png"
 
 [display]
