@@ -507,18 +507,6 @@ expand = true
 [node name="Limit_V2" parent="Environment" instance=ExtResource( 16 )]
 position = Vector2( 19244, 414 )
 
-[node name="Label2" type="Label" parent="Environment"]
-margin_left = 1068.0
-margin_top = -28.0
-margin_right = 1388.0
-margin_bottom = 217.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 11 )
-text = "   SALTA CON LA FLECHA 
-  HACIA ARRIBA O LA \"W\"
-Mantene presionado para 
-      saltar mas alto!"
-
 [node name="Label4" type="Label" parent="Environment"]
 margin_left = 2770.0
 margin_top = 98.0
@@ -528,18 +516,6 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
 text = "     ESCONDETE DETRAS DE LA COSA gris
 Si estas verde es porque no puenden verte "
-
-[node name="Label6" type="Label" parent="Environment"]
-margin_left = 1517.0
-margin_top = -208.0
-margin_right = 1887.0
-margin_bottom = 39.0
-rect_pivot_offset = Vector2( -1908, 17 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 11 )
-text = " Activa y desactiva la camara 
-   desde los switch con la
-       tecla E o Control "
 
 [node name="Label7" type="Label" parent="Environment"]
 margin_left = 10319.0
@@ -563,34 +539,62 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
 text = " lasers: si te cruzas, te queman"
 
-[node name="MovementPictures" type="Node2D" parent="Environment"]
+[node name="ControlPicturess" type="Node2D" parent="Environment"]
 
-[node name="Der" type="Sprite" parent="Environment/MovementPictures"]
+[node name="Der" type="Sprite" parent="Environment/ControlPicturess"]
 position = Vector2( 245, 390 )
 scale = Vector2( 0.53, 0.53 )
 texture = ExtResource( 6 )
-hframes = 4
+hframes = 8
 frame = 2
 
-[node name="Izq" type="Sprite" parent="Environment/MovementPictures"]
+[node name="Izq" type="Sprite" parent="Environment/ControlPicturess"]
 position = Vector2( 127, 334 )
 scale = Vector2( 0.53, 0.53 )
 texture = ExtResource( 6 )
-hframes = 4
+hframes = 8
 frame = 3
 
-[node name="D" type="Sprite" parent="Environment/MovementPictures"]
+[node name="D" type="Sprite" parent="Environment/ControlPicturess"]
 position = Vector2( 321, 257 )
 scale = Vector2( 0.53, 0.53 )
 texture = ExtResource( 6 )
-hframes = 4
+hframes = 8
 frame = 1
 
-[node name="A" type="Sprite" parent="Environment/MovementPictures"]
+[node name="A" type="Sprite" parent="Environment/ControlPicturess"]
 position = Vector2( 191, 214 )
 scale = Vector2( 0.53, 0.53 )
 texture = ExtResource( 6 )
-hframes = 4
+hframes = 8
+
+[node name="W" type="Sprite" parent="Environment/ControlPicturess"]
+position = Vector2( 999, 146 )
+scale = Vector2( 0.53, 0.53 )
+texture = ExtResource( 6 )
+hframes = 8
+frame = 5
+
+[node name="Up" type="Sprite" parent="Environment/ControlPicturess"]
+position = Vector2( 1141, 146 )
+scale = Vector2( 0.53, 0.53 )
+texture = ExtResource( 6 )
+hframes = 8
+frame = 6
+
+[node name="Space" type="Sprite" parent="Environment/ControlPicturess"]
+position = Vector2( 1288, 151 )
+scale = Vector2( 0.53, 0.53 )
+texture = ExtResource( 6 )
+hframes = 8
+frame = 7
+
+[node name="E" type="Sprite" parent="Environment/ControlPicturess"]
+position = Vector2( 1686, -65 )
+scale = Vector2( 0.53, 0.53 )
+texture = ExtResource( 6 )
+hframes = 8
+frame = 4
 
 [node name="pictures" type="Node" parent="Environment"]
 
