@@ -12,3 +12,5 @@ func update(_delta:float):
 	parent._apply_movement()
 	if parent.move_direction == 0:
 		emit_signal("finished", "idle")
+	if not parent.is_on_floor():
+		emit_signal("finished", "jump_down")

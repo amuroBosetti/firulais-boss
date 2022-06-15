@@ -28,7 +28,6 @@ func _on_CameraSwitch_body_entered(body):
 		emit_signal("interactable",self)
 		glow.visible = true
 		
-
 func _on_CameraSwitch_body_exited(body):
 	if body is Player:
 		emit_signal("interactable",null)
