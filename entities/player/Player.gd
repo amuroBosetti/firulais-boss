@@ -84,7 +84,7 @@ func _physics_process(_delta):
 
 func _hang(y_ledge:int):
 	if current_state() == jump_down_state:
-		global_position.y = y_ledge + 90 
+		global_position.y = y_ledge + 40 
 		state_machine._change_state("hang")
 
 func _on_CameraSwitch_interactable(body):
