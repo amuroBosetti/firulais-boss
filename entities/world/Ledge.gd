@@ -1,6 +1,7 @@
 extends Area2D
+tool
 
-export (String, "Left", "Rigth") var DIRECTION
+export (String, "Left", "Rigth") var DIRECTION setget _set_direction
 
 var target = null
 var direction:int
@@ -10,7 +11,6 @@ func _ready():
 		direction = 1
 	else:
 		direction = -1
-		$Position2D.position.x *= -1
 
 func _process(delta):
 	if target != null:
@@ -25,3 +25,12 @@ func _on_Ledge_body_entered(body):
 func _on_Ledge_body_exited(body):
 	if body is Player:
 		target = null
+		
+func _set_direction(dir:String):
+	DIRECTION = dir
+	if dir == "Left":
+		if Engine.editor_hint:
+			$Position2D.position.x = abs($Position2D.position.x) * -1
+	else:
+		if Engine.editor_hint:
+			$Position2D.position.x = abs($Position2D.position.x)

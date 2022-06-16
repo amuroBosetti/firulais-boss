@@ -1,9 +1,11 @@
 extends KinematicBody2D
 class_name Guard
+tool
 
 export (float) var SPEED = 90
 export (float) var GRAVITY:float = 60
 export (float) var WAIT_TIME:float = 4
+export (String, "Right", "Left") var DIRECTION setget _set_direction
 
 onready var state_machine = $StateMachine
 onready var idle_timer:Timer = $StateMachine/Idle/IdleTimer
@@ -13,12 +15,16 @@ onready var tween:Tween = $Tween
 var raycast:RayCast2D
 var target = null
 var velocity:Vector2 = Vector2()
-var direction:int = -1
+var direction:int
 
 func _ready():
 	raycast = $RayCast2D
 	idle_timer.wait_time =  WAIT_TIME
 	state_machine.set_parent(self)
+	if DIRECTION == "Right":
+		direction = 1
+	else:
+		direction = -1
 	
 func _process(delta):
 	if target != null:
@@ -48,3 +54,13 @@ func _on_Area2D_body_exited(body):
 	if target == body:
 		target = null
 		raycast.enabled = false
+
+func _set_direction(dir:String):
+	DIRECTION = dir
+	if dir == "Right":
+		if Engine.editor_hint:
+			scale.x = abs(scale.x) * -1
+	else:
+		if Engine.editor_hint:
+			scale.x = abs(scale.x)
+			
