@@ -604,7 +604,6 @@ SCALE = Vector2( 0.35, 0.5 )
 CAMERA_POSITION = Vector2( 0, -50 )
 
 [node name="Snap-Guard" parent="CameraManager" instance=ExtResource( 15 )]
-visible = false
 position = Vector2( 2967, 270 )
 ZOOM = 1.5
 SCALE = Vector2( 1.7, 1 )
@@ -741,7 +740,7 @@ position = Vector2( 5837, 437 )
 position = Vector2( 8446, 249 )
 
 [node name="Check-lvl-2-A" parent="Checkpoints" instance=ExtResource( 14 )]
-position = Vector2( 10203, -1092 )
+position = Vector2( 10363, -1092 )
 
 [node name="Check-lvl-2-B" parent="Checkpoints" instance=ExtResource( 14 )]
 position = Vector2( 11650, 232 )
