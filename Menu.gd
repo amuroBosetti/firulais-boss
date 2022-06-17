@@ -15,6 +15,7 @@ func _ready():
 	close.color_base = BASE
 	close.color_selected = SELECTED
 	options = [start, close]
+	_on_Start_mouse_entered()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("up"):

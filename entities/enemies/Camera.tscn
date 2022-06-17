@@ -42,6 +42,7 @@ position = Vector2( -1, -25 )
 scale = Vector2( 0.811274, 1.125 )
 frames = SubResource( 3 )
 animation = "active"
+frame = 1
 playing = true
 
 [node name="FieldOfView" type="Area2D" parent="."]
@@ -51,11 +52,11 @@ collision_layer = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FieldOfView"]
 position = Vector2( 1.98773, -3.41968 )
 scale = Vector2( 0.996066, 1.05042 )
-polygon = PoolVector2Array( -14.796, 11.1515, -290.715, 94.4797, 285.301, 93.8076, 13.6493, 11.1515 )
+polygon = PoolVector2Array( -4.84011, 6.27954, -285.026, 94.6477, 285.301, 94.6477, 5.11573, 6.27954 )
 
 [node name="Sprite" type="Sprite" parent="FieldOfView"]
-position = Vector2( 1.52588e-05, 49.2354 )
-scale = Vector2( 0.726904, 0.133945 )
+position = Vector2( 1.41666, 48.706 )
+scale = Vector2( 0.710987, 0.136491 )
 z_index = 3
 texture = ExtResource( 3 )
 
