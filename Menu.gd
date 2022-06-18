@@ -48,7 +48,8 @@ func _select(index_movement:int):
 	audio_player.play()
 	
 func _on_Start_mouse_entered():
-	audio_player.play()
+	if not index == 0:
+		audio_player.play()
 	start.select()
 	close.deselect()
 	index = 0
@@ -59,7 +60,8 @@ func _on_Start_mouse_exited():
 	index = null
 
 func _on_Close_mouse_entered():
-	audio_player.play()
+	if not index == 1:
+		audio_player.play()
 	close.select()
 	start.deselect()
 	index = 1

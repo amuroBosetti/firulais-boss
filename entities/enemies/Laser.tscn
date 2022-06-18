@@ -1,12 +1,33 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://entities/enemies/Laser.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/laser.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/laserEnd.png" type="Texture" id=3]
 [ext_resource path="res://assets/audio/laser.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/textures/spotlight-circle-wide.png" type="Texture" id=5]
+[ext_resource path="res://entities/enemies/Laser.gdshader" type="Shader" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 41, 3.5 )
+extents = Vector2( 46, 3.5 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 6 )
+shader_param/beams = 1
+shader_param/energy = 3.0
+shader_param/roughness = 3
+shader_param/frequency = 10
+shader_param/speed = 1.0
+shader_param/thickness = 0.182
+shader_param/outline_thickness = 0.1
+shader_param/beam_difference = 0.0
+shader_param/glow = 0.0
+shader_param/outline_glow = 0.0
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/outline_color = Color( 0.956863, 0.341176, 0.341176, 1 )
+shader_param/progress = 1.0
+shader_param/y_offset = 0.0
+shader_param/fixed_edge_size = 0.05
+shader_param/noise_scale = Vector2( 2, 1 )
 
 [node name="Laser" type="Area2D"]
 position = Vector2( 485, 515 )
@@ -19,21 +40,35 @@ position = Vector2( 0, -0.5 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -0.25, 0 )
+material = SubResource( 3 )
+position = Vector2( -4.70877e-06, 0 )
 texture = ExtResource( 2 )
 
 [node name="Position2DA" type="Position2D" parent="Sprite"]
-position = Vector2( -43.75, 0 )
+position = Vector2( -46.8202, 0 )
 
 [node name="Position2DB" type="Position2D" parent="Sprite"]
-position = Vector2( 44.25, 0 )
+position = Vector2( 47.3478, 0 )
+
+[node name="Light-Laser" type="Light2D" parent="Sprite"]
+scale = Vector2( 0.226906, 0.202559 )
+texture = ExtResource( 5 )
+texture_scale = 2.68
+color = Color( 0.858824, 0.211765, 0.211765, 0.47451 )
+energy = 2.0
+range_layer_min = -1
+range_layer_max = 1
+range_item_cull_mask = 17
+shadow_enabled = true
+shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
+shadow_item_cull_mask = 48
 
 [node name="LaserEndA" type="Sprite" parent="."]
-position = Vector2( -44, 0 )
+position = Vector2( -46.8202, 0 )
 texture = ExtResource( 3 )
 
 [node name="LaserEndB" type="Sprite" parent="."]
-position = Vector2( 44, 0 )
+position = Vector2( 47.3478, 0 )
 texture = ExtResource( 3 )
 flip_h = true
 
