@@ -3,7 +3,7 @@
 [ext_resource path="res://entities/enemies/TimerLasers.gd" type="Script" id=1]
 [ext_resource path="res://entities/Music.gd" type="Script" id=2]
 [ext_resource path="res://assets/textures/picture_movement.png" type="Texture" id=3]
-[ext_resource path="res://assets/textures/spotlight-wide.png" type="Texture" id=4]
+[ext_resource path="res://entities/world/ActivateLight.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/textures/tilemap.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/teclas-movimiento.png" type="Texture" id=6]
 [ext_resource path="res://assets/textures/tilemap-back.png" type="Texture" id=7]
@@ -30,7 +30,7 @@
 [ext_resource path="res://assets/textures/jump-sign.png" type="Texture" id=28]
 [ext_resource path="res://assets/textures/painting1.png" type="Texture" id=29]
 [ext_resource path="res://assets/textures/tuto-view.png" type="Texture" id=30]
-[ext_resource path="res://assets/textures/spotlight-rectangle.png" type="Texture" id=31]
+[ext_resource path="res://assets/textures/spotlight-circle-wide.png" type="Texture" id=32]
 
 [sub_resource type="DynamicFont" id=24]
 size = 50
@@ -493,12 +493,12 @@ margin_bottom = 342.0
 custom_fonts/font = SubResource( 24 )
 text = "PAUSE"
 
-[node name="Ligth" type="Node" parent="."]
+[node name="Light" type="Node" parent="."]
 
-[node name="Light-intro-A" type="Light2D" parent="Ligth"]
-position = Vector2( 716.5, 378 )
-scale = Vector2( 0.875689, 1.24733 )
-texture = ExtResource( 4 )
+[node name="Light-intro-A" type="Light2D" parent="Light"]
+position = Vector2( 715, 342 )
+scale = Vector2( 0.976503, 1.44057 )
+texture = ExtResource( 32 )
 texture_scale = 2.68
 color = Color( 1, 1, 1, 0.47451 )
 energy = 2.0
@@ -509,11 +509,12 @@ shadow_enabled = true
 shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
 shadow_item_cull_mask = 48
 
-[node name="Light-intro-B" type="Light2D" parent="Ligth"]
+[node name="Light-intro-B" type="Light2D" parent="Light"]
 light_mask = 16
-position = Vector2( 1180.5, 249.5 )
-scale = Vector2( 0.260522, 0.775586 )
-texture = ExtResource( 31 )
+position = Vector2( 1216, 208 )
+rotation = 1.57079
+scale = Vector2( 0.59325, 0.824094 )
+texture = ExtResource( 32 )
 texture_scale = 2.68
 color = Color( 1, 1, 1, 0.560784 )
 energy = 2.0
@@ -522,11 +523,18 @@ range_layer_max = 2
 range_item_cull_mask = 17
 shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
 
-[node name="Light-intro-C" type="Light2D" parent="Ligth"]
+[node name="ActivateLight-intro-C" parent="Light" instance=ExtResource( 4 )]
+position = Vector2( 1736, 76 )
+scale = Vector2( 1.25, 1 )
+LIGHT2D = NodePath("../Light-intro-C")
+ON_ENTER = true
+
+[node name="Light-intro-C" type="Light2D" parent="Light"]
 light_mask = 16
-position = Vector2( 1739.5, 75.0761 )
-scale = Vector2( 0.341199, 1.08168 )
-texture = ExtResource( 4 )
+position = Vector2( 1736, -44 )
+scale = Vector2( 0.512639, 1.22068 )
+enabled = false
+texture = ExtResource( 32 )
 texture_scale = 2.68
 color = Color( 1, 1, 1, 0.560784 )
 energy = 2.0
@@ -534,6 +542,20 @@ range_layer_min = -1
 range_layer_max = 2
 range_item_cull_mask = 17
 shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
+
+[node name="Light-intro-D" type="Light2D" parent="Light"]
+position = Vector2( 2970, 156 )
+scale = Vector2( 1.17528, 1.44057 )
+texture = ExtResource( 32 )
+texture_scale = 2.68
+color = Color( 1, 1, 1, 0.47451 )
+energy = 2.0
+range_layer_min = -1
+range_layer_max = 1
+range_item_cull_mask = 17
+shadow_enabled = true
+shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
+shadow_item_cull_mask = 48
 
 [node name="LightLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -614,7 +636,7 @@ frame = 4
 
 [node name="JumpSign" type="Sprite" parent="Environment/ControlPicturess"]
 light_mask = 16
-position = Vector2( 1182, 206 )
+position = Vector2( 1216, 206 )
 scale = Vector2( 0.753334, 0.753334 )
 texture = ExtResource( 28 )
 
@@ -651,7 +673,7 @@ SCALE = Vector2( 0.6, 1 )
 CAMERA_POSITION = Vector2( 50, 0 )
 
 [node name="Snap-Switch" parent="CameraManager" instance=ExtResource( 15 )]
-position = Vector2( 1701, 78 )
+position = Vector2( 1709, 75 )
 SCALE = Vector2( 0.35, 0.5 )
 CAMERA_POSITION = Vector2( 0, -50 )
 

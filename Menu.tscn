@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/Koulen-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu.gd" type="Script" id=2]
-[ext_resource path="res://assets/audio/select.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/optionChange.ogg" type="AudioStream" id=3]
 [ext_resource path="res://entities/Close.gd" type="Script" id=4]
 [ext_resource path="res://entities/Start.gd" type="Script" id=5]
+[ext_resource path="res://assets/audio/optionSelect.ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
@@ -15,6 +16,8 @@ font_data = ExtResource( 1 )
 script = ExtResource( 2 )
 BASE = Color( 0.858824, 0.815686, 0.815686, 1 )
 SELECTED = Color( 0.686275, 0.168627, 0.168627, 1 )
+ON_CHANGE_SFX = ExtResource( 3 )
+ON_CONFIRM_SFX = ExtResource( 6 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1091.0
@@ -65,7 +68,6 @@ margin_bottom = 605.0
 color = Color( 0.00784314, 0.00784314, 0.00784314, 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
 
 [connection signal="gui_input" from="Start" to="Start" method="_on_Start_gui_input"]
 [connection signal="mouse_entered" from="Start" to="." method="_on_Start_mouse_entered"]

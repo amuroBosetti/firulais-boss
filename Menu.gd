@@ -2,20 +2,21 @@ extends Node
 
 export (Color) var BASE:Color = Color(1.0, 1.0, 1.0, 1.0)
 export (Color) var SELECTED:Color = Color(1.0, 1.0, 1.0, 1.0)
+export (AudioStream) var ON_CHANGE_SFX
+export (AudioStream) var ON_CONFIRM_SFX
 
 onready var start = $Start
 onready var close = $Close
+onready var audio_player = $AudioStreamPlayer
 
 var options:Array 
-var index = null
+var index = 0
 
 func _ready():
-	start.color_base = BASE
-	start.color_selected = SELECTED
-	close.color_base = BASE
-	close.color_selected = SELECTED
+	_init_colors()
+	_init_sfx()
 	options = [start, close]
-	_on_Start_mouse_entered()
+	start.select()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("up"):
@@ -25,6 +26,18 @@ func _process(_delta):
 	if Input.is_action_just_pressed("accept"):
 		if index != null:
 			options[index]._execute()
+			
+func _init_colors():
+	start.color_base = BASE
+	start.color_selected = SELECTED
+	close.color_base = BASE
+	close.color_selected = SELECTED
+
+func _init_sfx():
+	ON_CHANGE_SFX.loop = false
+	ON_CONFIRM_SFX.loop = false
+	start.sfx = ON_CONFIRM_SFX
+	audio_player.stream = ON_CHANGE_SFX
 
 func _select(index_movement:int):
 	if index == null:
@@ -32,8 +45,10 @@ func _select(index_movement:int):
 	options[index].deselect()
 	index = (index + index_movement) % options.size()
 	options[index].select()
+	audio_player.play()
 	
 func _on_Start_mouse_entered():
+	audio_player.play()
 	start.select()
 	close.deselect()
 	index = 0
@@ -44,6 +59,7 @@ func _on_Start_mouse_exited():
 	index = null
 
 func _on_Close_mouse_entered():
+	audio_player.play()
 	close.select()
 	start.deselect()
 	index = 1
