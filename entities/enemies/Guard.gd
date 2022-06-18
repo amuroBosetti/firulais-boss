@@ -26,7 +26,7 @@ func _ready():
 	else:
 		direction = -1
 	
-func _process(delta):
+func _process(_delta):
 	if target != null:
 		raycast.set_cast_to(to_local(target.global_position))
 		raycast.enabled = true

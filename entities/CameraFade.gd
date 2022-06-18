@@ -20,7 +20,7 @@ func fade_in():
 	fade_tween.interpolate_property(fade, "color", Color.black, color , 1)
 	fade_tween.start()
 	
-func _on_Tween_tween_completed(object, key):
+func _on_Tween_tween_completed(object, _key):
 	if object.color == Color(0,0,0,0):
 		fade.hide()
 		emit_signal("fade_in_completed")

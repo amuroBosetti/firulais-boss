@@ -12,7 +12,7 @@ func _ready():
 	else:
 		direction = -1
 
-func _process(delta):
+func _process(_delta):
 	if target != null:
 		if target.hanging_position.y > global_position.y \
 		and target.move_direction == direction:

@@ -70,7 +70,7 @@ func _animate_movement(_direction):
 		tween.interpolate_property(self, "rotation_degrees", rotation_degrees, bound, seconds)
 		tween.start()
 
-func _on_Tween_tween_completed(object, key):
+func _on_Tween_tween_completed(_object, _key):
 	moving = false
 	direction = direction * -1
 	waiting = true
