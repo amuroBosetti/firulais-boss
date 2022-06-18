@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/textures/shadow_triangle.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/guard2.png" type="Texture" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://entities/enemies/GuadIdleState.gd" type="Script" id=4]
 [ext_resource path="res://entities/enemies/GuardWalkState.gd" type="Script" id=5]
 [ext_resource path="res://entities/enemies/GuardStateMachine.gd" type="Script" id=6]
+[ext_resource path="res://assets/textures/enemy_light.png" type="Texture" id=7]
+
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PoolVector2Array( -18.2484, -60.2127, 23.8136, -60.2127, 23.8136, -47.5196, -18.2484, -47.5196 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 51.0714, 56.1891 )
@@ -57,6 +61,20 @@ texture = ExtResource( 2 )
 flip_h = true
 hframes = 8
 frame = 2
+
+[node name="Light2D" type="Light2D" parent="Body"]
+position = Vector2( 0, -83.9702 )
+texture = ExtResource( 7 )
+color = Color( 0.792157, 0.803922, 0.545098, 1 )
+energy = 1.4
+range_layer_min = -1
+range_layer_max = 1
+range_item_cull_mask = 17
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Body"]
+light_mask = 17
+occluder = SubResource( 4 )
+light_mask = 17
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 

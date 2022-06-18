@@ -1110,7 +1110,7 @@ scale = Vector2( 1.1, 1 )
 [node name="Ledges" type="Node" parent="."]
 
 [node name="Ledge-intro" parent="Ledges" instance=ExtResource( 27 )]
-position = Vector2( 1529, 270 )
+position = Vector2( 1529, 271 )
 collision_layer = 4
 collision_mask = 4
 DIRECTION = "Left"
