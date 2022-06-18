@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LigthLaser.png-c3a58f4c19b1a503e297b35b196a7091.stex"
+path="res://.import/Ligth-Lasers.png-ebb21048677fbb052280353abfd3344f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/LigthLaser.png"
-dest_files=[ "res://.import/LigthLaser.png-c3a58f4c19b1a503e297b35b196a7091.stex" ]
+source_file="res://assets/textures/Ligth-Lasers.png"
+dest_files=[ "res://.import/Ligth-Lasers.png-ebb21048677fbb052280353abfd3344f.stex" ]
 
 [params]
 

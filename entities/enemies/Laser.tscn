@@ -4,8 +4,8 @@
 [ext_resource path="res://assets/textures/laser.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/laserEnd.png" type="Texture" id=3]
 [ext_resource path="res://assets/audio/laser.ogg" type="AudioStream" id=4]
-[ext_resource path="res://assets/textures/spotlight-circle-wide.png" type="Texture" id=5]
-[ext_resource path="res://entities/enemies/Laser.gdshader" type="Shader" id=6]
+[ext_resource path="res://assets/textures/Ligth-Lasers.png" type="Texture" id=5]
+[ext_resource path="res://assets/shaders/Laser.gdshader" type="Shader" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 46, 3.5 )
@@ -51,7 +51,7 @@ position = Vector2( -46.8202, 0 )
 position = Vector2( 47.3478, 0 )
 
 [node name="Light-Laser" type="Light2D" parent="Sprite"]
-scale = Vector2( 0.226906, 0.202559 )
+scale = Vector2( 0.183206, 1.09875 )
 texture = ExtResource( 5 )
 texture_scale = 2.68
 color = Color( 0.858824, 0.211765, 0.211765, 0.47451 )
@@ -76,5 +76,11 @@ flip_h = true
 stream = ExtResource( 4 )
 max_distance = 1000.0
 bus = "Laser"
+
+[node name="Shadow" type="ColorRect" parent="."]
+light_mask = 32
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.415686 )
 
 [connection signal="body_entered" from="." to="." method="_on_Laser_body_entered"]

@@ -80,7 +80,8 @@ func _physics_process(_delta):
 		if Input.is_action_just_pressed("interact"):
 			target._interact()
 	if Input.is_action_just_pressed("restart"):
-		get_tree().reload_current_scene()
+		if get_tree().reload_current_scene() != OK:
+			print ("Error al querer reiniciar la escena " + get_tree().current_scene.name)
 
 func _hang(y_ledge:int):
 	if current_state() == jump_down_state:

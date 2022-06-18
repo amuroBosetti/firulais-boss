@@ -38,7 +38,8 @@ func _change_font_color(label:Label, color:Color):
 func _change_scene(scene_path:String):
 	fade_to_black()
 	yield(get_tree().create_timer(2), "timeout")
-	get_tree().change_scene(scene_path)
+	if get_tree().change_scene(scene_path) != OK:
+		print ("Error al querer iniciar " + scene_path)
 
 func fade_to_black():
 	fade.show()
