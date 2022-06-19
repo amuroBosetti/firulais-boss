@@ -11,6 +11,7 @@ onready var audio_player = $AudioStreamPlayer
 
 var options:Array 
 var index = 0
+var selected_already = false
 
 func _ready():
 	_init_colors()
@@ -18,15 +19,17 @@ func _ready():
 	options = [start, close]
 	start.select()
 
-func _process(_delta):
-	if Input.is_action_just_pressed("up"):
-		_select(1)
-	if Input.is_action_just_pressed("down"):
-		_select(-1)
-	if Input.is_action_just_pressed("accept"):
-		if index != null:
-			options[index]._execute()
-			
+func _input(event):
+	if !selected_already:
+		if event.is_action_pressed("up"):
+			_select(1)
+		if event.is_action_pressed("down"):
+			_select(-1)
+		if event.is_action_pressed("accept"):
+			if index != null:
+				selected_already = true
+				options[index]._execute()
+
 func _init_colors():
 	start.color_base = BASE
 	start.color_selected = SELECTED
