@@ -11,11 +11,13 @@ onready var state_machine = $StateMachine
 onready var idle_timer:Timer = $StateMachine/Idle/IdleTimer
 onready var animation_player:AnimationPlayer = $AnimationPlayer
 onready var tween:Tween = $Tween
+onready var light:Light2D = $Body/Light2D
 
 var raycast:RayCast2D
 var target = null
 var velocity:Vector2 = Vector2()
 var direction:int
+var initial_light_position:float = -78.255
 
 func _ready():
 	raycast = $RayCast2D
@@ -42,6 +44,10 @@ func _play_animation(animation_name):
 	if animation_player.has_animation(animation_name):
 		animation_player.play(animation_name)
 		
+func _stop_walk_animation():
+	animation_player.stop()
+	light.position.y = initial_light_position
+
 func play_idle_animation():
 	tween.interpolate_property($Body, "frame", 0, 4, WAIT_TIME)
 	tween.start()
