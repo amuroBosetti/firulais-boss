@@ -23,7 +23,6 @@ var initial_light_position:float = -78.255
 func _ready():
 	raycast = $RayCast2D
 	idle_timer.wait_time =  WAIT_TIME
-	#audio_player.stream.loop = false
 	state_machine.set_parent(self)
 	if DIRECTION == "Right":
 		direction = 1
