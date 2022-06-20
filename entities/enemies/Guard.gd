@@ -11,8 +11,14 @@ onready var state_machine = $StateMachine
 onready var idle_timer:Timer = $StateMachine/Idle/IdleTimer
 onready var animation_player:AnimationPlayer = $AnimationPlayer
 onready var tween:Tween = $Tween
-onready var light:Light2D = $Body/Light2D
+onready var light:Light2D = $Body/HeadLight
 onready var audio_player = $AudioStreamPlayer2D
+onready var body = $Body
+onready var turn_around_lights = [
+	$Body/TurnAroundLight1,
+	$Body/TurnAroundLight2,
+	$Body/TurnAroundLight3
+]
 
 var raycast:RayCast2D
 var target = null
@@ -29,12 +35,13 @@ func _ready():
 	else:
 		direction = -1
 	
-func _process(_delta):
+func _physics_process(delta):
 	if target != null:
 		raycast.set_cast_to(to_local(target.global_position))
 		raycast.enabled = true
 		if raycast.is_colliding() && raycast.get_collider() == target:
 			target._caught()
+	sync_lights()
 
 func _apply_movement():
 	velocity.x = SPEED * direction
@@ -70,4 +77,8 @@ func _set_direction(dir:String):
 	else:
 		if Engine.editor_hint:
 			scale.x = abs(scale.x)
-			
+
+func sync_lights():
+	if not Engine.editor_hint:
+		for each in turn_around_lights:
+			each.turn(body.frame)
