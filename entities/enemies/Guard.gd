@@ -12,6 +12,7 @@ onready var idle_timer:Timer = $StateMachine/Idle/IdleTimer
 onready var animation_player:AnimationPlayer = $AnimationPlayer
 onready var tween:Tween = $Tween
 onready var light:Light2D = $Body/Light2D
+onready var audio_player = $AudioStreamPlayer2D
 
 var raycast:RayCast2D
 var target = null
@@ -22,6 +23,7 @@ var initial_light_position:float = -78.255
 func _ready():
 	raycast = $RayCast2D
 	idle_timer.wait_time =  WAIT_TIME
+	#audio_player.stream.loop = false
 	state_machine.set_parent(self)
 	if DIRECTION == "Right":
 		direction = 1
