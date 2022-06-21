@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://entities/enemies/TimerLasers.gd" type="Script" id=1]
 [ext_resource path="res://entities/Music.gd" type="Script" id=2]
@@ -32,6 +32,7 @@
 [ext_resource path="res://assets/textures/tuto-view.png" type="Texture" id=30]
 [ext_resource path="res://assets/textures/tuto-hang.png" type="Texture" id=31]
 [ext_resource path="res://assets/textures/spotlight-circle-wide.png" type="Texture" id=32]
+[ext_resource path="res://assets/textures/camera-sign.png" type="Texture" id=33]
 
 [sub_resource type="DynamicFont" id=24]
 size = 50
@@ -405,7 +406,7 @@ ON_ENTER = true
 
 [node name="Light-intro-C" type="Light2D" parent="Light"]
 light_mask = 16
-position = Vector2( 1735, -44 )
+position = Vector2( 1740, -26 )
 scale = Vector2( 0.42944, 0.943496 )
 enabled = false
 texture = ExtResource( 32 )
@@ -542,13 +543,11 @@ scale = Vector2( 0.53, 0.53 )
 texture = ExtResource( 6 )
 hframes = 8
 
-[node name="E" type="Sprite" parent="Environment/ControlPicturess"]
+[node name="Tuto-camera" type="Sprite" parent="Environment/ControlPicturess"]
 light_mask = 16
-position = Vector2( 1735, -39 )
-scale = Vector2( 0.53, 0.53 )
-texture = ExtResource( 6 )
-hframes = 8
-frame = 4
+position = Vector2( 1736.75, -21.25 )
+scale = Vector2( 0.648333, 0.648333 )
+texture = ExtResource( 33 )
 
 [node name="JumpSign" type="Sprite" parent="Environment/ControlPicturess"]
 light_mask = 16
