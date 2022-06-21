@@ -357,7 +357,7 @@ text = "PAUSE"
 
 [node name="Light" type="Node" parent="."]
 
-[node name="Light-intro-A" type="Light2D" parent="Light"]
+[node name="Light-intro-painting1" type="Light2D" parent="Light"]
 position = Vector2( -378, 337 )
 scale = Vector2( 0.976503, 1.44057 )
 texture = ExtResource( 32 )
@@ -371,7 +371,7 @@ shadow_enabled = true
 shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
 shadow_item_cull_mask = 48
 
-[node name="Light-intro-B" type="Light2D" parent="Light"]
+[node name="Light-intro-jumpSign" type="Light2D" parent="Light"]
 light_mask = 16
 position = Vector2( 393, 226 )
 rotation = 1.57079
@@ -385,7 +385,7 @@ range_layer_max = 2
 range_item_cull_mask = 17
 shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
 
-[node name="Light-intro-G" type="Light2D" parent="Light"]
+[node name="Light-intro-tutoHang" type="Light2D" parent="Light"]
 light_mask = 16
 position = Vector2( 1066.63, 254 )
 scale = Vector2( 1.09039, 1.12367 )
@@ -401,10 +401,10 @@ shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
 [node name="ActivateLight-intro-C" parent="Light" instance=ExtResource( 4 )]
 position = Vector2( 1736, 76 )
 scale = Vector2( 1.25, 1 )
-LIGHT2D = NodePath("../Light-intro-C")
+LIGHT2D = NodePath("../Light-intro-SwitchSign")
 ON_ENTER = true
 
-[node name="Light-intro-C" type="Light2D" parent="Light"]
+[node name="Light-intro-SwitchSign" type="Light2D" parent="Light"]
 light_mask = 16
 position = Vector2( 1740, -26 )
 scale = Vector2( 0.42944, 0.943496 )
@@ -418,8 +418,8 @@ range_layer_max = 2
 range_item_cull_mask = 17
 shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
 
-[node name="Light-intro-D" type="Light2D" parent="Light"]
-position = Vector2( 2970, 156 )
+[node name="Light-intro-tuto-view" type="Light2D" parent="Light"]
+position = Vector2( 2973, 139 )
 scale = Vector2( 1.17528, 1.44057 )
 texture = ExtResource( 32 )
 texture_scale = 2.68
@@ -432,7 +432,7 @@ shadow_enabled = true
 shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
 shadow_item_cull_mask = 48
 
-[node name="Light-intro-E" type="Light2D" parent="Light"]
+[node name="Light-intro-tuto-laser" type="Light2D" parent="Light"]
 position = Vector2( 4703.5, 173 )
 scale = Vector2( 1.00007, 1.44057 )
 texture = ExtResource( 32 )
@@ -446,7 +446,7 @@ shadow_enabled = true
 shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
 shadow_item_cull_mask = 48
 
-[node name="Light-intro-F" type="Light2D" parent="Light"]
+[node name="Light-intro-elJacker" type="Light2D" parent="Light"]
 position = Vector2( 5354, 193.079 )
 scale = Vector2( 0.410986, 0.778672 )
 texture = ExtResource( 32 )
@@ -499,7 +499,8 @@ text = "¡Enhorabuena, has superado
 [node name="ControlPicturess" type="Node2D" parent="Environment"]
 
 [node name="Tuto-view" type="Sprite" parent="Environment/ControlPicturess"]
-position = Vector2( 2970, 153 )
+position = Vector2( 2978, 142 )
+scale = Vector2( 0.835165, 0.824713 )
 texture = ExtResource( 30 )
 
 [node name="Tuto-laser" type="Sprite" parent="Environment/ControlPicturess"]
@@ -543,7 +544,7 @@ scale = Vector2( 0.53, 0.53 )
 texture = ExtResource( 6 )
 hframes = 8
 
-[node name="Tuto-camera" type="Sprite" parent="Environment/ControlPicturess"]
+[node name="SwitchSign" type="Sprite" parent="Environment/ControlPicturess"]
 light_mask = 16
 position = Vector2( 1736.75, -21.25 )
 scale = Vector2( 0.648333, 0.648333 )
@@ -585,7 +586,7 @@ CAMERA_POSITION = Vector2( -20, -150 )
 
 [node name="Snap-Guard" parent="CameraManager" instance=ExtResource( 15 )]
 position = Vector2( 2925, 270 )
-ZOOM = 1.5
+ZOOM = 1.6
 SCALE = Vector2( 1.6, 1 )
 CAMERA_POSITION = Vector2( 55, 0 )
 
