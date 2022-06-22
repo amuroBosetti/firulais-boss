@@ -39,13 +39,13 @@ func _set_direction(dir:String):
 	_set_position(direction)
 	_set_editor_position(direction)
 
-func _set_position(direction:int):
-	$Position2D.position.x = abs($Position2D.position.x) * direction
-	$Spark.position.x = abs($Spark.position.x) * direction
+func _set_position(direction_:int):
+	$Position2D.position.x = abs($Position2D.position.x) * direction_
+	$Spark.position.x = abs($Spark.position.x) * direction_
 
-func _set_editor_position(direction:int):
+func _set_editor_position(direction_:int):
 	if Engine.editor_hint:
-		$ColorRect.rect_position.x = abs($ColorRect.rect_position.x) * direction
+		$ColorRect.rect_position.x = abs($ColorRect.rect_position.x) * direction_
 		if direction == -1:
 			$ColorRect.margin_right = $Position2D.position.x
 			$ColorRect.margin_left = $ColorRect.margin_left - color_rect_lenght

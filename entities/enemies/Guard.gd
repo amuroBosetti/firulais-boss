@@ -13,7 +13,7 @@ onready var animation_player:AnimationPlayer = $AnimationPlayer
 onready var tween:Tween = $Tween
 onready var light:Light2D = $Body/HeadLight
 onready var audio_player = $AudioStreamPlayer2D
-onready var body = $Body
+onready var body_ = $Body
 onready var turn_around_lights = [
 	$Body/TurnAroundLight1,
 	$Body/TurnAroundLight2,
@@ -35,7 +35,7 @@ func _ready():
 	else:
 		direction = -1
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if target != null:
 		raycast.set_cast_to(to_local(target.global_position))
 		raycast.enabled = true
@@ -81,4 +81,4 @@ func _set_direction(dir:String):
 func sync_lights():
 	if not Engine.editor_hint:
 		for each in turn_around_lights:
-			each.turn(body.frame)
+			each.turn(body_.frame)
