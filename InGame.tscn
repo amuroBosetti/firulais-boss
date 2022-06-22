@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://entities/enemies/TimerLasers.gd" type="Script" id=1]
 [ext_resource path="res://entities/Music.gd" type="Script" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://assets/textures/tuto-hang.png" type="Texture" id=31]
 [ext_resource path="res://assets/textures/spotlight-circle-wide.png" type="Texture" id=32]
 [ext_resource path="res://assets/textures/camera-sign.png" type="Texture" id=33]
+[ext_resource path="res://assets/textures/wayfinding1.png" type="Texture" id=34]
 
 [sub_resource type="DynamicFont" id=24]
 size = 50
@@ -568,6 +569,11 @@ light_mask = 16
 position = Vector2( -383, 327 )
 scale = Vector2( 0.254316, 0.254315 )
 texture = ExtResource( 29 )
+
+[node name="Wayfinder" type="Sprite" parent="Environment"]
+position = Vector2( 3930, 445 )
+z_index = 1
+texture = ExtResource( 34 )
 
 [node name="CameraManager" type="Node2D" parent="."]
 script = ExtResource( 9 )
