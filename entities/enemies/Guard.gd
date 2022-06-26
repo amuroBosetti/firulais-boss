@@ -2,6 +2,9 @@ extends KinematicBody2D
 class_name Guard
 tool
 
+signal player_being_detected(detection_time)
+signal player_got_away
+
 export (float) var SPEED = 90
 export (float) var GRAVITY:float = 60
 export (float) var WAIT_TIME:float = 4
@@ -104,5 +107,12 @@ func set_limit_r(pos_x:float):
 func catch_player():
 	target._caught()
 	
-func play_detecting_animation():
-	pass
+func detect_player():
+	_play_animation("detecting")
+	emit_signal("player_being_detected", $StateMachine/DetectPlayer/DetectPlayerTimer.wait_time)
+	print("emiti2")
+	
+func _player_got_away():
+	_play_animation("RESET")
+	emit_signal("player_got_away")
+	

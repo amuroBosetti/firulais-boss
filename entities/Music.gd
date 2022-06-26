@@ -5,6 +5,8 @@ var audioB:AudioStream = load("res://assets/audio/arteB.ogg")
 var track = audioA 
 var change_track = false
 
+var volume_before_detection : float
+
 func _process(_delta):
 	if change_track and stepify((get_playback_position() / 3), 0.02) \
 									== round(get_playback_position() / 3): # stepify_beat == beat:
@@ -31,3 +33,10 @@ func _on_ChangeTrack_trackb():
 	else: 
 		change_track = false
 
+func _on_player_being_detected(detection_time):
+	volume_before_detection = volume_db
+	volume_db = volume_db - 6
+
+
+func _on_player_got_away():
+	volume_db = volume_before_detection

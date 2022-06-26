@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/textures/shadow_triangle.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/guard2.png" type="Texture" id=2]
@@ -43,6 +43,70 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, -78.255 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/HeadLight:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.792157, 0.803922, 0.545098, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/HeadLight:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.4 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "detecting"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/HeadLight:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.803922, 0.568627, 0.545098, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/HeadLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.4, 1.0, 1.4 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -93,7 +157,7 @@ position = Vector2( -12.2234, -16.2513 )
 scale = Vector2( 1.56911, 0.608967 )
 texture = ExtResource( 2 )
 flip_h = true
-hframes = 8
+hframes = 9
 frame = 2
 script = ExtResource( 10 )
 
@@ -160,10 +224,12 @@ one_shot = true
 script = ExtResource( 14 )
 
 [node name="DetectPlayerTimer" type="Timer" parent="StateMachine/DetectPlayer"]
+wait_time = 0.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
+anims/detecting = SubResource( 4 )
 anims/walk = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
