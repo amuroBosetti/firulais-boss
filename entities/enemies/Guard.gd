@@ -41,13 +41,15 @@ func _ready():
 		$StateMachine/Walk._set_limits($LimitLeft.global_position.x, 
 									   $LimitRight.global_position.x)
 	
-func _physics_process(_delta):
+func _look_for_player():
 	if target != null:
 		raycast.set_cast_to(to_local(target.global_position))
 		raycast.enabled = true
 		if raycast.is_colliding() && raycast.get_collider() == target:
-			target._caught()
-	sync_lights()
+			state_machine._change_state("detect_player")
+
+func _is_detecting_player() -> bool:
+	return raycast.enabled && raycast.is_colliding() && raycast.get_collider() == target
 
 func _apply_movement():
 	velocity.x = SPEED * direction
@@ -84,7 +86,7 @@ func _set_direction(dir:String):
 		if Engine.editor_hint:
 			scale.x = abs(scale.x)
 
-func sync_lights():
+func _sync_lights():
 	if not Engine.editor_hint:
 		for each in turn_around_lights:
 			each.turn(body_.frame)
@@ -98,3 +100,9 @@ func set_limit_r(pos_x:float):
 	RIGHT_LIMIT_X = pos_x
 	if get_node_or_null("./LimitRight") != null:
 		$LimitRight.position.x = pos_x
+		
+func catch_player():
+	target._caught()
+	
+func play_detecting_animation():
+	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/textures/shadow_triangle.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/guard2.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://entities/enemies/TurnAroundLightLeft.gd" type="Script" id=11]
 [ext_resource path="res://entities/enemies/TurnAroundLightMiddle.gd" type="Script" id=12]
 [ext_resource path="res://entities/enemies/TurnAroundLightRight.gd" type="Script" id=13]
+[ext_resource path="res://entities/enemies/DetectPlayer.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 51.0714, 56.1891 )
@@ -155,6 +156,12 @@ script = ExtResource( 4 )
 wait_time = 4.0
 one_shot = true
 
+[node name="DetectPlayer" type="Node" parent="StateMachine"]
+script = ExtResource( 14 )
+
+[node name="DetectPlayerTimer" type="Timer" parent="StateMachine/DetectPlayer"]
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/walk = SubResource( 3 )
@@ -178,3 +185,4 @@ __meta__ = {
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_Timer_timeout"]
+[connection signal="timeout" from="StateMachine/DetectPlayer/DetectPlayerTimer" to="StateMachine/DetectPlayer" method="_on_DetectPlayerTimer_timeout"]

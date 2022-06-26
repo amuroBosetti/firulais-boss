@@ -17,6 +17,8 @@ func exit():
 
 func update(_delta:float):
 	parent._apply_movement()
+	parent._look_for_player()
+	parent._sync_lights()
 	if(parent.global_position.x >= limit_right_x 
 	  or parent.global_position.x <= limit_left_x):
 		emit_signal("finished", "idle")
