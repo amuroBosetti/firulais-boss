@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://entities/enemies/TimerLasers.gd" type="Script" id=1]
 [ext_resource path="res://entities/Music.gd" type="Script" id=2]
@@ -7,10 +7,8 @@
 [ext_resource path="res://assets/textures/tilemap.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/teclas-movimiento.png" type="Texture" id=6]
 [ext_resource path="res://assets/textures/tilemap-back.png" type="Texture" id=7]
-[ext_resource path="res://assets/textures/gray_square.png" type="Texture" id=8]
 [ext_resource path="res://entities/CameraAnimation.gd" type="Script" id=9]
 [ext_resource path="res://InGame.gd" type="Script" id=10]
-[ext_resource path="res://entities/world/GuardLimit.gd" type="Script" id=11]
 [ext_resource path="res://entities/world/ChangeTrack.tscn" type="PackedScene" id=12]
 [ext_resource path="res://entities/enemies/Camera.tscn" type="PackedScene" id=13]
 [ext_resource path="res://entities/world/Checkpoint.tscn" type="PackedScene" id=14]
@@ -42,32 +40,6 @@ font_data = ExtResource( 22 )
 [sub_resource type="DynamicFont" id=11]
 size = 32
 font_data = ExtResource( 22 )
-
-[sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
-
-[sub_resource type="TileSet" id=4]
-0/name = "gray_square.png 0"
-0/texture = ExtResource( 8 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 64, 64 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 5 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 5 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
 
 [sub_resource type="TileSet" id=23]
 0/name = "tilemap-back.png 0"
@@ -359,7 +331,7 @@ text = "PAUSE"
 [node name="Light" type="Node" parent="."]
 
 [node name="Light-intro-painting1" type="Light2D" parent="Light"]
-position = Vector2( 5974, 257 )
+position = Vector2( 5978, 261 )
 scale = Vector2( 0.976503, 1.44057 )
 texture = ExtResource( 32 )
 texture_scale = 2.68
@@ -484,7 +456,7 @@ shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
 shadow_item_cull_mask = 48
 
 [node name="Light-intro-wayfinder-B" type="Light2D" parent="Light"]
-position = Vector2( 3918.02, 413.613 )
+position = Vector2( 3944.02, 413.613 )
 rotation = 1.5708
 scale = Vector2( 1.73555, 1.75872 )
 texture = ExtResource( 32 )
@@ -628,7 +600,7 @@ z_index = 1
 texture = ExtResource( 34 )
 
 [node name="Wayfinder-intro-B" type="Sprite" parent="Environment/wayfinders"]
-position = Vector2( -3583, -1813 )
+position = Vector2( -3557, -1813 )
 z_index = 1
 texture = ExtResource( 34 )
 offset = Vector2( 7513, 2258 )
@@ -644,7 +616,7 @@ script = ExtResource( 9 )
 [node name="Snap-Jump" parent="CameraManager" instance=ExtResource( 15 )]
 position = Vector2( 341, 244 )
 ZOOM = 1.2
-SCALE = Vector2( 0.6, 1 )
+SCALE = Vector2( 0.5, 1 )
 CAMERA_POSITION = Vector2( 50, 0 )
 
 [node name="Snap-Hang" parent="CameraManager" instance=ExtResource( 15 )]
@@ -757,14 +729,6 @@ drag_margin_bottom = 0.46
 editor_draw_drag_margin = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CameraManager"]
-
-[node name="GuardLimit" type="TileMap" parent="."]
-tile_set = SubResource( 4 )
-collision_layer = 0
-collision_mask = 2
-format = 1
-tile_data = PoolIntArray( -720734, 0, 0, -720719, 0, 0, -655198, 0, 0, -655183, 0, 0, -589662, 0, 0, -589647, 0, 0, -130967, 0, 0, -130948, 0, 0, -65431, 0, 0, -65412, 0, 0, 105, 0, 0, 124, 0, 0, 393257, 0, 0, 393268, 0, 0, 458793, 0, 0, 458804, 0, 0, 524329, 0, 0, 524340, 0, 0, 655631, 0, 0, 655647, 0, 0, 721167, 0, 0, 721183, 0, 0, 786703, 0, 0, 786719, 0, 0 )
-script = ExtResource( 11 )
 
 [node name="TileMap-back" type="TileMap" parent="."]
 tile_set = SubResource( 23 )
@@ -904,9 +868,9 @@ autostart = true
 script = ExtResource( 1 )
 
 [node name="LaserF" parent="Lasers/Lasers-lvl-2/Lasers-lvl-2-A" instance=ExtResource( 21 )]
-position = Vector2( 9731, -238 )
+position = Vector2( 9729, -238 )
 CYCLETIME = 2
-SCALE_LENGTH = 2.7
+SCALE_LENGTH = 2.6
 
 [node name="LaserG" parent="Lasers/Lasers-lvl-2/Lasers-lvl-2-A" instance=ExtResource( 21 )]
 position = Vector2( 9948, -1005 )
@@ -966,7 +930,7 @@ CYCLETIME = 0
 SCALE_LENGTH = 3.4
 
 [node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( -815, 486 )
+position = Vector2( -877, 487 )
 z_index = 1
 collision_layer = 13
 collision_mask = 4
@@ -1003,7 +967,7 @@ scale = Vector2( 1, 1 )
 [node name="CCTV-Intro" parent="CCTV" instance=ExtResource( 13 )]
 position = Vector2( 2141, -23.9999 )
 rotation = 0.502655
-WAIT_TIME = 3.0
+WAIT_TIME = 2.6
 
 [node name="Switch-Intro" parent="CCTV" instance=ExtResource( 17 )]
 position = Vector2( 1734, 181 )
@@ -1044,16 +1008,15 @@ CAMERA = NodePath("../CCTV-lvl-2-A")
 position = Vector2( 3032, 520 )
 SPEED = 180.0
 WAIT_TIME = 2.0
+LEFT_LIMIT_X = -436.975
+RIGHT_LIMIT_X = 461.966
 
 [node name="Guard-lvl-1-A" parent="Guards" instance=ExtResource( 19 )]
 position = Vector2( 6848, 9 )
 SPEED = 400.0
 WAIT_TIME = 2.0
-
-[node name="Guard-lvl-1-D" parent="Guards" instance=ExtResource( 19 )]
-position = Vector2( 18028, 762 )
-SPEED = 150.0
-WAIT_TIME = 2.0
+LEFT_LIMIT_X = -36.975
+RIGHT_LIMIT_X = 1581.93
 
 [node name="Guard-lvl-2-A" parent="Guards" instance=ExtResource( 19 )]
 position = Vector2( 10590, -574 )
@@ -1061,12 +1024,23 @@ scale = Vector2( -0.636364, 1.68182 )
 SPEED = 250.0
 WAIT_TIME = 2.0
 DIRECTION = "Right"
+LEFT_LIMIT_X = -1107.4
+RIGHT_LIMIT_X = 206.05
 
 [node name="Guard-lvl-2-B" parent="Guards" instance=ExtResource( 19 )]
 position = Vector2( 11172, -573 )
 SPEED = 250.0
 WAIT_TIME = 2.0
 DIRECTION = "Left"
+LEFT_LIMIT_X = -1119.82
+RIGHT_LIMIT_X = 190.636
+
+[node name="Guard-lvl-3-A" parent="Guards" instance=ExtResource( 19 )]
+position = Vector2( 18028, 762 )
+SPEED = 150.0
+WAIT_TIME = 2.0
+LEFT_LIMIT_X = -940.336
+RIGHT_LIMIT_X = 491.176
 
 [node name="ChangeTrack" type="Node" parent="."]
 

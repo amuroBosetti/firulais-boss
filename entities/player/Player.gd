@@ -24,6 +24,7 @@ var camera_movement:float = 0
 var target = null
 var caught = false
 var hanging_position:Vector2
+var hanging_direction:int
 
 func make_hidden():
 	if !hidden:
@@ -76,15 +77,18 @@ func _handle_move_input():
 
 func _physics_process(_delta):
 	hanging_position = $Position2D.global_position
+
+func _input(event):
 	if target != null and target.has_method('_interact'):
-		if Input.is_action_just_pressed("interact"):
+		if event.is_action_pressed("interact"):
 			target._interact()
-	if Input.is_action_just_pressed("restart"):
+	if event.is_action_pressed("restart"):
 		if get_tree().reload_current_scene() != OK:
 			print ("Error al querer reiniciar la escena " + get_tree().current_scene.name)
 
-func _hang(y_ledge:int):
+func _hang(y_ledge:int, direction:int):
 	if current_state() == jump_down_state:
+		hanging_direction = direction
 		global_position.y = y_ledge + 40 
 		state_machine._change_state("hang")
 
@@ -96,4 +100,3 @@ func play_animation(animation_name:String):
 
 func current_state():
 	return state_machine.current_state
-

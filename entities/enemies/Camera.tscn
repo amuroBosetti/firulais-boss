@@ -42,7 +42,6 @@ position = Vector2( -1, -25 )
 scale = Vector2( 0.811274, 1.125 )
 frames = SubResource( 3 )
 animation = "active"
-frame = 1
 playing = true
 
 [node name="FieldOfView" type="Area2D" parent="."]
@@ -61,7 +60,6 @@ z_index = 3
 texture = ExtResource( 3 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -1, -25 )
 scale = Vector2( 0.811274, 1.125 )
 
 [node name="Rolling" type="AudioStreamPlayer2D" parent="."]

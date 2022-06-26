@@ -6,6 +6,8 @@ export (float) var SPEED = 90
 export (float) var GRAVITY:float = 60
 export (float) var WAIT_TIME:float = 4
 export (String, "Right", "Left") var DIRECTION setget _set_direction
+export (float, -2500, 0) var LEFT_LIMIT_X  setget set_limit_l
+export (float, 0, 2500) var RIGHT_LIMIT_X  setget set_limit_r
 
 onready var state_machine = $StateMachine
 onready var idle_timer:Timer = $StateMachine/Idle/IdleTimer
@@ -32,8 +34,12 @@ func _ready():
 	state_machine.set_parent(self)
 	if DIRECTION == "Right":
 		direction = 1
+		$StateMachine/Walk._set_limits($LimitRight.global_position.x,
+									   $LimitLeft.global_position.x)
 	else:
 		direction = -1
+		$StateMachine/Walk._set_limits($LimitLeft.global_position.x, 
+									   $LimitRight.global_position.x)
 	
 func _physics_process(_delta):
 	if target != null:
@@ -82,3 +88,13 @@ func sync_lights():
 	if not Engine.editor_hint:
 		for each in turn_around_lights:
 			each.turn(body_.frame)
+
+func set_limit_l(pos_x:float):
+	LEFT_LIMIT_X = pos_x
+	if get_node_or_null("./LimitLeft") != null:
+		$LimitLeft.position.x = pos_x
+
+func set_limit_r(pos_x:float):
+	RIGHT_LIMIT_X = pos_x
+	if get_node_or_null("./LimitRight") != null:
+		$LimitRight.position.x = pos_x

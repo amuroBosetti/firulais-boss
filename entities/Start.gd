@@ -2,7 +2,7 @@ extends Label
 
 onready var fade = get_node("../Fade")
 onready var fade_tween = get_node("../Tween")
-onready var aduio_player:AudioStreamPlayer = get_node("../AudioStreamPlayer")
+onready var audio_player:AudioStreamPlayer = get_node("../AudioStreamPlayer")
 
 var color_base:Color
 var color_selected:Color
@@ -20,8 +20,8 @@ func deselect():
 	set("custom_colors/font_color", color_base)
 
 func _execute():
-	aduio_player.stream = sfx
-	aduio_player.play()
+	audio_player.stream = sfx
+	audio_player.play()
 	_change_scene("res://InGame.tscn")
 
 func _on_Start_gui_input(event):
