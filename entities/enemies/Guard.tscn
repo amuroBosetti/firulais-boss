@@ -16,7 +16,7 @@
 [ext_resource path="res://entities/enemies/DetectPlayer.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 51.0714, 56.1891 )
+extents = Vector2( 51.8571, 56.4864 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -139,11 +139,12 @@ tracks/1/keys = {
 }
 
 [node name="Guard" type="KinematicBody2D"]
-scale = Vector2( 0.636364, 1.68182 )
+scale = Vector2( -0.636364, 1.68182 )
 z_index = 3
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 3 )
+DIRECTION = "Right"
 LEFT_LIMIT_X = -100.0
 RIGHT_LIMIT_X = 100.0
 
@@ -153,7 +154,6 @@ max_distance = 800.0
 bus = "Guards"
 
 [node name="Body" type="Sprite" parent="."]
-position = Vector2( -12.2234, -16.2513 )
 scale = Vector2( 1.56911, 0.608967 )
 texture = ExtResource( 2 )
 flip_h = true
@@ -186,25 +186,25 @@ texture = ExtResource( 9 )
 script = ExtResource( 13 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 3.14286, -48.7567 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -5.5, -21.7027 )
+position = Vector2( 4.71428, -5.35134 )
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2( 3.1427, 1.78378 )
-rotation = 4.22485e-15
+position = Vector2( 3.14285, -48.7567 )
 scale = Vector2( 1, 0.426212 )
 collision_layer = 0
 
 [node name="ViewField" type="Sprite" parent="Area2D"]
-position = Vector2( -285.685, -158.202 )
+position = Vector2( -283.174, 2.71388 )
 rotation = 1.5708
 scale = Vector2( 0.409331, 0.695437 )
 texture = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2( -54.2141, -104.35 )
+position = Vector2( -50.2857, 57.1977 )
 polygon = PoolVector2Array( 0.785767, -56.0826, 0.785767, -50.5023, -472.214, 109.93, -472.214, -216.515 )
 
 [node name="StateMachine" type="Node" parent="."]
@@ -235,14 +235,14 @@ anims/walk = SubResource( 3 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="LimitLeft" type="Position2D" parent="."]
-position = Vector2( -100, -38.6486 )
+position = Vector2( -100, 0 )
 scale = Vector2( 1.57143, 0.594594 )
 __meta__ = {
 "_gizmo_extents_": 121.0
 }
 
 [node name="LimitRight" type="Position2D" parent="."]
-position = Vector2( 100, -38.6486 )
+position = Vector2( 100, 0 )
 scale = Vector2( 1.57143, 0.594594 )
 __meta__ = {
 "_gizmo_extents_": 121.0
