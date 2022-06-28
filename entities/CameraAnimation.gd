@@ -5,6 +5,7 @@ onready var player : Player = get_parent().get_node('Player')
 onready var tween : Tween = $Tween
 onready var attach_camera_to_player : bool = true
 onready var fade:Node = $CameraFade
+onready var warningFade:ColorRect = $CameraFade/CanvasLayer/ColorRect
 
 var zoom_before_detection:Vector2
 var position_before_detection:Vector2
@@ -34,18 +35,32 @@ func fade_in():
 func fade_out():
 	fade.fade_out()
 
+#Zoom detection
+
+#func _on_player_being_detected(detection_time):
+#	zoom_before_detection = camera.zoom
+#	following_player_before_detection = attach_camera_to_player
+#	position_before_detection = camera.position
+#	tween.interpolate_property(camera, "zoom", camera.zoom, camera.zoom - Vector2(0.5,0.5), detection_time)
+#	attach_camera_to_player = true
+#	tween.start()
+
+#func _on_player_got_away():
+#	tween.remove(camera, "zoom")
+#	tween.interpolate_property(camera, "zoom", camera.zoom, zoom_before_detection, 0.2)
+#	attach_camera_to_player = following_player_before_detection
+#	camera.position = position_before_detection
+#	tween.remove(warning, "zoom")
+#	tween.start()
+
+#Color detection
+
 func _on_player_being_detected(detection_time):
-	zoom_before_detection = camera.zoom
-	following_player_before_detection = attach_camera_to_player
-	position_before_detection = camera.position
-	tween.interpolate_property(camera, "zoom", camera.zoom, camera.zoom - Vector2(0.5,0.5), detection_time)
-	attach_camera_to_player = true
+	tween.remove(warningFade, "color")
+	tween.interpolate_property(warningFade, "color", Color(1, 1, 0, 0), Color(1, 0, 0, 0.2), detection_time)
 	tween.start()
 
-
 func _on_player_got_away():
-	tween.remove(camera, "zoom")
-	tween.interpolate_property(camera, "zoom", camera.zoom, zoom_before_detection, 0.2)
-	attach_camera_to_player = following_player_before_detection
-	camera.position = position_before_detection
+	tween.remove(warningFade, "color")
+	tween.interpolate_property(warningFade, "color", warningFade.color, Color(0, 0, 0, 0), 1)
 	tween.start()

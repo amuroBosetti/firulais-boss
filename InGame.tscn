@@ -489,7 +489,7 @@ layer = 0
 [node name="Shadow" type="ColorRect" parent="LightLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.415686 )
+color = Color( 0, 0, 0, 0.470588 )
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -703,14 +703,15 @@ script = ExtResource( 25 )
 [node name="CanvasLayer" type="CanvasLayer" parent="CameraManager/CameraFade"]
 
 [node name="ColorRect" type="ColorRect" parent="CameraManager/CameraFade/CanvasLayer"]
-visible = false
 margin_left = -19.0
 margin_top = -24.0
 margin_right = 1118.0
 margin_bottom = 641.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0 )
 
 [node name="Tween" type="Tween" parent="CameraManager/CameraFade"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CameraManager"]
 
 [node name="Camera" type="Camera2D" parent="CameraManager"]
 position = Vector2( -563, 355 )
@@ -727,8 +728,6 @@ drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.46
 editor_draw_drag_margin = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="CameraManager"]
 
 [node name="TileMap-back" type="TileMap" parent="."]
 tile_set = SubResource( 23 )
@@ -1005,30 +1004,31 @@ CAMERA = NodePath("../CCTV-lvl-2-A")
 [node name="Guards" type="Node" parent="."]
 
 [node name="Guard-Intro" parent="Guards" instance=ExtResource( 19 )]
-position = Vector2( 3032, 520 )
+position = Vector2( 3046, 490 )
 SPEED = 180.0
 WAIT_TIME = 2.0
 LEFT_LIMIT_X = -436.975
 RIGHT_LIMIT_X = 461.966
 
 [node name="Guard-lvl-1-A" parent="Guards" instance=ExtResource( 19 )]
-position = Vector2( 6848, 9 )
+position = Vector2( 6844, -22 )
+scale = Vector2( 0.636364, 1.68182 )
 SPEED = 400.0
 WAIT_TIME = 2.0
+DIRECTION = "Left"
 LEFT_LIMIT_X = -36.975
 RIGHT_LIMIT_X = 1581.93
 
 [node name="Guard-lvl-2-A" parent="Guards" instance=ExtResource( 19 )]
-position = Vector2( 10590, -574 )
-scale = Vector2( -0.636364, 1.68182 )
+position = Vector2( 10590, -598 )
 SPEED = 250.0
 WAIT_TIME = 2.0
-DIRECTION = "Right"
 LEFT_LIMIT_X = -1107.4
 RIGHT_LIMIT_X = 206.05
 
 [node name="Guard-lvl-2-B" parent="Guards" instance=ExtResource( 19 )]
-position = Vector2( 11172, -573 )
+position = Vector2( 11172, -598 )
+scale = Vector2( 0.636364, 1.68182 )
 SPEED = 250.0
 WAIT_TIME = 2.0
 DIRECTION = "Left"
@@ -1036,7 +1036,7 @@ LEFT_LIMIT_X = -1119.82
 RIGHT_LIMIT_X = 190.636
 
 [node name="Guard-lvl-3-A" parent="Guards" instance=ExtResource( 19 )]
-position = Vector2( 18028, 762 )
+position = Vector2( 18021, 742 )
 SPEED = 150.0
 WAIT_TIME = 2.0
 LEFT_LIMIT_X = -940.336

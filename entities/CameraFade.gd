@@ -7,10 +7,10 @@ signal fade_in_completed
 
 func _ready():
 	fade.color.a = 0
-	fade.hide()
+#	fade.hide()
 
 func fade_out():
-	fade.show()
+#	fade.show()
 	fade_tween.interpolate_property(fade, "color", fade.color, Color.black, 1)
 	fade_tween.start()
 	
@@ -22,5 +22,5 @@ func fade_in():
 	
 func _on_Tween_tween_completed(object, _key):
 	if object.color == Color(0,0,0,0):
-		fade.hide()
+		#fade.hide()
 		emit_signal("fade_in_completed")

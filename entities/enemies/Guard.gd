@@ -8,7 +8,7 @@ signal player_got_away
 export (float) var SPEED = 90
 export (float) var GRAVITY:float = 60
 export (float) var WAIT_TIME:float = 4
-export (String, "Right", "Left") var DIRECTION setget _set_direction
+export (String, "Left", "Right") var DIRECTION setget _set_direction
 export (float, -2500, 0) var LEFT_LIMIT_X  setget set_limit_l
 export (float, 0, 2500) var RIGHT_LIMIT_X  setget set_limit_r
 
@@ -30,23 +30,25 @@ var target = null
 var velocity:Vector2 = Vector2()
 var direction:int
 var initial_light_position:float = -78.255
+var limit_left_x:float
+var limit_right_x:float
 
 func _ready():
 	raycast = $RayCast2D
 	idle_timer.wait_time =  WAIT_TIME
 	state_machine.set_parent(self)
-	if DIRECTION == "Right":
-		direction = 1
-		$StateMachine/Walk._set_limits($LimitRight.global_position.x,
-									   $LimitLeft.global_position.x)
-	else:
+	if DIRECTION == "Left":
 		direction = -1
-		$StateMachine/Walk._set_limits($LimitLeft.global_position.x, 
-									   $LimitRight.global_position.x)
+		limit_left_x = $LimitLeft.global_position.x
+		limit_right_x = $LimitRight.global_position.x
+	else:
+		direction = 1
+		limit_left_x = $LimitRight.global_position.x
+		limit_right_x = $LimitLeft.global_position.x
 	
 func _look_for_player():
 	if target != null:
-		raycast.set_cast_to(to_local(target.global_position))
+		raycast.set_cast_to(to_local(target.global_position) * 2)
 		raycast.enabled = true
 		if raycast.is_colliding() && raycast.get_collider() == target:
 			state_machine._change_state("detect_player")
@@ -116,3 +118,7 @@ func _player_got_away():
 	_play_animation("RESET")
 	emit_signal("player_got_away")
 	
+func _has_to_turn():
+	return global_position.x >= limit_right_x \
+	  	or global_position.x <= limit_left_x \
+		or is_on_wall()

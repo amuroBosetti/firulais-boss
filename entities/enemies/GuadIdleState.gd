@@ -9,8 +9,9 @@ func update(delta: float):
 	parent._sync_lights()
 	
 func _on_Timer_timeout():
-	parent.scale.x *= -1
-	parent.direction *= -1
+	if parent._has_to_turn():
+		parent.scale.x *= -1
+		parent.direction *= -1
 	emit_signal("finished", "walk")
 	
 func exit():
