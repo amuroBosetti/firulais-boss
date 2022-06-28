@@ -35,7 +35,7 @@ var limit_right_x:float
 
 func _ready():
 	raycast = $RayCast2D
-	idle_timer.wait_time =  WAIT_TIME
+	idle_timer.wait_time = WAIT_TIME
 	state_machine.set_parent(self)
 	if DIRECTION == "Left":
 		direction = -1
