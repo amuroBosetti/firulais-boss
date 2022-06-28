@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://entities/enemies/TimerLasers.gd" type="Script" id=1]
 [ext_resource path="res://entities/Music.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/textures/tilemap.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/teclas-movimiento.png" type="Texture" id=6]
 [ext_resource path="res://assets/textures/tilemap-back.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/moving-platform.png" type="Texture" id=8]
 [ext_resource path="res://entities/CameraAnimation.gd" type="Script" id=9]
 [ext_resource path="res://InGame.gd" type="Script" id=10]
 [ext_resource path="res://entities/world/ChangeTrack.tscn" type="PackedScene" id=12]
@@ -40,6 +41,9 @@ font_data = ExtResource( 22 )
 [sub_resource type="DynamicFont" id=11]
 size = 32
 font_data = ExtResource( 22 )
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 133.5, 40.5 )
 
 [sub_resource type="TileSet" id=23]
 0/name = "tilemap-back.png 0"
@@ -505,7 +509,7 @@ color = Color( 0.341176, 0.447059, 0.466667, 1 )
 position = Vector2( -947, 9 )
 
 [node name="Limit_V2" parent="Environment" instance=ExtResource( 16 )]
-position = Vector2( 18804, 446 )
+position = Vector2( 19198, 446 )
 
 [node name="Label7" type="Label" parent="Environment"]
 margin_left = 13892.0
@@ -610,6 +614,18 @@ position = Vector2( 8762, 126 )
 z_index = 1
 texture = ExtResource( 34 )
 
+[node name="MovingPlatform" type="StaticBody2D" parent="Environment"]
+position = Vector2( 18964, 909 )
+
+[node name="Sprite" type="Sprite" parent="Environment/MovingPlatform"]
+position = Vector2( 1.99963, -21.4999 )
+scale = Vector2( 1.01333, 0.750001 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/MovingPlatform"]
+position = Vector2( 8.5, -8.5 )
+shape = SubResource( 25 )
+
 [node name="CameraManager" type="Node2D" parent="."]
 script = ExtResource( 9 )
 
@@ -691,9 +707,9 @@ scale = Vector2( 1, 3 )
 ZOOM = 1.1
 
 [node name="SnapCamera-final-screen" parent="CameraManager" instance=ExtResource( 15 )]
-position = Vector2( 17911, 157 )
+position = Vector2( 17970, 157 )
 ZOOM = 2.5
-SCALE = Vector2( 2.011, 2.047 )
+SCALE = Vector2( 2.768, 2.113 )
 
 [node name="Tween" type="Tween" parent="CameraManager"]
 
@@ -929,7 +945,7 @@ CYCLETIME = 0
 SCALE_LENGTH = 3.4
 
 [node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( -877, 487 )
+position = Vector2( 16908, 131 )
 z_index = 1
 collision_layer = 13
 collision_mask = 4
@@ -958,7 +974,11 @@ position = Vector2( 7259, -9 )
 scale = Vector2( 1, 1 )
 
 [node name="Vase-lvl-1-D" parent="Vases" instance=ExtResource( 18 )]
-position = Vector2( 17487, 741 )
+position = Vector2( 17451, 758 )
+scale = Vector2( 1, 1 )
+
+[node name="Vase-lvl-1-E" parent="Vases" instance=ExtResource( 18 )]
+position = Vector2( 18545, 759 )
 scale = Vector2( 1, 1 )
 
 [node name="CCTV" type="Node" parent="."]
