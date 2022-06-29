@@ -2,12 +2,14 @@ extends Node
 
 export (Color) var BASE:Color = Color(1.0, 1.0, 1.0, 1.0)
 export (Color) var SELECTED:Color = Color(1.0, 1.0, 1.0, 1.0)
+export (AudioStream) var MENU_MUSIC
 export (AudioStream) var ON_CHANGE_SFX
 export (AudioStream) var ON_CONFIRM_SFX
 
 onready var start = $Start
 onready var close = $Close
-onready var audio_player = $AudioStreamPlayer
+onready var audio_player = $SFX
+onready var music_player = $Music
 
 var options:Array 
 var index = 0
@@ -18,6 +20,9 @@ func _ready():
 	_init_sfx()
 	options = [start, close]
 	start.select()
+	music_player.stream = MENU_MUSIC
+	#music_player.volume_db = music_player.volume_db -2
+	music_player.play()
 
 func _input(event):
 	if !selected_already:

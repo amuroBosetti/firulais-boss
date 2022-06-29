@@ -2,7 +2,9 @@ extends Label
 
 onready var fade = get_node("../Fade")
 onready var fade_tween = get_node("../Tween")
-onready var audio_player:AudioStreamPlayer = get_node("../AudioStreamPlayer")
+onready var audio_player:AudioStreamPlayer = get_node("../SFX")
+onready var music_player:AudioStreamPlayer = get_node("../Music")
+onready var tween:Tween = get_node("../Tween")
 
 var color_base:Color
 var color_selected:Color
@@ -44,4 +46,5 @@ func _change_scene(scene_path:String):
 func fade_to_black():
 	fade.show()
 	fade_tween.interpolate_property(fade, "color", fade.color, Color.black, 1)
+	fade_tween.interpolate_property(music_player, "volume_db", music_player.volume_db, -30, 2)
 	fade_tween.start()
