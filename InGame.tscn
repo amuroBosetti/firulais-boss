@@ -985,7 +985,7 @@ CYCLETIME = 0
 SCALE_LENGTH = 3.4
 
 [node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( 13218, 132 )
+position = Vector2( -839, 486 )
 z_index = 1
 collision_layer = 13
 collision_mask = 4
