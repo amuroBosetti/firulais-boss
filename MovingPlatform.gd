@@ -1,8 +1,10 @@
 extends StaticBody2D
 
 export (Array, NodePath) var position_node_paths
+export (float) var wait_time
 
 onready var tween = $PlatformTween
+onready var wait_timer = $WaitTimer
 
 var positions:Array
 var counter:int = 1
@@ -22,10 +24,16 @@ func _move_to_next_position():
 	_increment_counter()
 	tween.start()
 
+func _on_WaitTimer_timeout():
+	_move_to_next_position()
+
 
 func _on_PlatformTween_tween_completed(object, key):
 	tween.remove_all()
-	_move_to_next_position()
+	if wait_time != 0:
+		wait_timer.start(wait_time)
+	else:
+		_move_to_next_position()
 	
 func _increment_counter():
 	if (positions.size() - 1) == counter:

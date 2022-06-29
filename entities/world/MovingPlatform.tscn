@@ -22,4 +22,8 @@ shape = SubResource( 25 )
 
 [node name="PlatformTween" type="Tween" parent="."]
 
+[node name="WaitTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="tween_completed" from="PlatformTween" to="." method="_on_PlatformTween_tween_completed"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_WaitTimer_timeout"]
