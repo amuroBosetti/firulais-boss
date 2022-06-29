@@ -1010,11 +1010,11 @@ scale = Vector2( 1, 1 )
 position = Vector2( 7259, -9 )
 scale = Vector2( 1, 1 )
 
-[node name="Vase-lvl-1-D" parent="Vases" instance=ExtResource( 18 )]
+[node name="Vase-lvl-3-A" parent="Vases" instance=ExtResource( 18 )]
 position = Vector2( 17451, 758 )
 scale = Vector2( 1, 1 )
 
-[node name="Vase-lvl-1-E" parent="Vases" instance=ExtResource( 18 )]
+[node name="Vase-lvl-3-B" parent="Vases" instance=ExtResource( 18 )]
 position = Vector2( 18545, 759 )
 scale = Vector2( 1, 1 )
 
