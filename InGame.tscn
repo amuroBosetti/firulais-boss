@@ -833,8 +833,8 @@ autostart = true
 script = ExtResource( 1 )
 
 [node name="LaserA" parent="Lasers/Lasers-Intro" instance=ExtResource( 21 )]
-position = Vector2( 4705, 483 )
-SCALE_LENGTH = 4.0
+position = Vector2( 4750, 483 )
+SCALE_LENGTH = 3.5
 
 [node name="LaserB" parent="Lasers/Lasers-Intro" instance=ExtResource( 21 )]
 position = Vector2( 5069, 341 )
