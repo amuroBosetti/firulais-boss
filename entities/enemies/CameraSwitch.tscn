@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://entities/world/CameraSwitch.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/switchBase.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/textures/switchOn.png" type="Texture" id=4]
 [ext_resource path="res://assets/textures/switchOff.png" type="Texture" id=5]
 [ext_resource path="res://assets/shaders/Outline.gdshader" type="Shader" id=6]
+[ext_resource path="res://assets/textures/spotlight-circle-wide.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 67.5296
@@ -66,6 +67,18 @@ material = SubResource( 4 )
 position = Vector2( 7.15256e-07, -1.5 )
 scale = Vector2( 0.291667, 0.226563 )
 texture = ExtResource( 5 )
+
+[node name="Light-Switch" type="Light2D" parent="."]
+light_mask = 16
+scale = Vector2( 0.162556, 0.357143 )
+texture = ExtResource( 7 )
+texture_scale = 2.68
+color = Color( 1, 1, 1, 0.560784 )
+energy = 1.5
+range_layer_min = -1
+range_layer_max = 2
+range_item_cull_mask = 17
+shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
 
 [connection signal="body_entered" from="." to="." method="_on_CameraSwitch_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_CameraSwitch_body_exited"]
