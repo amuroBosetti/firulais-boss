@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/elJaquer.png-43ff23227b284ea1455d15d0a33ce646.stex"
+path="res://.import/elJaquer_doodle.png-8f5bb36b01c9d1c5f9167252eb3f77b0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/elJaquer.png"
-dest_files=[ "res://.import/elJaquer.png-43ff23227b284ea1455d15d0a33ce646.stex" ]
+source_file="res://assets/textures/elJaquer_doodle.png"
+dest_files=[ "res://.import/elJaquer_doodle.png-8f5bb36b01c9d1c5f9167252eb3f77b0.stex" ]
 
 [params]
 

@@ -48,13 +48,20 @@ func _ready():
 	
 func _look_for_player():
 	if target != null:
-		raycast.set_cast_to(to_local(target.global_position) * 2)
+		raycast.set_cast_to(to_local(target.global_position) * 10)
 		raycast.enabled = true
 		if raycast.is_colliding() && raycast.get_collider() == target:
 			state_machine._change_state("detect_player")
 
+var count = 0
 func _is_detecting_player() -> bool:
-	return raycast.enabled && raycast.is_colliding() && raycast.get_collider() == target
+	if raycast.get_collider() is Player:
+		count = 0
+		return true
+	else:
+		count += 1
+		print(count)
+		return count < 23
 
 func _apply_movement():
 	velocity.x = SPEED * direction

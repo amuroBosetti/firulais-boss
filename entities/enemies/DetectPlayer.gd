@@ -10,8 +10,9 @@ func update(delta: float):
 		emit_signal("finished", "idle")
 
 func _on_DetectPlayerTimer_timeout():
-	parent.catch_player()
-	print("caught")
+	if parent.target is Player:
+		parent.catch_player()
+		print("caught")
 
 func exit():
 	parent._player_got_away()

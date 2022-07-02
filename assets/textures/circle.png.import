@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/elJaquer.png-43ff23227b284ea1455d15d0a33ce646.stex"
+path="res://.import/circle.png-cfb642d06c602215a6b6cc6699d3b82d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/elJaquer.png"
-dest_files=[ "res://.import/elJaquer.png-43ff23227b284ea1455d15d0a33ce646.stex" ]
+source_file="res://assets/textures/circle.png"
+dest_files=[ "res://.import/circle.png-cfb642d06c602215a6b6cc6699d3b82d.stex" ]
 
 [params]
 

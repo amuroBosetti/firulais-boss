@@ -92,11 +92,14 @@ func _hang(y_ledge:int, direction:int):
 		global_position.y = y_ledge + 40 
 		state_machine._change_state("hang")
 
-func _on_CameraSwitch_interactable(body):
-	target = body
-	
 func play_animation(animation_name:String):
 	animation_player.play(animation_name)
 
 func current_state():
 	return state_machine.current_state
+
+func _on_interactable(body):
+	target = body
+
+func _on_stealing(picture):
+	print("ESTOY ROBANDO, IMPLEMENTAR ESTADO STEALING")
