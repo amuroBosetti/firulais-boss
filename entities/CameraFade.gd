@@ -7,10 +7,8 @@ signal fade_in_completed
 
 func _ready():
 	fade.color.a = 0
-#	fade.hide()
 
 func fade_out():
-#	fade.show()
 	fade_tween.interpolate_property(fade, "color", fade.color, Color.black, 1)
 	fade_tween.start()
 	

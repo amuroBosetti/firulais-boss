@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://entities/enemies/Laser.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/laser.png" type="Texture" id=2]
@@ -9,6 +9,25 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 46, 3.5 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 6 )
+shader_param/beams = 2
+shader_param/energy = 3.0
+shader_param/roughness = 3
+shader_param/frequency = 10
+shader_param/speed = 1.0
+shader_param/thickness = 0.035
+shader_param/outline_thickness = 0.03
+shader_param/beam_difference = 0.0
+shader_param/glow = 0.0
+shader_param/outline_glow = 0.0
+shader_param/color = Color( 0.91, 1, 1, 1 )
+shader_param/outline_color = Color( 0.5, 1, 0.96, 1 )
+shader_param/progress = 1.0
+shader_param/y_offset = 0.0
+shader_param/fixed_edge_size = 0.05
+shader_param/noise_scale = Vector2( 1, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 6 )
@@ -39,18 +58,24 @@ CYCLETIME = 4
 position = Vector2( 0, -0.5 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 3 )
-position = Vector2( -4.70877e-06, 0 )
-texture = ExtResource( 2 )
+[node name="LaserSprite" type="Node2D" parent="."]
 
-[node name="Position2DA" type="Position2D" parent="Sprite"]
+[node name="Position2DA" type="Position2D" parent="LaserSprite"]
 position = Vector2( -46.8202, 0 )
 
-[node name="Position2DB" type="Position2D" parent="Sprite"]
+[node name="Position2DB" type="Position2D" parent="LaserSprite"]
 position = Vector2( 47.3478, 0 )
 
-[node name="Light-Laser" type="Light2D" parent="Sprite"]
+[node name="SpriteOff" type="Sprite" parent="LaserSprite"]
+material = SubResource( 4 )
+texture = ExtResource( 2 )
+
+[node name="SpriteOn" type="Sprite" parent="LaserSprite"]
+visible = false
+material = SubResource( 3 )
+texture = ExtResource( 2 )
+
+[node name="Light-Laser" type="Light2D" parent="LaserSprite/SpriteOn"]
 scale = Vector2( 0.183206, 1.09875 )
 texture = ExtResource( 5 )
 texture_scale = 2.68

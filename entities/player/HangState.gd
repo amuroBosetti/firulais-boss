@@ -9,6 +9,7 @@ func handle_input(event:InputEvent):
 		emit_signal("finished", "jump_up")
 	if event.is_action_pressed("crouch"):
 		emit_signal("finished", "jump_down")
+#	COntroles para bajar si apretas para el lado contrario
 #	if parent.hanging_direction == 1 and event.is_action_pressed("move_left"):
 #		emit_signal("finished", "jump_down")
 #	if parent.hanging_direction == -1 and event.is_action_pressed("move_right"):

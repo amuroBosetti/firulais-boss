@@ -10,7 +10,6 @@ func exit():
 
 func update(_delta:float):
 	parent._apply_movement()
-	parent._look_for_player()
 	parent._sync_lights()
 	if parent._has_to_turn():
 		emit_signal("finished", "idle")

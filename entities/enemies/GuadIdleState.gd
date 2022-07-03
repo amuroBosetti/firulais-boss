@@ -5,7 +5,6 @@ func enter():
 	parent.play_idle_animation()
 	
 func update(delta: float):
-	parent._look_for_player()
 	parent._sync_lights()
 	
 func _on_Timer_timeout():

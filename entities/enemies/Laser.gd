@@ -19,10 +19,10 @@ func _ready():
 	_initialize()
 
 func _initialize():
-	$Sprite.scale.x = SCALE_LENGTH
+	$LaserSprite.scale.x = SCALE_LENGTH
 	$CollisionShape2D.scale.x = SCALE_LENGTH
-	$LaserEndA.global_position = $Sprite/Position2DA.global_position
-	$LaserEndB.global_position = $Sprite/Position2DB.global_position
+	$LaserEndA.global_position = $LaserSprite/Position2DA.global_position
+	$LaserEndB.global_position = $LaserSprite/Position2DB.global_position
 		
 func timeout():
 	count += 1 
@@ -34,7 +34,8 @@ func timeout():
 
 func enable_laser(enable:bool):
 	$CollisionShape2D.set_deferred("disabled", !enable)
-	$Sprite.set_deferred("visible", enable)
+	$LaserSprite/SpriteOff.visible = !enable
+	$LaserSprite/SpriteOn.visible = enable
 	if enable and not sfx.playing:
 		sfx.play()
 	else:

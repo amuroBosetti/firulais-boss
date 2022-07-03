@@ -45,23 +45,6 @@ func _ready():
 		direction = 1
 		limit_left_x = $LimitRight.global_position.x
 		limit_right_x = $LimitLeft.global_position.x
-	
-func _look_for_player():
-	if target != null:
-		raycast.set_cast_to(to_local(target.global_position) * 10)
-		raycast.enabled = true
-		if raycast.is_colliding() && raycast.get_collider() == target:
-			state_machine._change_state("detect_player")
-
-var count = 0
-func _is_detecting_player() -> bool:
-	if raycast.get_collider() is Player:
-		count = 0
-		return true
-	else:
-		count += 1
-		print(count)
-		return count < 23
 
 func _apply_movement():
 	velocity.x = SPEED * direction
@@ -81,13 +64,14 @@ func play_idle_animation():
 	tween.start()
 
 func _on_Area2D_body_entered(body):
-	if body is Player and target == null:
+	if body is Player:
 		target = body
+		state_machine._change_state("detect_player")
 		
 func _on_Area2D_body_exited(body):
-	if target == body:
+	if body is Player:
 		target = null
-		raycast.enabled = false
+		_player_got_away()
 
 func _set_direction(dir:String):
 	DIRECTION = dir
@@ -119,7 +103,6 @@ func catch_player():
 func detect_player():
 	_play_animation("detecting")
 	emit_signal("player_being_detected", $StateMachine/DetectPlayer/DetectPlayerTimer.wait_time)
-	print("emiti2")
 	
 func _player_got_away():
 	_play_animation("RESET")
