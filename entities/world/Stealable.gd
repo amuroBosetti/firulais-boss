@@ -4,6 +4,7 @@ tool
 
 signal interactable
 signal geting_stolen
+signal stolen
 
 export (Texture) var PICTURE:Texture setget set_picture
 export (Texture) var DOODLE:Texture
@@ -19,6 +20,8 @@ onready var doodle:Sprite = $Doodle
 onready var area2D:Area2D = $Area2D
 onready var tween:Tween = $Tween
 onready var light:Light2D = $Light
+
+var player = null
 
 func _ready():
 	glow.texture = PICTURE 
@@ -43,16 +46,19 @@ func _on_Tween_tween_completed(object, key):
 		doodle.visible = true
 		area2D.monitoring = false
 		light.enabled = true
+		emit_signal("stolen")
 		
 func _on_Area2D_body_entered(body):
 	if body is Player:
 		emit_signal("interactable",self)
 		glow.visible = true
+		player = body
 
 func _on_Area2D_body_exited(body):
 	if body is Player:
 		emit_signal("interactable",null)
 		glow.visible = false
+		player = null
 
 func init():
 	glow.visible = false

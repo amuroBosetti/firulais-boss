@@ -7,7 +7,8 @@ func _ready():
 		"jump_up": $JumpUp,
 		"jump_down": $JumpDown,
 		"caught": $Caught,
-		"hang": $Hang 
+		"hang": $Hang,
+		"stealing": $Stealing
 	}
 
 

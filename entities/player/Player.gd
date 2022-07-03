@@ -102,4 +102,7 @@ func _on_interactable(body):
 	target = body
 
 func _on_stealing(picture):
-	print("ESTOY ROBANDO, IMPLEMENTAR ESTADO STEALING")
+	state_machine._change_state("stealing")
+	
+func _on_stolen():
+	state_machine._change_state("idle")

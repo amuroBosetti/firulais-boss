@@ -36,7 +36,6 @@
 [ext_resource path="res://assets/textures/wayfinding1.png" type="Texture" id=34]
 [ext_resource path="res://entities/world/Stealable.tscn" type="PackedScene" id=35]
 
-
 [sub_resource type="DynamicFont" id=24]
 size = 50
 font_data = ExtResource( 22 )
@@ -1262,3 +1261,4 @@ LIGHT_SCALE = Vector2( 1.3, 1.3 )
 [connection signal="change_trackb" from="ChangeTrack/ChangeTrack-lvl-1-B" to="Music" method="_on_ChangeTrack_trackb"]
 [connection signal="geting_stolen" from="Stealable-Intro" to="Player" method="_on_stealing"]
 [connection signal="interactable" from="Stealable-Intro" to="Player" method="_on_interactable"]
+[connection signal="stolen" from="Stealable-Intro" to="Player" method="_on_stolen"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/textures/main-character.png" type="Texture" id=1]
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/textures/main-character-hidden.png" type="Texture" id=8]
 [ext_resource path="res://entities/player/Caught.gd" type="Script" id=9]
 [ext_resource path="res://entities/player/HangState.gd" type="Script" id=10]
+[ext_resource path="res://entities/player/Stealing.gd" type="Script" id=11]
 
 [sub_resource type="Shader" id=10]
 code = "shader_type canvas_item;
@@ -285,6 +286,9 @@ script = ExtResource( 9 )
 
 [node name="Hang" type="Node" parent="StateMachine"]
 script = ExtResource( 10 )
+
+[node name="Stealing" type="Node" parent="StateMachine"]
+script = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
