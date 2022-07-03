@@ -51,8 +51,11 @@ func _play_sfx():
 			sfx.stop()
 
 func _interact():
-	active = !active
 	sfx_switch.play()
+	_change_state()
+
+func _change_state():
+	active = !active
 	if active:
 		camera_sprite.animation = "active"
 		_animate_movement(direction)
@@ -88,3 +91,7 @@ func _on_Area2D_body_exited(body):
 	if target == body:
 		target = null
 		raycast.enabled = false
+
+func reset():
+	if not active:
+		_change_state()

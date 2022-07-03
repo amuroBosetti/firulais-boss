@@ -25,6 +25,7 @@ var target = null
 var caught = false
 var hanging_position:Vector2
 var hanging_direction:int
+var current_stealing_picture = null
 
 func make_hidden():
 	if !hidden:
@@ -50,9 +51,11 @@ func _caught():
 	if !caught:
 		caught = true
 		state_machine._change_state("caught")
-		camera_manager.fade_out()
+		camera_manager.fade_out()	
 	
 func _respawn():
+	GameStats.reset()
+	current_stealing_picture = null
 	camera_manager.fade_in()
 	position = spawn_position
 	yield(get_tree().create_timer(0.1), "timeout")
@@ -102,7 +105,9 @@ func _on_interactable(body):
 	target = body
 
 func _on_stealing(picture):
-	state_machine._change_state("stealing")
+	current_stealing_picture = picture
+	state_machine._change_state("stealing")	
 	
 func _on_stolen():
-	state_machine._change_state("idle")
+	current_stealing_picture = null
+	state_machine.current_state._exit()

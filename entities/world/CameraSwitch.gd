@@ -13,13 +13,17 @@ onready var glow:Sprite = $Glow
 var camera:Node2D
 
 func _ready():
+	init()
+	camera = get_node(CAMERA)
+
+func init():
 	glow.visible = false
 	on.visible = true
 	off.visible = false
-	camera = get_node(CAMERA)
 
 func _interact():
 	camera._interact()
+	GameStats.add_switch(self)
 	on.visible = !on.visible
 	off.visible = !off.visible
 
@@ -32,3 +36,7 @@ func _on_CameraSwitch_body_exited(body):
 	if body is Player:
 		emit_signal("interactable",null)
 		glow.visible = false
+
+func reset():
+	init()
+	camera.reset()

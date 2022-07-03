@@ -67,11 +67,11 @@ position = Vector2( -46.8202, 0 )
 position = Vector2( 47.3478, 0 )
 
 [node name="SpriteOff" type="Sprite" parent="LaserSprite"]
+visible = false
 material = SubResource( 4 )
 texture = ExtResource( 2 )
 
 [node name="SpriteOn" type="Sprite" parent="LaserSprite"]
-visible = false
 material = SubResource( 3 )
 texture = ExtResource( 2 )
 

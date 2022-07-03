@@ -4,7 +4,7 @@ func enter():
 	$IdleTimer.start()
 	parent.play_idle_animation()
 	
-func update(delta: float):
+func update(_delta: float):
 	parent._sync_lights()
 	
 func _on_Timer_timeout():

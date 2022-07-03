@@ -60,6 +60,10 @@ config/name="el-arte-del-robo-firulais-boss"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameStats="*res://GameStats.gd"
+
 [display]
 
 window/size/width=1080
