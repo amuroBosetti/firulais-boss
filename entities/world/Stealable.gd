@@ -45,7 +45,6 @@ func _on_Tween_tween_completed(_object, key):
 		picture.visible = false
 		doodle.visible = true
 		area2D.monitoring = false
-		light.enabled = true
 		GameStats.add_stealable(self)
 		emit_signal("stolen")
 		
@@ -54,7 +53,6 @@ func init():
 	picture.visible = true
 	doodle.visible = false
 	area2D.monitoring = true
-	light.enabled = true
 	
 func reset():
 	picture.modulate =  Color("ffffff")

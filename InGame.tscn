@@ -35,6 +35,7 @@
 [ext_resource path="res://assets/textures/camera-sign.png" type="Texture" id=33]
 [ext_resource path="res://assets/textures/wayfinding1.png" type="Texture" id=34]
 [ext_resource path="res://entities/world/Stealable.tscn" type="PackedScene" id=35]
+[ext_resource path="res://assets/textures/final-painting.png" type="Texture" id=36]
 
 [sub_resource type="DynamicFont" id=24]
 size = 50
@@ -627,11 +628,11 @@ position = Vector2( 5982, 277 )
 scale = Vector2( 0.254316, 0.254315 )
 texture = ExtResource( 29 )
 
-[node name="PaintingPlaceholder" type="Sprite" parent="Environment/pictures"]
+[node name="FinalPainting" type="Sprite" parent="Environment/pictures"]
 light_mask = 16
-position = Vector2( 14355, 305 )
-scale = Vector2( 0.254316, 0.254315 )
-texture = ExtResource( 29 )
+position = Vector2( 14352.5, 332.118 )
+scale = Vector2( 0.416521, 0.416519 )
+texture = ExtResource( 36 )
 
 [node name="wayfinders" type="Node" parent="Environment"]
 
@@ -783,7 +784,7 @@ scale = Vector2( 1, 3 )
 ZOOM = 1.1
 
 [node name="SnapCamera-final-screen" parent="CameraManager" instance=ExtResource( 15 )]
-position = Vector2( 14296, 158 )
+position = Vector2( 14254, 147 )
 ZOOM = 2.5
 SCALE = Vector2( 2.768, 2.113 )
 
@@ -1021,7 +1022,7 @@ CYCLETIME = 0
 SCALE_LENGTH = 3.4
 
 [node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( -742, 481 )
+position = Vector2( 13186, 113 )
 z_index = 1
 collision_layer = 13
 collision_mask = 4
@@ -1094,7 +1095,7 @@ position = Vector2( 11224, -1442 )
 CAMERA = NodePath("../CCTV-lvl-2-A")
 
 [node name="CCTV-lvl-3-A" parent="CCTV" instance=ExtResource( 13 )]
-position = Vector2( 14357, 145 )
+position = Vector2( 14356, 145 )
 WAIT_TIME = 2.0
 
 [node name="Switch-lvl-3-A" parent="CCTV" instance=ExtResource( 17 )]
