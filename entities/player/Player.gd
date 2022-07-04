@@ -25,6 +25,7 @@ var target = null
 var caught = false
 var hanging_position:Vector2
 var hanging_direction:int
+var current_stealing_picture = null
 
 func make_hidden():
 	if !hidden:
@@ -50,9 +51,11 @@ func _caught():
 	if !caught:
 		caught = true
 		state_machine._change_state("caught")
-		camera_manager.fade_out()
+		camera_manager.fade_out()	
 	
 func _respawn():
+	GameStats.reset()
+	current_stealing_picture = null
 	camera_manager.fade_in()
 	position = spawn_position
 	yield(get_tree().create_timer(0.1), "timeout")
@@ -83,6 +86,7 @@ func _input(event):
 		if event.is_action_pressed("interact"):
 			target._interact()
 	if event.is_action_pressed("restart"):
+		GameStats.restart_game()
 		if get_tree().reload_current_scene() != OK:
 			print ("Error al querer reiniciar la escena " + get_tree().current_scene.name)
 
@@ -92,11 +96,19 @@ func _hang(y_ledge:int, direction:int):
 		global_position.y = y_ledge + 40 
 		state_machine._change_state("hang")
 
-func _on_CameraSwitch_interactable(body):
-	target = body
-	
 func play_animation(animation_name:String):
 	animation_player.play(animation_name)
 
 func current_state():
 	return state_machine.current_state
+
+func _on_interactable(body):
+	target = body
+
+func _on_stealing(picture):
+	current_stealing_picture = picture
+	state_machine._change_state("stealing")	
+	
+func _on_stolen():
+	current_stealing_picture = null
+	state_machine.current_state._exit()

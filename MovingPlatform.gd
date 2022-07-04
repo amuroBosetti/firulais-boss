@@ -28,7 +28,7 @@ func _on_WaitTimer_timeout():
 	_move_to_next_position()
 
 
-func _on_PlatformTween_tween_completed(object, key):
+func _on_PlatformTween_tween_completed(_object, _key):
 	tween.remove_all()
 	if wait_time != 0:
 		wait_timer.start(wait_time)
