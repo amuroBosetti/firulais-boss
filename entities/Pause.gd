@@ -1,17 +1,43 @@
 extends Node
 
-onready var tint = $CanvasLayer/ColorRect
-onready var label = $CanvasLayer/Label
+onready var color_rect = $CanvasLayer/ColorRect
+onready var container = $CanvasLayer/CenterContainer
+onready var resume_btn = $CanvasLayer/CenterContainer/VBoxContainer/Resume
+onready var restart_btn = $CanvasLayer/CenterContainer/VBoxContainer/Restart
+onready var quit_btn = $CanvasLayer/CenterContainer/VBoxContainer/Quit
 
-var pause = true
+var pause:bool = false
 
 func _ready():
-	tint.hide()
-	label.hide()
-
+	color_rect.visible = false
+	container.visible = false
+	resume_btn.grab_focus()
+	
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
-		get_tree().paused = pause
-		tint.visible = pause
-		label.visible = pause
-		pause = !pause
+		resume_btn.grab_focus()
+		pause()
+		
+func pause():
+	pause = !pause
+	get_tree().paused = pause
+	color_rect.visible = pause
+	container.visible = pause
+
+func _on_Resume_pressed():
+	pause()
+
+func _on_Restart_pressed():
+	GameStats.restart_game()
+	if get_tree().reload_current_scene() != OK:
+		print ("Error al querer reiniciar la escena " + get_tree().current_scene.name)
+	pause()
+
+func _on_Quit_pressed():
+	_change_scene("res://Menu.tscn")
+
+func _change_scene(scene_path:String):
+	GameStats.restart_game()
+	if get_tree().change_scene(scene_path) != OK:
+		print ("Error al querer iniciar " + scene_path)
+	pause()

@@ -85,10 +85,6 @@ func _input(event):
 	if target != null and target.has_method('_interact'):
 		if event.is_action_pressed("interact"):
 			target._interact()
-	if event.is_action_pressed("restart"):
-		GameStats.restart_game()
-		if get_tree().reload_current_scene() != OK:
-			print ("Error al querer reiniciar la escena " + get_tree().current_scene.name)
 
 func _hang(y_ledge:int, direction:int):
 	if current_state() == jump_down_state:
