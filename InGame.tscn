@@ -1243,6 +1243,6 @@ LIGHT_SCALE = Vector2( 1.3, 1.3 )
 [connection signal="player_got_away" from="Guards/Guard-lvl-2-B" to="CameraManager" method="_on_player_got_away"]
 [connection signal="player_being_detected" from="Guards/Guard-lvl-3-A" to="CameraManager" method="_on_player_being_detected"]
 [connection signal="player_got_away" from="Guards/Guard-lvl-3-A" to="CameraManager" method="_on_player_got_away"]
-[connection signal="geting_stolen" from="Stealable-Intro" to="Player" method="_on_stealing"]
+[connection signal="getting_stolen" from="Stealable-Intro" to="Player" method="_on_stealing"]
 [connection signal="interactable" from="Stealable-Intro" to="Player" method="_on_interactable"]
 [connection signal="stolen" from="Stealable-Intro" to="Player" method="_on_stolen"]

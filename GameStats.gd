@@ -12,6 +12,8 @@ func _ready():
 func reset():
 	for elem in switch_tmp + stealable_tmp:
 		elem.reset()
+	stealable_tmp = []
+	switch_tmp = []
 
 func checkpoint():
 	switch_tmp = []
@@ -25,3 +27,6 @@ func add_switch(elem:CameraSwitch):
 func add_stealable(elem:Stealable):
 	if not switch_tmp.has(elem):
 		stealable_tmp.append(elem)
+
+func restart_game():
+	_ready()

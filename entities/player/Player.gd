@@ -86,6 +86,7 @@ func _input(event):
 		if event.is_action_pressed("interact"):
 			target._interact()
 	if event.is_action_pressed("restart"):
+		GameStats.restart_game()
 		if get_tree().reload_current_scene() != OK:
 			print ("Error al querer reiniciar la escena " + get_tree().current_scene.name)
 

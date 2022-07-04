@@ -3,7 +3,7 @@ class_name Stealable
 tool
 
 signal interactable
-signal geting_stolen
+signal getting_stolen
 signal stolen
 
 export (Texture) var PICTURE:Texture setget set_picture
@@ -34,7 +34,7 @@ func _ready():
 	init()
 
 func _interact():
-	emit_signal("geting_stolen",self)
+	emit_signal("getting_stolen",self)
 	glow.visible = false
 	light.enabled = false
 	tween.interpolate_property(player, "global_position:x", player.global_position.x, global_position.x, 1)
