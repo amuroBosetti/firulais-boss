@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/textures/main-character.png" type="Texture" id=1]
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=2]
@@ -190,6 +190,24 @@ tracks/0/keys = {
 "values": [ 14 ]
 }
 
+[sub_resource type="Animation" id=12]
+resource_name = "stealing"
+length = 0.4
+loop = true
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Normal:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 24, 25 ]
+}
+
 [sub_resource type="Animation" id=3]
 resource_name = "walk"
 length = 0.65
@@ -237,7 +255,7 @@ frame = 1
 position = Vector2( -0.999999, -11.375 )
 scale = Vector2( 0.938333, 0.935833 )
 texture = ExtResource( 1 )
-hframes = 23
+hframes = 26
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2( -4, 32 )
@@ -297,6 +315,7 @@ anims/idle = SubResource( 4 )
 anims/jump_down = SubResource( 7 )
 anims/jump_transition = SubResource( 6 )
 anims/jump_up = SubResource( 5 )
+anims/stealing = SubResource( 12 )
 anims/walk = SubResource( 3 )
 
 [node name="Position2D" type="Position2D" parent="."]

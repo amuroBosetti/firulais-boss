@@ -36,7 +36,6 @@ func _ready():
 func _interact():
 	emit_signal("getting_stolen",self)
 	glow.visible = false
-	light.enabled = false
 	tween.interpolate_property(player, "global_position:x", player.global_position.x, global_position.x, 1)
 	tween.interpolate_property(picture, "modulate", picture.modulate, Color.black, STEAL_TIME)
 	tween.start()
