@@ -4,7 +4,7 @@ tool
 
 signal interactable
 signal getting_stolen
-signal stolen
+signal stolen(is_final_goal)
 
 export (Texture) var PICTURE:Texture setget set_picture
 export (Texture) var DOODLE:Texture
@@ -13,6 +13,7 @@ export (float) var AREA_SCALE:float = 1 setget set_area_scale
 export (Vector2) var AREA_POSITION:Vector2 = Vector2(0,0) setget set_area_position
 export (Vector2) var LIGHT_SCALE:Vector2 = Vector2(1,1) setget set_light_scale
 export (float) var STEAL_TIME:float = 2
+export (bool) var IS_FINAL_GOAL:bool
 
 onready var glow:Sprite = $PictureGlow
 onready var picture:Sprite = $Picture
@@ -46,7 +47,7 @@ func _on_Tween_tween_completed(_object, key):
 		picture.visible = false
 		doodle.visible = true
 		area2D.monitoring = false
-		emit_signal("stolen")
+		emit_signal("stolen", IS_FINAL_GOAL)
 		
 func init():
 	glow.visible = false

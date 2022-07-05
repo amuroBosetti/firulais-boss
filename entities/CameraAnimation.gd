@@ -6,6 +6,7 @@ onready var tween : Tween = $Tween
 onready var attach_camera_to_player : bool = true
 onready var fade:Node = $CameraFade
 onready var warningFade:ColorRect = $CameraFade/CanvasLayer/ColorRect
+onready var final_fade:Node = $FinalCameraFade
 
 var zoom_before_detection:Vector2
 var position_before_detection:Vector2
@@ -64,3 +65,7 @@ func _on_player_got_away():
 	tween.remove(warningFade, "color")
 	tween.interpolate_property(warningFade, "color", warningFade.color, Color(0, 0, 0, 0), 1)
 	tween.start()
+
+
+func _on_game_finished(stolen_picture, player):
+	final_fade.fade_out(player)

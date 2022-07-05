@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Player
 
+signal game_finished(stolen_picture, player)
+
 export (float) var ACCELERATION:float = 20.0
 export (float) var H_SPEED_LIMIT:float = 400.0
 export (float) var FRICTION_WEIGHT:float = 0.3
@@ -106,6 +108,9 @@ func _on_stealing(picture):
 	current_stealing_picture = picture
 	state_machine._change_state("stealing")	
 	
-func _on_stolen():
+func _on_stolen(is_final_goal):
+	var stolen_picture = current_stealing_picture
 	current_stealing_picture = null
 	state_machine._change_state("idle")
+	if is_final_goal:
+		emit_signal("game_finished", stolen_picture, self)
