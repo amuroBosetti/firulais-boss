@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/stealing.ogg-ff6bfc1c1f76201633ad8366f0f54b18.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/stealing.ogg"
+dest_files=[ "res://.import/stealing.ogg-ff6bfc1c1f76201633ad8366f0f54b18.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

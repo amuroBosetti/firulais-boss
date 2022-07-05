@@ -9,6 +9,5 @@ func update(_delta:float):
 	parent._apply_movement()
 	parent._handle_deacceleration()
 	
-func _exit():
-	emit_signal("finished", "idle")
+func exit():
 	parent.caught = false

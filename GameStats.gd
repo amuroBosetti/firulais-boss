@@ -25,7 +25,7 @@ func add_switch(elem:CameraSwitch):
 		switch_tmp.append(elem)
 
 func add_stealable(elem:Stealable):
-	if not switch_tmp.has(elem):
+	if not stealable_tmp.has(elem):
 		stealable_tmp.append(elem)
 
 func restart_game():

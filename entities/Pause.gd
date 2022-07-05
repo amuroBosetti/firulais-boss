@@ -16,22 +16,22 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		resume_btn.grab_focus()
-		pause()
+		_pause()
 		
-func pause():
+func _pause():
 	pause = !pause
 	get_tree().paused = pause
 	color_rect.visible = pause
 	container.visible = pause
 
 func _on_Resume_pressed():
-	pause()
+	_pause()
 
 func _on_Restart_pressed():
 	GameStats.restart_game()
 	if get_tree().reload_current_scene() != OK:
 		print ("Error al querer reiniciar la escena " + get_tree().current_scene.name)
-	pause()
+	_pause()
 
 func _on_Quit_pressed():
 	_change_scene("res://Menu.tscn")
@@ -40,4 +40,4 @@ func _change_scene(scene_path:String):
 	GameStats.restart_game()
 	if get_tree().change_scene(scene_path) != OK:
 		print ("Error al querer iniciar " + scene_path)
-	pause()
+	_pause()

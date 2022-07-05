@@ -35,6 +35,7 @@ func _ready():
 
 func _interact():
 	emit_signal("getting_stolen",self)
+	GameStats.add_stealable(self)
 	glow.visible = false
 	tween.interpolate_property(player, "global_position:x", player.global_position.x, global_position.x, 1)
 	tween.interpolate_property(picture, "modulate", picture.modulate, Color.black, STEAL_TIME)
@@ -45,7 +46,6 @@ func _on_Tween_tween_completed(_object, key):
 		picture.visible = false
 		doodle.visible = true
 		area2D.monitoring = false
-		GameStats.add_stealable(self)
 		emit_signal("stolen")
 		
 func init():
@@ -55,7 +55,8 @@ func init():
 	area2D.monitoring = true
 	
 func reset():
-	picture.modulate =  Color("ffffff")
+	tween.remove(picture)
+	picture.modulate = Color("ffffff")
 	init()
 		
 func _on_Area2D_body_entered(body):

@@ -16,6 +16,7 @@ onready var hidden:bool = false
 onready var animation_player:AnimationPlayer = $AnimationPlayer
 onready var caught_state:Node = $StateMachine/Caught
 onready var jump_down_state:Node = $StateMachine/JumpDown
+onready var sfx:AudioStreamPlayer2D = $SFX
 onready var camera_manager = get_node(CAMERA_MANAGER)
 
 var velocity:Vector2 = Vector2.ZERO
@@ -26,6 +27,12 @@ var caught = false
 var hanging_position:Vector2
 var hanging_direction:int
 var current_stealing_picture = null
+
+func _ready():
+	caught = false
+	state_machine.set_parent(self)
+	hidden_sprite.set_deferred("visible", hidden)
+	normal_sprite.set_deferred("visible", !hidden) 
 
 func make_hidden():
 	if !hidden:
@@ -40,12 +47,6 @@ func make_visible():
 		hidden = false
 		hidden_sprite.set_deferred("visible", hidden)
 		normal_sprite.set_deferred("visible", !hidden) 
-		
-func _ready():
-	caught = false
-	state_machine.set_parent(self)
-	hidden_sprite.set_deferred("visible", hidden)
-	normal_sprite.set_deferred("visible", !hidden) 
 	
 func _caught():
 	if !caught:
@@ -62,7 +63,7 @@ func _respawn():
 	caught = false
 
 func _on_CameraFade_fade_in_completed():
-	current_state()._exit()
+	state_machine._change_state("idle")
 	
 func _apply_movement():
 	velocity.y += GRAVITY
@@ -107,4 +108,4 @@ func _on_stealing(picture):
 	
 func _on_stolen():
 	current_stealing_picture = null
-	state_machine.current_state._exit()
+	state_machine._change_state("idle")

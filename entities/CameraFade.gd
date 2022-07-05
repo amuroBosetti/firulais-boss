@@ -20,5 +20,4 @@ func fade_in():
 	
 func _on_Tween_tween_completed(object, _key):
 	if object.color == Color(0,0,0,0):
-		#fade.hide()
 		emit_signal("fade_in_completed")
