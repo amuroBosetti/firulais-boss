@@ -23,6 +23,7 @@ shader_param/shine_size = 0.02
 radius = 102.02
 
 [node name="Stealable" type="Node2D"]
+z_index = -1
 script = ExtResource( 1 )
 
 [node name="Light" type="Light2D" parent="."]
