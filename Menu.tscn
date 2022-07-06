@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/Koulen-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://entities/Start.gd" type="Script" id=5]
 [ext_resource path="res://assets/audio/optionSelect.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/audio/menu.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/textures/haskell.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
@@ -69,9 +70,16 @@ margin_right = 1084.0
 margin_bottom = 605.0
 color = Color( 0.00784314, 0.00784314, 0.00784314, 1 )
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="SFXHaskell" type="AudioStreamPlayer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1125, 552 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 8 )
 
 [connection signal="gui_input" from="Start" to="Start" method="_on_Start_gui_input"]
 [connection signal="mouse_entered" from="Start" to="." method="_on_Start_mouse_entered"]

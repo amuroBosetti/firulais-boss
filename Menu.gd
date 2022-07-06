@@ -6,14 +6,20 @@ export (AudioStream) var MENU_MUSIC
 export (AudioStream) var ON_CHANGE_SFX
 export (AudioStream) var ON_CONFIRM_SFX
 
-onready var start = $Start
-onready var close = $Close
-onready var audio_player = $SFX
-onready var music_player = $Music
+onready var start:Label = $Start
+onready var close:Label = $Close
+onready var audio_player:AudioStreamPlayer = $SFX
+onready var haskell_player:AudioStreamPlayer = $SFXHaskell
+onready var music_player:AudioStreamPlayer = $Music
+onready var tween:Tween = $Tween
+onready var sprite:Sprite = $Sprite
+onready var haskell_sfx:AudioStream = load("res://assets/audio/haskell.ogg")
 
 var options:Array 
 var index = 0
 var selected_already = false
+var firulais_code:Array = ["F","I","R","U","L","A","I","S"]
+var input_tmp:Array = []
 
 func _ready():
 	_init_colors()
@@ -25,6 +31,7 @@ func _ready():
 	music_player.play()
 
 func _input(event):
+	check_code(event)
 	if !selected_already:
 		if event.is_action_pressed("up"):
 			_select(1)
@@ -44,10 +51,13 @@ func _init_colors():
 func _init_sfx():
 	ON_CHANGE_SFX.loop = false
 	ON_CONFIRM_SFX.loop = false
+	haskell_sfx.loop = false
 	start.sfx = ON_CONFIRM_SFX
 	audio_player.stream = ON_CHANGE_SFX
+	haskell_player.stream = haskell_sfx
 
 func _select(index_movement:int):
+	
 	if index == null:
 		index = 1
 	options[index].deselect()
@@ -78,3 +88,21 @@ func _on_Close_mouse_exited():
 	start.deselect()
 	close.deselect()
 	index = null
+
+func check_code(event_):
+	if event_.is_pressed():
+		input_tmp.append(event_.as_text())
+	if input_tmp != firulais_code.slice(0, input_tmp.size()-1):
+		input_tmp = []
+	if input_tmp == firulais_code:
+		haskell()
+		input_tmp = []
+
+func haskell():
+	tween.interpolate_property(sprite, "position:x", sprite.position.x, sprite.position.x - 80, 0.3)
+	tween.start()
+	haskell_player.play()
+	yield(get_tree().create_timer(0.5), "timeout")
+	tween.remove(sprite)
+	tween.interpolate_property(sprite, "position:x", sprite.position.x, sprite.position.x + 80, 0.3)
+	tween.start()
