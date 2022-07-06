@@ -5,6 +5,7 @@ var stealable_tmp:Array
 var stealed:Array
 var all_stealable:Array
 var time:float = 0.0
+var stolen_textures:Array
 
 func _ready():
 	switch_tmp = []
@@ -42,4 +43,8 @@ func restart_game():
 	_ready()
 	
 func finish_game():
-	pass
+	switch_tmp = []
+	stealed.append_array(stealable_tmp)
+	stealable_tmp = []
+	for each in stealed:
+		stolen_textures.append(each.PICTURE.resource_path)
