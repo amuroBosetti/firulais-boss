@@ -3,13 +3,18 @@ extends Node
 var switch_tmp:Array
 var stealable_tmp:Array
 var stealed:Array
+var all_stealable:Array
 var time:float = 0.0
 
 func _ready():
 	switch_tmp = []
 	stealable_tmp = []
 	stealed = []
+	all_stealable = []
 	time = 0.0
+	
+func initialize(stealeables):
+	all_stealable = stealeables
 
 func reset():
 	for elem in switch_tmp + stealable_tmp:

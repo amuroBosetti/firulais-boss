@@ -27,7 +27,6 @@ margin_bottom = 145.0
 custom_fonts/font = SubResource( 1 )
 text = "ROBO EXITOSO"
 align = 1
-percent_visible = 9.09091
 max_lines_visible = 1
 
 [node name="Time" type="Label" parent="CanvasLayer"]
@@ -47,3 +46,6 @@ align = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="StartingPosition" type="Position2D" parent="."]
+position = Vector2( 173, 388 )
