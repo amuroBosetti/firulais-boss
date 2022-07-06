@@ -999,7 +999,7 @@ CYCLETIME = 0
 SCALE_LENGTH = 3.4
 
 [node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( -867, 487 )
+position = Vector2( 13384, -330 )
 z_index = 1
 collision_layer = 13
 collision_mask = 4
@@ -1283,6 +1283,7 @@ scale = Vector2( 2.5, 1.5 )
 [connection signal="timeout" from="Lasers/Lasers-lvl-1" to="Lasers/Lasers-lvl-1" method="_on_TimerLasers_timeout"]
 [connection signal="timeout" from="Lasers/Lasers-lvl-2/Lasers-lvl-2-A" to="Lasers/Lasers-lvl-2/Lasers-lvl-2-A" method="_on_TimerLasers_timeout"]
 [connection signal="timeout" from="Lasers/Lasers-lvl-2/Lasers-lvl-2-B" to="Lasers/Lasers-lvl-2/Lasers-lvl-2-B" method="_on_TimerLasers_timeout"]
+[connection signal="game_finished" from="Player" to="." method="_on_game_finished"]
 [connection signal="game_finished" from="Player" to="CameraManager" method="_on_game_finished"]
 [connection signal="interactable" from="CCTV/Switch-Intro" to="Player" method="_on_interactable"]
 [connection signal="interactable" from="CCTV/Switch-lvl-1-B" to="Player" method="_on_interactable"]

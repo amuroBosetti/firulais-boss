@@ -3,11 +3,13 @@ extends Node
 var switch_tmp:Array
 var stealable_tmp:Array
 var stealed:Array
+var time:float = 0.0
 
 func _ready():
 	switch_tmp = []
 	stealable_tmp = []
 	stealed = []
+	time = 0.0
 
 func reset():
 	for elem in switch_tmp + stealable_tmp:
@@ -28,5 +30,11 @@ func add_stealable(elem:Stealable):
 	if not stealable_tmp.has(elem):
 		stealable_tmp.append(elem)
 
+func add_time(time_to_add:float):
+	time += time_to_add
+
 func restart_game():
 	_ready()
+	
+func finish_game():
+	pass
