@@ -930,9 +930,8 @@ SCALE_LENGTH = 4.0
 
 [node name="LaserD" parent="Lasers/Lasers-Intro" instance=ExtResource( 21 )]
 position = Vector2( 5363, 497 )
-scale = Vector2( 0.37, 1 )
 TIME_START = 2
-SCALE_LENGTH = 4.0
+SCALE_LENGTH = 1.45
 
 [node name="Lasers-lvl-1" type="Timer" parent="Lasers"]
 wait_time = 0.2
