@@ -14,7 +14,7 @@ radius = 67.5296
 [sub_resource type="ShaderMaterial" id=7]
 render_priority = 4
 shader = ExtResource( 6 )
-shader_param/color = Color( 0.498039, 0.545098, 0.85098, 1 )
+shader_param/color = Color( 0.87451, 0.517647, 0.647059, 1 )
 shader_param/width = 10.0
 shader_param/pattern = 1
 shader_param/inside = false
