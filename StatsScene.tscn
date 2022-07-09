@@ -49,3 +49,10 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="StartingPosition" type="Position2D" parent="."]
 position = Vector2( 173, 388 )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 163.0
+margin_top = 300.0
+margin_right = 962.0
+margin_bottom = 523.0
+columns = 4

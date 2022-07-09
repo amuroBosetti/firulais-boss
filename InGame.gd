@@ -14,8 +14,8 @@ func _on_game_finished(stolen_picture, player):
 	if get_tree().change_scene("res://StatsScene.tscn") != OK:
 		print ("Error al querer iniciar StatsScene.tscn")
 
-func get_all_stealable() -> Array:
-	var textures = []
+func get_all_stealable() -> Array: #Array<StealableModel>
+	var stealables = []
 	for each in $Steleables.get_children():
-		textures.append(each.PICTURE)
-	return textures
+		stealables.append(StealableModel.new(each))
+	return stealables

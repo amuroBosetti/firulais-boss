@@ -14,6 +14,7 @@ export (Vector2) var AREA_POSITION:Vector2 = Vector2(0,0) setget set_area_positi
 export (Vector2) var LIGHT_SCALE:Vector2 = Vector2(1,1) setget set_light_scale
 export (float) var STEAL_TIME:float = 2
 export (bool) var IS_FINAL_GOAL:bool
+export (String) var ID:String
 
 onready var glow:Sprite = $PictureGlow
 onready var picture:Sprite = $Picture
@@ -101,3 +102,9 @@ func set_light_scale(scale_:Vector2):
 	LIGHT_SCALE = scale_
 	if Engine.editor_hint:
 		$Light.scale = scale_
+
+func get_id():
+	return self.ID
+	
+func get_texture():
+	return self.PICTURE

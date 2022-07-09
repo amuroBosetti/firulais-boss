@@ -1136,7 +1136,7 @@ CYCLETIME = 0
 SCALE_LENGTH = 3.4
 
 [node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( -792, 486 )
+position = Vector2( 13282, -374 )
 z_index = 1
 collision_layer = 13
 collision_mask = 4
@@ -1373,6 +1373,7 @@ AREA_SCALE = 0.8
 AREA_POSITION = Vector2( 0, 70 )
 LIGHT_SCALE = Vector2( 1.3, 1.3 )
 STEAL_TIME = 3.0
+ID = "1"
 
 [node name="Stealable-elJacker" parent="Steleables" instance=ExtResource( 35 )]
 position = Vector2( 5364, 432 )
@@ -1383,6 +1384,7 @@ AREA_SCALE = 0.8
 AREA_POSITION = Vector2( 0, 70 )
 LIGHT_SCALE = Vector2( 1.3, 1.3 )
 STEAL_TIME = 2.5
+ID = "2"
 
 [node name="Stealable-mountain" parent="Steleables" instance=ExtResource( 35 )]
 position = Vector2( 6045, 340 )
@@ -1392,6 +1394,27 @@ TEXTURE_SCALE = Vector2( 0.3, 0.3 )
 AREA_SCALE = 1.5
 AREA_POSITION = Vector2( 0, 60 )
 LIGHT_SCALE = Vector2( 4, 4 )
+ID = "3"
+
+[node name="Stealable-juanBautista" parent="Steleables" instance=ExtResource( 35 )]
+position = Vector2( 9986, 115 )
+PICTURE = ExtResource( 45 )
+DOODLE = ExtResource( 46 )
+TEXTURE_SCALE = Vector2( 0.25, 0.25 )
+AREA_SCALE = 0.8
+AREA_POSITION = Vector2( 0, 70 )
+LIGHT_SCALE = Vector2( 1.4, 1.4 )
+ID = "4"
+
+[node name="Stealable-juanBautista2" parent="Steleables" instance=ExtResource( 35 )]
+position = Vector2( 11645, -1489 )
+PICTURE = ExtResource( 49 )
+DOODLE = ExtResource( 47 )
+TEXTURE_SCALE = Vector2( 0.33, 0.33 )
+AREA_SCALE = 0.8
+AREA_POSITION = Vector2( 0, 70 )
+LIGHT_SCALE = Vector2( 0, 0 )
+ID = "5"
 
 [node name="Stealable-final" parent="Steleables" instance=ExtResource( 35 )]
 position = Vector2( 14351, 298 )
@@ -1403,24 +1426,7 @@ AREA_POSITION = Vector2( 0, 50 )
 LIGHT_SCALE = Vector2( 3, 3 )
 STEAL_TIME = 3.0
 IS_FINAL_GOAL = true
-
-[node name="Stealable-juanBautista" parent="Steleables" instance=ExtResource( 35 )]
-position = Vector2( 9986, 115 )
-PICTURE = ExtResource( 45 )
-DOODLE = ExtResource( 46 )
-TEXTURE_SCALE = Vector2( 0.25, 0.25 )
-AREA_SCALE = 0.8
-AREA_POSITION = Vector2( 0, 70 )
-LIGHT_SCALE = Vector2( 1.4, 1.4 )
-
-[node name="Stealable-juanBautista2" parent="Steleables" instance=ExtResource( 35 )]
-position = Vector2( 11645, -1489 )
-PICTURE = ExtResource( 49 )
-DOODLE = ExtResource( 47 )
-TEXTURE_SCALE = Vector2( 0.33, 0.33 )
-AREA_SCALE = 0.8
-AREA_POSITION = Vector2( 0, 70 )
-LIGHT_SCALE = Vector2( 0, 0 )
+ID = "6"
 
 [node name="FakeWalls" type="Node" parent="."]
 
@@ -1478,12 +1484,12 @@ scale = Vector2( 2.5, 1.5 )
 [connection signal="getting_stolen" from="Steleables/Stealable-mountain" to="Player" method="_on_stealing"]
 [connection signal="interactable" from="Steleables/Stealable-mountain" to="Player" method="_on_interactable"]
 [connection signal="stolen" from="Steleables/Stealable-mountain" to="Player" method="_on_stolen"]
-[connection signal="getting_stolen" from="Steleables/Stealable-final" to="Player" method="_on_stealing"]
-[connection signal="interactable" from="Steleables/Stealable-final" to="Player" method="_on_interactable"]
-[connection signal="stolen" from="Steleables/Stealable-final" to="Player" method="_on_stolen"]
 [connection signal="getting_stolen" from="Steleables/Stealable-juanBautista" to="Player" method="_on_stealing"]
 [connection signal="interactable" from="Steleables/Stealable-juanBautista" to="Player" method="_on_interactable"]
 [connection signal="stolen" from="Steleables/Stealable-juanBautista" to="Player" method="_on_stolen"]
 [connection signal="getting_stolen" from="Steleables/Stealable-juanBautista2" to="Player" method="_on_stealing"]
 [connection signal="interactable" from="Steleables/Stealable-juanBautista2" to="Player" method="_on_interactable"]
 [connection signal="stolen" from="Steleables/Stealable-juanBautista2" to="Player" method="_on_stolen"]
+[connection signal="getting_stolen" from="Steleables/Stealable-final" to="Player" method="_on_stealing"]
+[connection signal="interactable" from="Steleables/Stealable-final" to="Player" method="_on_interactable"]
+[connection signal="stolen" from="Steleables/Stealable-final" to="Player" method="_on_stolen"]

@@ -1,40 +1,37 @@
 extends Node
 
 var switch_tmp:Array
-var stealable_tmp:Array
 var stealed:Array
-var all_stealable:Array
+var all_stealable:Array #Array<StealableModel>
 var time:float = 0.0
-var stolen_textures:Array
 
 func _ready():
 	switch_tmp = []
-	stealable_tmp = []
 	stealed = []
-	all_stealable = []
+	all_stealable = [] #Array<StealableModel>
 	time = 0.0
 	
 func initialize(stealeables):
 	all_stealable = stealeables
 
 func reset():
-	for elem in switch_tmp + stealable_tmp:
+	for elem in switch_tmp:
 		elem.reset()
-	stealable_tmp = []
 	switch_tmp = []
+	for each in all_stealable:
+		each.reset()
 
 func checkpoint():
 	switch_tmp = []
-	stealed.append_array(stealable_tmp)
-	stealable_tmp = []
+	for each in all_stealable:
+		each.checkpoint()
 	
 func add_switch(elem:CameraSwitch):
 	if not switch_tmp.has(elem):
 		switch_tmp.append(elem)
 
 func add_stealable(elem:Stealable):
-	if not stealable_tmp.has(elem):
-		stealable_tmp.append(elem)
+	get_stealable_by_id(elem.get_id()).steal()
 
 func add_time(time_to_add:float):
 	time += time_to_add
@@ -44,7 +41,11 @@ func restart_game():
 	
 func finish_game():
 	switch_tmp = []
-	stealed.append_array(stealable_tmp)
-	stealable_tmp = []
-	for each in stealed:
-		stolen_textures.append(each.PICTURE.resource_path)
+	for each in all_stealable:
+		each.checkpoint()
+
+func get_stealable_by_id(id:String): # -> StealableModel
+	for each in all_stealable:
+		if each.id == id:
+			return each
+	printerr("No se encontro un robable con el id buscado")
