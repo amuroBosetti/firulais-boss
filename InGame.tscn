@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://entities/enemies/TimerLasers.gd" type="Script" id=1]
 [ext_resource path="res://entities/Music.gd" type="Script" id=2]
@@ -52,6 +52,8 @@
 [ext_resource path="res://assets/textures/tranfiguracionDeRafael.png" type="Texture" id=50]
 [ext_resource path="res://entities/world/Pit.gd" type="Script" id=51]
 [ext_resource path="res://entities/world/ChangeBackground.tscn" type="PackedScene" id=52]
+[ext_resource path="res://assets/textures/fogataDeSanJuanDoodle.png" type="Texture" id=53]
+[ext_resource path="res://assets/textures/fogataDeSanJuan.png" type="Texture" id=54]
 
 [sub_resource type="DynamicFont" id=24]
 size = 50
@@ -853,13 +855,13 @@ position = Vector2( 11261, -1119 )
 ZOOM = 2.5
 
 [node name="Zoom-lvl-2-C" parent="CameraManager" instance=ExtResource( 24 )]
-position = Vector2( 11857, -55 )
+position = Vector2( 12070, -464 )
 rotation = 1.5708
 scale = Vector2( 1, 3 )
 ZOOM = 2.5
 
 [node name="Zoom-lvl-2-D" parent="CameraManager" instance=ExtResource( 24 )]
-position = Vector2( 11886, 139 )
+position = Vector2( 11967, -216 )
 rotation = 1.5708
 scale = Vector2( 1, 3 )
 ZOOM = 1.1
@@ -1091,12 +1093,13 @@ autostart = true
 script = ExtResource( 1 )
 
 [node name="LaserH" parent="Lasers/Lasers-lvl-2/Lasers-lvl-2-B" instance=ExtResource( 21 )]
-position = Vector2( 11824, -421 )
+position = Vector2( 11817, -373 )
 CYCLETIME = 2
 SCALE_LENGTH = 2.7
 
 [node name="LaserI" parent="Lasers/Lasers-lvl-2/Lasers-lvl-2-B" instance=ExtResource( 21 )]
-position = Vector2( 11789, -141 )
+position = Vector2( 11561, -257 )
+rotation = 1.5708
 TIME_START = 1
 CYCLETIME = 2
 SCALE_LENGTH = 3.5
@@ -1137,7 +1140,7 @@ CYCLETIME = 0
 SCALE_LENGTH = 3.4
 
 [node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( -750, 428 )
+position = Vector2( -633, 441 )
 z_index = 1
 collision_layer = 13
 collision_mask = 4
@@ -1403,7 +1406,7 @@ AREA_SCALE = 0.8
 AREA_POSITION = Vector2( 0, 70 )
 LIGHT_SCALE = Vector2( 1.4, 1.4 )
 
-[node name="Stealable-juanBautista2" parent="Steleables" instance=ExtResource( 35 )]
+[node name="Stealable-richter" parent="Steleables" instance=ExtResource( 35 )]
 position = Vector2( 11645, -1489 )
 PICTURE = ExtResource( 49 )
 DOODLE = ExtResource( 47 )
@@ -1411,6 +1414,16 @@ TEXTURE_SCALE = Vector2( 0.33, 0.33 )
 AREA_SCALE = 0.8
 AREA_POSITION = Vector2( 0, 70 )
 LIGHT_SCALE = Vector2( 0, 0 )
+
+[node name="Stealable-fogataDeSanJuan" parent="Steleables" instance=ExtResource( 35 )]
+position = Vector2( 11414, -190 )
+PICTURE = ExtResource( 54 )
+DOODLE = ExtResource( 53 )
+TEXTURE_SCALE = Vector2( 0.2, 0.2 )
+AREA_SCALE = 0.95
+AREA_POSITION = Vector2( 0, 70 )
+LIGHT_SCALE = Vector2( 1.8, 1.5 )
+STEAL_TIME = 2.5
 
 [node name="Stealable-final" parent="Steleables" instance=ExtResource( 35 )]
 position = Vector2( 14351, 298 )
@@ -1482,9 +1495,12 @@ scale = Vector2( 2.5, 1.5 )
 [connection signal="getting_stolen" from="Steleables/Stealable-juanBautista" to="Player" method="_on_stealing"]
 [connection signal="interactable" from="Steleables/Stealable-juanBautista" to="Player" method="_on_interactable"]
 [connection signal="stolen" from="Steleables/Stealable-juanBautista" to="Player" method="_on_stolen"]
-[connection signal="getting_stolen" from="Steleables/Stealable-juanBautista2" to="Player" method="_on_stealing"]
-[connection signal="interactable" from="Steleables/Stealable-juanBautista2" to="Player" method="_on_interactable"]
-[connection signal="stolen" from="Steleables/Stealable-juanBautista2" to="Player" method="_on_stolen"]
+[connection signal="getting_stolen" from="Steleables/Stealable-richter" to="Player" method="_on_stealing"]
+[connection signal="interactable" from="Steleables/Stealable-richter" to="Player" method="_on_interactable"]
+[connection signal="stolen" from="Steleables/Stealable-richter" to="Player" method="_on_stolen"]
+[connection signal="getting_stolen" from="Steleables/Stealable-fogataDeSanJuan" to="Player" method="_on_stealing"]
+[connection signal="interactable" from="Steleables/Stealable-fogataDeSanJuan" to="Player" method="_on_interactable"]
+[connection signal="stolen" from="Steleables/Stealable-fogataDeSanJuan" to="Player" method="_on_stolen"]
 [connection signal="getting_stolen" from="Steleables/Stealable-final" to="Player" method="_on_stealing"]
 [connection signal="interactable" from="Steleables/Stealable-final" to="Player" method="_on_interactable"]
 [connection signal="stolen" from="Steleables/Stealable-final" to="Player" method="_on_stolen"]
