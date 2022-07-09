@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://entities/enemies/TimerLasers.gd" type="Script" id=1]
 [ext_resource path="res://entities/Music.gd" type="Script" id=2]
@@ -50,6 +50,7 @@
 [ext_resource path="res://assets/textures/spotlight-circle.png" type="Texture" id=48]
 [ext_resource path="res://assets/textures/richter.png" type="Texture" id=49]
 [ext_resource path="res://assets/textures/tranfiguracionDeRafael.png" type="Texture" id=50]
+[ext_resource path="res://entities/world/Pit.gd" type="Script" id=51]
 
 [sub_resource type="DynamicFont" id=24]
 size = 50
@@ -58,6 +59,9 @@ font_data = ExtResource( 22 )
 [sub_resource type="DynamicFont" id=25]
 size = 22
 font_data = ExtResource( 22 )
+
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 536.5, 23 )
 
 [sub_resource type="ShaderMaterial" id=27]
 shader = ExtResource( 39 )
@@ -583,7 +587,15 @@ color = Color( 0.341176, 0.447059, 0.466667, 1 )
 position = Vector2( -947, 9 )
 
 [node name="Limit_V2" parent="Environment" instance=ExtResource( 16 )]
-position = Vector2( 15508, 447 )
+position = Vector2( 15587, 447 )
+
+[node name="Pit" type="Area2D" parent="Environment"]
+position = Vector2( 15285, 1117 )
+script = ExtResource( 51 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Pit"]
+position = Vector2( -88, -46 )
+shape = SubResource( 28 )
 
 [node name="ControlPicturess" type="Node2D" parent="Environment"]
 
@@ -1372,6 +1384,7 @@ scale = Vector2( 2.5, 1.5 )
 [connection signal="pressed" from="Pause/CanvasLayer/CenterContainer/VBoxContainer/Resume" to="Pause" method="_on_Resume_pressed"]
 [connection signal="pressed" from="Pause/CanvasLayer/CenterContainer/VBoxContainer/Restart" to="Pause" method="_on_Restart_pressed"]
 [connection signal="pressed" from="Pause/CanvasLayer/CenterContainer/VBoxContainer/Quit" to="Pause" method="_on_Quit_pressed"]
+[connection signal="body_entered" from="Environment/Pit" to="Environment/Pit" method="_on_Pit_body_entered"]
 [connection signal="snapCamera" from="CameraManager/Snap-Jump" to="CameraManager" method="_on_SnapCamera_snapCamera"]
 [connection signal="snapCamera" from="CameraManager/Snap-Hang" to="CameraManager" method="_on_SnapCamera_snapCamera"]
 [connection signal="snapCamera" from="CameraManager/Snap-Guard" to="CameraManager" method="_on_SnapCamera_snapCamera"]

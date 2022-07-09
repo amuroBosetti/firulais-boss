@@ -29,9 +29,11 @@ var caught = false
 var hanging_position:Vector2
 var hanging_direction:int
 var current_stealing_picture = null
+var is_stealing = false
 
 func _ready():
 	caught = false
+	is_stealing = false
 	state_machine.set_parent(self)
 	hidden_sprite.set_deferred("visible", hidden)
 	normal_sprite.set_deferred("visible", !hidden) 
@@ -54,7 +56,8 @@ func _caught():
 	if !caught:
 		caught = true
 		state_machine._change_state("caught")
-		camera_manager.fade_out()	
+		camera_manager.fade_out()
+		is_stealing = false
 	
 func _respawn():
 	GameStats.reset()
@@ -85,7 +88,7 @@ func _physics_process(_delta):
 	hanging_position = $Position2D.global_position
 
 func _input(event):
-	if target != null and target.has_method('_interact'):
+	if target != null and target.has_method('_interact') and not is_stealing:
 		if event.is_action_pressed("interact"):
 			target._interact()
 
@@ -105,12 +108,14 @@ func _on_interactable(body):
 	target = body
 
 func _on_stealing(picture):
+	is_stealing =  true
 	current_stealing_picture = picture
-	state_machine._change_state("stealing")	
+	state_machine._change_state("stealing")
 	
 func _on_stolen(is_final_goal):
 	var stolen_picture = current_stealing_picture
 	current_stealing_picture = null
+	is_stealing =  false
 	state_machine._change_state("idle")
 	if is_final_goal:
 		emit_signal("game_finished", stolen_picture, self)
