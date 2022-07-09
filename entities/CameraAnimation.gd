@@ -20,8 +20,11 @@ func _initialize():
 	camera.current = true
 
 func _set_camera_on(_position, zoom, followPlayer):
+	var tween_speed = 1
+	if followPlayer:
+		tween_speed = 0.5
 	tween.interpolate_property(camera, "zoom", camera.zoom, zoom, 1, Tween.TRANS_LINEAR)
-	tween.interpolate_property(camera, "position", camera.position, _position, 1)
+	tween.interpolate_property(camera, "position", camera.position, _position, tween_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
 	attach_camera_to_player = followPlayer
 	camera.drag_margin_h_enabled = followPlayer

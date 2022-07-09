@@ -28,9 +28,8 @@ func _on_SnapCamera_body_entered(body):
 func _on_SnapCamera_body_exited(body):
 	if body is Player:
 		var shape_extent_y = $CollisionShape2D.shape.get_extents().y * SCALE.y
-		if camera.limit_bottom >= (CAMERA_POSITION.y + shape_extent_y):
-			camera.limit_bottom = 640
-			
+#		if camera.limit_bottom >= (CAMERA_POSITION.y + shape_extent_y):
+#			camera.limit_bottom = 640
 		emit_signal("snapCamera", 
 					body.position, 
 					original_zoom,
