@@ -21,7 +21,7 @@ func init():
 	on.visible = true
 	off.visible = false
 
-func _interact():
+func _interact(_body):
 	camera._interact()
 	GameStats.add_switch(self)
 	on.visible = !on.visible

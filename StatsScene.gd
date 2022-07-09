@@ -24,3 +24,8 @@ func format_time(time) -> String:
 	var seconds = fmod(time, 60)
 	var milliseconds = fmod(time, 1) * 100
 	return "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
+
+
+func _on_Quit_pressed():
+	if get_tree().change_scene("res://Menu.tscn") != OK:
+		print ("Error al querer iniciar Menu.tscn")

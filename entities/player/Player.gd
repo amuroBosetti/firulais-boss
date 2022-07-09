@@ -93,7 +93,7 @@ func _physics_process(_delta):
 func _input(event):
 	if target != null and target.has_method('_interact') and not is_stealing:
 		if event.is_action_pressed("interact"):
-			target._interact()
+			target._interact(self)
 
 func _hang(ledge_position:Vector2, direction:int):
 	if current_state() == jump_down_state:

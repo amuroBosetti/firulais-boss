@@ -35,13 +35,14 @@ func _ready():
 	light.scale = LIGHT_SCALE
 	init()
 
-func _interact():
-	emit_signal("getting_stolen",self)
-	GameStats.add_stealable(self)
-	glow.visible = false
-	tween.interpolate_property(player, "global_position:x", player.global_position.x, global_position.x, 1)
-	tween.interpolate_property(picture, "modulate", picture.modulate, Color.black, STEAL_TIME)
-	tween.start()
+func _interact(body):
+	if body.is_on_floor():
+		emit_signal("getting_stolen",self)
+		GameStats.add_stealable(self)
+		glow.visible = false
+		tween.interpolate_property(player, "global_position:x", player.global_position.x, global_position.x, 1)
+		tween.interpolate_property(picture, "modulate", picture.modulate, Color.black, STEAL_TIME)
+		tween.start()
 
 func _on_Tween_tween_completed(_object, key):
 	if key == ":modulate":
