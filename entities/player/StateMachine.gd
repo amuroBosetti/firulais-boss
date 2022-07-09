@@ -10,7 +10,6 @@ func _ready():
 		"hang": $Hang,
 		"stealing": $Stealing
 	}
-
-
+	
 func _on_AnimationPlayer_animation_finished(anim_name):
 	_on_animation_finished(anim_name)

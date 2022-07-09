@@ -52,7 +52,7 @@ position = Vector2( 9, -13 )
 scale = Vector2( 0.75, 0.743671 )
 texture = ExtResource( 2 )
 hframes = 5
-frame = 4
+frame = 3
 
 [connection signal="body_entered" from="." to="." method="_on_Ledge_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Ledge_body_exited"]

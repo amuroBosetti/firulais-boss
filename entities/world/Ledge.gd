@@ -18,7 +18,7 @@ func _process(_delta):
 	if target != null:
 		if target.hanging_position.y > global_position.y \
 		and target.move_direction == direction:
-			target._hang($Position2D.global_position.y, direction)
+			target._hang($Position2D.global_position, direction)
 	if Engine.editor_hint:
 		$ColorRect.visible = true
 

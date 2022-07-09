@@ -16,6 +16,7 @@ func update(_delta:float):
 			emit_signal("finished", "walk")
 		else:
 			emit_signal("finished", "idle")
+			
 
 func _on_animation_finished(anim_name:String):
 	if anim_name == "jump_transition":

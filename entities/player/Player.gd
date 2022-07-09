@@ -20,6 +20,7 @@ onready var caught_state:Node = $StateMachine/Caught
 onready var jump_down_state:Node = $StateMachine/JumpDown
 onready var sfx:AudioStreamPlayer2D = $SFX
 onready var camera_manager = get_node(CAMERA_MANAGER)
+onready var on_jump_body:CollisionShape2D = $OnJumpBody
 
 var velocity:Vector2 = Vector2.ZERO
 var move_direction:int = 0
@@ -32,6 +33,7 @@ var current_stealing_picture = null
 var is_stealing = false
 
 func _ready():
+	on_jump_body.disabled = true
 	caught = false
 	is_stealing = false
 	state_machine.set_parent(self)
@@ -86,16 +88,22 @@ func _handle_move_input():
 
 func _physics_process(_delta):
 	hanging_position = $Position2D.global_position
+	on_jump_body.disabled = is_on_floor()
 
 func _input(event):
 	if target != null and target.has_method('_interact') and not is_stealing:
 		if event.is_action_pressed("interact"):
 			target._interact()
 
-func _hang(y_ledge:int, direction:int):
+func _hang(ledge_position:Vector2, direction:int):
 	if current_state() == jump_down_state:
 		hanging_direction = direction
-		global_position.y = y_ledge + 40 
+		global_position.y = ledge_position.y + 40 
+		if direction == 1:
+			global_position.x = ledge_position.x - 40
+		else:
+			global_position.x = ledge_position.x + 42
+
 		state_machine._change_state("hang")
 
 func play_animation(animation_name:String):
