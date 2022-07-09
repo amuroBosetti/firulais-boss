@@ -12,10 +12,9 @@ script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color( 0.545098, 0.545098, 0.545098, 1 )
-anchor_right = 0.175
-anchor_bottom = 0.327
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_top = 1.0
-margin_right = -1.52588e-05
-margin_bottom = -0.200012
+margin_bottom = 1.0
 expand = true
 stretch_mode = 3
