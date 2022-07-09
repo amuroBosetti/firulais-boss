@@ -13,6 +13,7 @@ func _ready():
 	texture_rect.texture = painting.texture
 	var scale_factor = original_size/texture_rect.texture.get_size()
 	self.rect_scale = scale_factor
+	print(rect_scale)
 	if painting.stolen:
 		self.set_modulate(Color("8b8b8b"))	
 

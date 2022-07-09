@@ -16,6 +16,9 @@ func _on_game_finished(stolen_picture, player):
 
 func get_all_stealable() -> Array: #Array<StealableModel>
 	var stealables = []
+	var counter = 1
 	for each in $Steleables.get_children():
+		each.id = counter
 		stealables.append(StealableModel.new(each))
+		counter += 1
 	return stealables
