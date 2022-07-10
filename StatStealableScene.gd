@@ -38,7 +38,14 @@ func get_rect_scale(size:Vector2):
 		return Vector2(scale, scale)
 
 func _on_TextureRect_mouse_entered():
-	emit_signal("mouse_entered_painting", "TEXTOOOO")
+	texture_rect.set_material(load("res://assets/shaders/outline.tres"))
+	var description:String
+	if painting.stolen:
+		description = painting.description
+	else:
+		description = "??????????"
+	emit_signal("mouse_entered_painting", description)
 
 func _on_TextureRect_mouse_exited():
+	texture_rect.set_material(load(""))
 	emit_signal("mouse_exited_painting")

@@ -1140,7 +1140,7 @@ CYCLETIME = 0
 SCALE_LENGTH = 3.4
 
 [node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( -896, 484 )
+position = Vector2( -792, 484 )
 z_index = 1
 collision_layer = 13
 collision_mask = 4
@@ -1377,6 +1377,7 @@ AREA_SCALE = 0.8
 AREA_POSITION = Vector2( 0, 70 )
 LIGHT_SCALE = Vector2( 1.3, 1.3 )
 STEAL_TIME = 3.0
+DESCRIPTION = "El Hijo del Hombre"
 
 [node name="Stealable-elJacker" parent="Steleables" instance=ExtResource( 35 )]
 position = Vector2( 5364, 432 )
@@ -1387,6 +1388,7 @@ AREA_SCALE = 0.8
 AREA_POSITION = Vector2( 0, 70 )
 LIGHT_SCALE = Vector2( 1.3, 1.3 )
 STEAL_TIME = 2.5
+DESCRIPTION = "El Hacker"
 
 [node name="Stealable-mountain" parent="Steleables" instance=ExtResource( 35 )]
 position = Vector2( 6045, 340 )
@@ -1396,6 +1398,7 @@ TEXTURE_SCALE = Vector2( 0.3, 0.3 )
 AREA_SCALE = 1.5
 AREA_POSITION = Vector2( 0, 60 )
 LIGHT_SCALE = Vector2( 4, 4 )
+DESCRIPTION = "Montaña"
 
 [node name="Stealable-juanBautista" parent="Steleables" instance=ExtResource( 35 )]
 position = Vector2( 9986, 115 )
@@ -1405,6 +1408,7 @@ TEXTURE_SCALE = Vector2( 0.25, 0.25 )
 AREA_SCALE = 0.8
 AREA_POSITION = Vector2( 0, 70 )
 LIGHT_SCALE = Vector2( 1.4, 1.4 )
+DESCRIPTION = "Juan Bautista"
 
 [node name="Stealable-richter" parent="Steleables" instance=ExtResource( 35 )]
 position = Vector2( 11645, -1489 )
@@ -1414,6 +1418,7 @@ TEXTURE_SCALE = Vector2( 0.33, 0.33 )
 AREA_SCALE = 0.8
 AREA_POSITION = Vector2( 0, 70 )
 LIGHT_SCALE = Vector2( 0, 0 )
+DESCRIPTION = "Richter Belmont"
 
 [node name="Stealable-fogataDeSanJuan" parent="Steleables" instance=ExtResource( 35 )]
 position = Vector2( 11414, -190 )
@@ -1424,6 +1429,7 @@ AREA_SCALE = 0.95
 AREA_POSITION = Vector2( 0, 70 )
 LIGHT_SCALE = Vector2( 1.8, 1.5 )
 STEAL_TIME = 2.5
+DESCRIPTION = "Fogata de San Juan"
 
 [node name="Stealable-final" parent="Steleables" instance=ExtResource( 35 )]
 position = Vector2( 14351, 298 )
@@ -1435,6 +1441,7 @@ AREA_POSITION = Vector2( 0, 50 )
 LIGHT_SCALE = Vector2( 3, 3 )
 STEAL_TIME = 1.0
 IS_FINAL_GOAL = true
+DESCRIPTION = "Familia Real"
 
 [node name="FakeWalls" type="Node" parent="."]
 

@@ -6,6 +6,7 @@ onready var canvas_layer = $CanvasLayer
 onready var grid_container:GridContainer = $CanvasLayer/GridContainer
 onready var credits_color_rect:ColorRect = $Credits/CanvasLayer2/ColorRect2
 onready var credits:CenterContainer = $Credits/CanvasLayer2/CenterContainer
+onready var description = $CanvasLayer/PaintDescription
 onready var tween:Tween = $Tween
 onready var credits_spawn_position:Vector2
 
@@ -72,10 +73,10 @@ func _on_Tween_tween_completed(object, key):
 		init_credits()
 
 func mouse_hover_on(text:String):
-	print(text)
+	description.text = text
 
 func mouse_hover_off():
-	print("off")
+	description.text = ""
 
 func conect_grid_children():
 	for each in grid_container.get_children():
