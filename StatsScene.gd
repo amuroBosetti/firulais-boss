@@ -4,10 +4,17 @@ onready var time_label = $CanvasLayer/Time
 onready var title_label = $CanvasLayer/Title
 onready var canvas_layer = $CanvasLayer
 onready var grid_container:GridContainer = $GridContainer
+onready var credits_color_rect:ColorRect = $Credits/CanvasLayer2/ColorRect 
+onready var credits:CenterContainer = $Credits/CanvasLayer2/CenterContainer
+onready var tween:Tween = $Tween
+
+
 var stealable_scene = load("res://StatStealableScene.tscn")
 
 func _ready():
 	var time = GameStats.time
+	credits_color_rect.visible = false
+	credits.visible = false
 	time_label.text = "TIEMPO: %s" % format_time(time)
 	title_label.text = "TITULO: %s" % get_title()
 	var stealable_instances:Array = []
@@ -34,5 +41,7 @@ func _on_Quit_pressed():
 		print ("Error al querer iniciar Menu.tscn")
 
 func _on_Credits_pressed():
-	print("ir a creditos")
-	pass # Replace with function body.
+	credits_color_rect.visible = true
+	credits.visible = true
+	tween.interpolate_property(credits, "rect_position:y", credits.rect_position.y, -700, 15)
+	tween.start()
