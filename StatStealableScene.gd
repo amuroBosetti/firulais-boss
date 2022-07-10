@@ -1,5 +1,7 @@
 extends Control
 
+export (Vector2) var FRAME_SIZE:Vector2 = Vector2(120,120)
+
 onready var texture_rect:TextureRect = $TextureRect
 
 var starting_position:Vector2
@@ -8,17 +10,25 @@ var painting:StealableModel
 var index:int
 
 func _ready():
-	var original_size = rect_size
-	texture_rect.rect_min_size = original_size
+	var size_y
 	texture_rect.texture = painting.texture
-	var scale_factor = original_size/texture_rect.texture.get_size()
-	texture_rect.rect_scale = scale_factor
-	if painting.stolen:
-		self.set_modulate(Color("8b8b8b"))	
+	texture_rect.rect_scale = get_rect_scale(texture_rect.texture.get_size())
+	size_y = texture_rect.rect_scale.y * texture_rect.texture.get_size().y
+	if size_y < FRAME_SIZE.y:
+		texture_rect.rect_pivot_offset.y = (120 - size_y) / 2
+	if not painting.stolen:
+		self.set_modulate(Color("8b8b8b"))
 
-func initialize(stealable:StealableModel, rest:Array, position:Vector2, index:int):
-	starting_position = position
+func initialize(stealable:StealableModel, rest:Array, index:int):
 	painting = stealable
 	siblings = rest
 	index = index
 	
+func get_rect_scale(size:Vector2):
+	var scale: float
+	if size.x > size.y:
+		scale = FRAME_SIZE.x / size.x
+		return Vector2(scale, scale)
+	else:
+		scale = FRAME_SIZE.y / size.y
+		return Vector2(scale, scale)

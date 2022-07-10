@@ -8,7 +8,7 @@ size = 80
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 40
+size = 30
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -22,26 +22,42 @@ script = ExtResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="RoboExitoso" type="Label" parent="CanvasLayer"]
+[node name="Header" type="Label" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -279.0
 margin_right = 288.0
 margin_bottom = 145.0
+rect_pivot_offset = Vector2( -250, -65 )
 custom_fonts/font = SubResource( 1 )
 text = "GRACIAS POR JUGAR"
 align = 1
 max_lines_visible = 1
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -164.0
+margin_right = 341.0
+margin_bottom = -91.0
+rect_pivot_offset = Vector2( -267, -203 )
+custom_fonts/font = SubResource( 2 )
+text = "titulo:placeholder"
+align = 1
 
 [node name="Time" type="Label" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -401.0
-margin_top = -138.0
-margin_right = -28.0
-margin_bottom = -65.0
+margin_left = -378.0
+margin_top = -164.0
+margin_right = -5.0
+margin_bottom = -91.0
+rect_pivot_offset = Vector2( -267, -203 )
 custom_fonts/font = SubResource( 2 )
 text = "Tiempo: placeholder"
 align = 1
@@ -49,24 +65,37 @@ align = 1
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="StartingPosition" type="Position2D" parent="."]
-position = Vector2( 173, 388 )
+color = Color( 0.396078, 0.415686, 0.470588, 1 )
 
 [node name="GridContainer" type="GridContainer" parent="."]
-margin_left = 163.0
-margin_top = 300.0
-margin_right = 962.0
-margin_bottom = 523.0
-columns = 4
+margin_left = 20.0
+margin_top = 225.0
+margin_right = 1065.0
+margin_bottom = 448.0
+custom_constants/vseparation = 15
+custom_constants/hseparation = 15
+columns = 8
 
-[node name="Quit" type="Button" parent="."]
-margin_left = 799.0
-margin_top = 175.0
-margin_right = 942.0
-margin_bottom = 221.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 367.0
+margin_top = 517.0
+margin_right = 729.0
+margin_bottom = 563.0
+alignment = 1
+
+[node name="Credits" type="Button" parent="HBoxContainer"]
+margin_left = 47.0
+margin_right = 169.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 3 )
+text = "Ver creditos"
+
+[node name="Quit" type="Button" parent="HBoxContainer"]
+margin_left = 173.0
+margin_right = 315.0
+margin_bottom = 46.0
 custom_fonts/font = SubResource( 3 )
 text = "Volver al menu"
 
-[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="HBoxContainer/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="HBoxContainer/Quit" to="." method="_on_Quit_pressed"]

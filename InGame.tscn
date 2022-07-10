@@ -1140,7 +1140,7 @@ CYCLETIME = 0
 SCALE_LENGTH = 3.4
 
 [node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( -782, 486 )
+position = Vector2( -790, 487 )
 z_index = 1
 collision_layer = 13
 collision_mask = 4
@@ -1213,7 +1213,7 @@ position = Vector2( 11224, -1442 )
 CAMERA = NodePath("../CCTV-lvl-2-A")
 
 [node name="CCTV-lvl-3-A" parent="CCTV" instance=ExtResource( 13 )]
-position = Vector2( 14358, 124 )
+position = Vector2( 14351, 119 )
 WAIT_TIME = 2.0
 
 [node name="Switch-lvl-3-A" parent="CCTV" instance=ExtResource( 17 )]
