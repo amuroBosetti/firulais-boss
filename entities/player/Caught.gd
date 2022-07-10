@@ -6,6 +6,7 @@ func enter():
 	parent._respawn()
 	
 func update(_delta:float):
+	parent.on_jump_body.disabled = true
 	parent._apply_movement()
 	parent._handle_deacceleration()
 	

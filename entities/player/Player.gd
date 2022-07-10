@@ -88,7 +88,6 @@ func _handle_move_input():
 
 func _physics_process(_delta):
 	hanging_position = $Position2D.global_position
-	on_jump_body.disabled = is_on_floor()
 
 func _input(event):
 	if target != null and target.has_method('_interact') and not is_stealing:

@@ -11,6 +11,7 @@ func handle_input(event:InputEvent):
 		emit_signal("finished", "jump_up")
 
 func update(_delta:float):
+	parent.on_jump_body.disabled = true
 	if Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right"):
 		emit_signal("finished", "walk")
 	parent._handle_deacceleration()

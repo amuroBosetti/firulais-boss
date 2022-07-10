@@ -7,6 +7,7 @@ func enter():
 	parent.play_animation("jump_up")
 
 func update(_delta:float):
+	parent.on_jump_body.disabled = false
 	parent._handle_move_input()
 	parent.velocity.y = -parent.JUMP_SPEED
 	

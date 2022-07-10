@@ -8,6 +8,7 @@ func handle_input(event:InputEvent):
 		emit_signal("finished", "jump_up")
 
 func update(_delta:float):
+	parent.on_jump_body.disabled = true
 	parent._handle_move_input()
 	parent._apply_movement()
 	if parent.move_direction == 0:

@@ -9,6 +9,7 @@ func update(delta):
 		parent.play_animation("hang")
 
 func handle_input(event:InputEvent):
+	parent.on_jump_body.disabled = false
 	if event.is_action_pressed("jump"):
 		emit_signal("finished", "jump_up")
 	if event.is_action_pressed("crouch"):

@@ -4,6 +4,7 @@ func enter():
 	parent.play_animation("jump_transition")
 	
 func update(_delta:float):
+	parent.on_jump_body.disabled = false
 	parent._handle_move_input()
 
 	if parent.move_direction == 0:
