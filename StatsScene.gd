@@ -27,9 +27,9 @@ func _ready():
 		index += 1
 	var time = GameStats.time
 	time_label.text = "TIEMPO: %s" % format_time(time)
-	title_label.text = "TITULO: %s" % get_title()
-
-
+	title_label.text = "RANGO: %s" % get_title()
+	conect_grid_children()
+	
 func format_time(time) -> String:
 	var minutes = time / 60
 	var seconds = fmod(time, 60)
@@ -70,3 +70,14 @@ func _on_Tween_tween_completed(object, key):
 	if object == credits and key == ":rect_position:y":
 		yield(get_tree().create_timer(2), "timeout")
 		init_credits()
+
+func mouse_hover_on(text:String):
+	print(text)
+
+func mouse_hover_off():
+	print("off")
+
+func conect_grid_children():
+	for each in grid_container.get_children():
+		each.connect("mouse_entered_painting", self, "mouse_hover_on") 
+		each.connect("mouse_exited_painting", self, "mouse_hover_off") 

@@ -56,7 +56,7 @@ margin_right = 341.0
 margin_bottom = -91.0
 rect_pivot_offset = Vector2( -267, -203 )
 custom_fonts/font = SubResource( 2 )
-text = "titulo:placeholder"
+text = "Rango: placeholder"
 align = 1
 
 [node name="Time" type="Label" parent="CanvasLayer"]

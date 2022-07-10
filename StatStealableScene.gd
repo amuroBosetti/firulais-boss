@@ -1,5 +1,8 @@
 extends Control
 
+signal mouse_entered_painting
+signal mouse_exited_painting
+
 export (Vector2) var FRAME_SIZE:Vector2 = Vector2(120,120)
 
 onready var texture_rect:TextureRect = $TextureRect
@@ -12,6 +15,7 @@ var index:int
 func _ready():
 	var size_y
 	texture_rect.texture = painting.texture
+	texture_rect.rect_size = texture_rect.texture.get_size()
 	texture_rect.rect_scale = get_rect_scale(texture_rect.texture.get_size())
 	size_y = texture_rect.rect_scale.y * texture_rect.texture.get_size().y
 	if size_y < FRAME_SIZE.y:
@@ -32,3 +36,9 @@ func get_rect_scale(size:Vector2):
 	else:
 		scale = FRAME_SIZE.y / size.y
 		return Vector2(scale, scale)
+
+func _on_TextureRect_mouse_entered():
+	emit_signal("mouse_entered_painting", "TEXTOOOO")
+
+func _on_TextureRect_mouse_exited():
+	emit_signal("mouse_exited_painting")

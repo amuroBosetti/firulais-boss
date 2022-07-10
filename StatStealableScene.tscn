@@ -10,3 +10,6 @@ script = ExtResource( 2 )
 [node name="TextureRect" type="TextureRect" parent="."]
 expand = true
 stretch_mode = 3
+
+[connection signal="mouse_entered" from="TextureRect" to="." method="_on_TextureRect_mouse_entered"]
+[connection signal="mouse_exited" from="TextureRect" to="." method="_on_TextureRect_mouse_exited"]
