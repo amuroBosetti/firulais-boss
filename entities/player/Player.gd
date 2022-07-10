@@ -21,6 +21,7 @@ onready var jump_down_state:Node = $StateMachine/JumpDown
 onready var sfx:AudioStreamPlayer2D = $SFX
 onready var camera_manager = get_node(CAMERA_MANAGER)
 onready var on_jump_body:CollisionShape2D = $OnJumpBody
+onready var stealing_state = $StateMachine/Stealing
 
 var velocity:Vector2 = Vector2.ZERO
 var move_direction:int = 0
@@ -90,7 +91,7 @@ func _physics_process(_delta):
 	hanging_position = $Position2D.global_position
 
 func _input(event):
-	if target != null and target.has_method('_interact') and not is_stealing:
+	if target != null and target.has_method('_interact') and not is_stealing and not caught:
 		if event.is_action_pressed("interact"):
 			target._interact(self)
 
@@ -120,9 +121,10 @@ func _on_stealing(picture):
 	state_machine._change_state("stealing")
 	
 func _on_stolen(is_final_goal):
-	var stolen_picture = current_stealing_picture
-	current_stealing_picture = null
-	is_stealing =  false
-	state_machine._change_state("idle")
-	if is_final_goal:
-		emit_signal("game_finished", stolen_picture, self)
+	if current_state() == stealing_state:
+		var stolen_picture = current_stealing_picture
+		current_stealing_picture = null
+		is_stealing =  false
+		state_machine._change_state("idle")
+		if is_final_goal:
+			emit_signal("game_finished", stolen_picture, self)

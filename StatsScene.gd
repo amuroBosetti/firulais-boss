@@ -1,12 +1,14 @@
 extends Control
 
-onready var time_label = $CanvasLayer/Time
-onready var title_label = $CanvasLayer/Title
-onready var canvas_layer = $CanvasLayer
-onready var grid_container:GridContainer = $CanvasLayer/GridContainer
-onready var credits_color_rect:ColorRect = $Credits/CanvasLayer2/ColorRect2
-onready var credits:CenterContainer = $Credits/CanvasLayer2/CenterContainer
-onready var description = $CanvasLayer/PaintDescription
+onready var time_label = $Stats/Time
+onready var title_label = $Stats/Title
+onready var stats_canvas = $Stats
+onready var credits_canvas = $Credits
+onready var description = $Stats/PaintDescription
+onready var grid_container:GridContainer = $Stats/GridContainer
+onready var credits_color_rect:ColorRect = $Credits/ColorRect2
+onready var credits:CenterContainer = $Credits/CenterContainer
+
 onready var tween:Tween = $Tween
 onready var credits_spawn_position:Vector2
 
@@ -53,8 +55,10 @@ func get_title():
 		return "Lo importante es divertirse"
 		
 func init_credits():
-	credits_color_rect.visible = false
-	credits.visible = false
+	for each in stats_canvas.get_children():
+		each.visible = true
+	for each in credits_canvas.get_children():
+		each.visible = false
 	credits.rect_position = credits_spawn_position
 
 func _on_Quit_pressed():
@@ -62,14 +66,16 @@ func _on_Quit_pressed():
 		print ("Error al querer iniciar Menu.tscn")
 
 func _on_Credits_pressed():
-	credits_color_rect.visible = true
-	credits.visible = true
-	tween.interpolate_property(credits, "rect_position:y", credits.rect_position.y, -660, 15)
+	for each in stats_canvas.get_children():
+		each.visible = false
+	for each in credits_canvas.get_children():
+		each.visible = true
+	tween.interpolate_property(credits, "rect_position:y", credits.rect_position.y, -960, 20)
 	tween.start()
 
 func _on_Tween_tween_completed(object, key):
 	if object == credits and key == ":rect_position:y":
-		yield(get_tree().create_timer(2), "timeout")
+		yield(get_tree().create_timer(3), "timeout")
 		init_credits()
 
 func mouse_hover_on(text:String):

@@ -47,5 +47,5 @@ func _on_TextureRect_mouse_entered():
 	emit_signal("mouse_entered_painting", description)
 
 func _on_TextureRect_mouse_exited():
-	texture_rect.set_material(load(""))
+	texture_rect.set_material(null)
 	emit_signal("mouse_exited_painting")
