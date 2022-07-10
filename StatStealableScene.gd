@@ -17,7 +17,7 @@ func _ready():
 	if size_y < FRAME_SIZE.y:
 		texture_rect.rect_pivot_offset.y = (120 - size_y) / 2
 	if not painting.stolen:
-		self.set_modulate(Color("8b8b8b"))
+		texture_rect.modulate = Color("151313")
 
 func initialize(stealable:StealableModel, rest:Array, index:int):
 	painting = stealable

@@ -1140,7 +1140,7 @@ CYCLETIME = 0
 SCALE_LENGTH = 3.4
 
 [node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( -790, 487 )
+position = Vector2( -784, 484 )
 z_index = 1
 collision_layer = 13
 collision_mask = 4
@@ -1213,7 +1213,7 @@ position = Vector2( 11224, -1442 )
 CAMERA = NodePath("../CCTV-lvl-2-A")
 
 [node name="CCTV-lvl-3-A" parent="CCTV" instance=ExtResource( 13 )]
-position = Vector2( 14351, 119 )
+position = Vector2( 14347, 123 )
 WAIT_TIME = 2.0
 
 [node name="Switch-lvl-3-A" parent="CCTV" instance=ExtResource( 17 )]
@@ -1433,7 +1433,7 @@ TEXTURE_SCALE = Vector2( 0.6, 0.6 )
 AREA_SCALE = 1.5
 AREA_POSITION = Vector2( 0, 50 )
 LIGHT_SCALE = Vector2( 3, 3 )
-STEAL_TIME = 3.0
+STEAL_TIME = 1.0
 IS_FINAL_GOAL = true
 
 [node name="FakeWalls" type="Node" parent="."]
