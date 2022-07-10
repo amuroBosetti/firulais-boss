@@ -22,4 +22,5 @@ func steal():
 
 func reset():
 	temporary_stolen = stolen
-	stealable.reset()
+	if not stolen:
+		stealable.reset()
