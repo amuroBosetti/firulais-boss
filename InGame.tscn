@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://entities/enemies/TimerLasers.gd" type="Script" id=1]
 [ext_resource path="res://entities/Music.gd" type="Script" id=2]
@@ -55,6 +55,8 @@
 [ext_resource path="res://assets/textures/fogataDeSanJuanDoodle.png" type="Texture" id=53]
 [ext_resource path="res://assets/textures/fogataDeSanJuan.png" type="Texture" id=54]
 [ext_resource path="res://assets/textures/wayfinding2.png" type="Texture" id=55]
+[ext_resource path="res://assets/textures/videoGamesDoodle.png" type="Texture" id=56]
+[ext_resource path="res://assets/textures/videoGames.png" type="Texture" id=57]
 
 [sub_resource type="DynamicFont" id=24]
 size = 50
@@ -537,9 +539,9 @@ shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
 shadow_item_cull_mask = 48
 
 [node name="Light-intro-wayfinder-B" type="Light2D" parent="Light"]
-position = Vector2( 1562, 433 )
+position = Vector2( 1565, 437 )
 rotation = 1.5708
-scale = Vector2( 0.929248, 1.57776 )
+scale = Vector2( 0.78169, 1.57776 )
 texture = ExtResource( 32 )
 color = Color( 1, 1, 1, 0.47451 )
 energy = 2.0
@@ -732,8 +734,8 @@ z_index = 1
 texture = ExtResource( 34 )
 
 [node name="Wayfinder-intro-B" type="Sprite" parent="Environment/wayfinders"]
-position = Vector2( 1564.33, 420 )
-scale = Vector2( 0.744444, 0.744444 )
+position = Vector2( 1563, 438 )
+scale = Vector2( 0.638887, 0.627778 )
 z_index = 1
 texture = ExtResource( 55 )
 
@@ -871,11 +873,13 @@ scale = Vector2( 1.5, 1 )
 ZOOM = 1.3
 
 [node name="Zoom-lvl-2-A2" parent="CameraManager" instance=ExtResource( 24 )]
-position = Vector2( 11170, -1116 )
+position = Vector2( 10940, -889 )
+scale = Vector2( 1, 3 )
 ZOOM = 1.3
 
 [node name="Zoom-lvl-2-B" parent="CameraManager" instance=ExtResource( 24 )]
-position = Vector2( 11261, -1119 )
+position = Vector2( 11305, -899 )
+scale = Vector2( 1, 2.5 )
 ZOOM = 2.5
 
 [node name="Zoom-lvl-2-C" parent="CameraManager" instance=ExtResource( 24 )]
@@ -1117,7 +1121,8 @@ autostart = true
 script = ExtResource( 1 )
 
 [node name="LaserH" parent="Lasers/Lasers-lvl-2/Lasers-lvl-2-B" instance=ExtResource( 21 )]
-position = Vector2( 11817, -373 )
+position = Vector2( 11806, -365 )
+rotation = -0.328122
 CYCLETIME = 2
 SCALE_LENGTH = 2.7
 
@@ -1164,7 +1169,7 @@ CYCLETIME = 0
 SCALE_LENGTH = 3.4
 
 [node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( 11097, -1453 )
+position = Vector2( -816, 484 )
 z_index = 1
 collision_layer = 13
 collision_mask = 4
@@ -1190,6 +1195,10 @@ scale = Vector2( 1, 1 )
 
 [node name="Vase-lvl-1-C" parent="Vases" instance=ExtResource( 18 )]
 position = Vector2( 7259, -9 )
+scale = Vector2( 1, 1 )
+
+[node name="Vase-lvl-2-A" parent="Vases" instance=ExtResource( 18 )]
+position = Vector2( 10845, -586 )
 scale = Vector2( 1, 1 )
 
 [node name="Vase-lvl-3-A" parent="Vases" instance=ExtResource( 18 )]
@@ -1393,13 +1402,13 @@ PRESS_DIRECTION = "Left"
 [node name="Steleables" type="Node" parent="."]
 
 [node name="Stealable-theSonOfMan" parent="Steleables" instance=ExtResource( 35 )]
-position = Vector2( 1740, 435 )
+position = Vector2( 1750, 430 )
 PICTURE = ExtResource( 43 )
 DOODLE = ExtResource( 44 )
 TEXTURE_SCALE = Vector2( 0.6, 0.6 )
 AREA_SCALE = 0.8
 AREA_POSITION = Vector2( 0, 70 )
-LIGHT_SCALE = Vector2( 1.3, 1.3 )
+LIGHT_SCALE = Vector2( 1.4, 1.5 )
 STEAL_TIME = 3.0
 DESCRIPTION = "Título: El Hijo del Hombre
 Creada en 1964 por el pintor surrealista de nacionalidad belga René Magritte."
@@ -1448,6 +1457,18 @@ AREA_POSITION = Vector2( 0, 70 )
 LIGHT_SCALE = Vector2( 0, 0 )
 DESCRIPTION = "Título: Una Miserable Pila de Secretos
 Castlevania Symphony of the Night fue publicado en 1997 en la consola playstation."
+
+[node name="Stealable-videoGames" parent="Steleables" instance=ExtResource( 35 )]
+position = Vector2( 10587, -670 )
+PICTURE = ExtResource( 57 )
+DOODLE = ExtResource( 56 )
+TEXTURE_SCALE = Vector2( 0.2, 0.2 )
+AREA_SCALE = 0.95
+AREA_POSITION = Vector2( 0, 70 )
+LIGHT_SCALE = Vector2( 1.8, 1.5 )
+STEAL_TIME = 2.5
+DESCRIPTION = "Título: Marquesina de Arcade
+Ana María Malagamba fue la artista argentina autora de las más icónicas marquesinas de arcade durante los 80 y 90."
 
 [node name="Stealable-fogataDeSanJuan" parent="Steleables" instance=ExtResource( 35 )]
 position = Vector2( 11414, -190 )
@@ -1536,6 +1557,9 @@ scale = Vector2( 2.5, 1.5 )
 [connection signal="getting_stolen" from="Steleables/Stealable-richter" to="Player" method="_on_stealing"]
 [connection signal="interactable" from="Steleables/Stealable-richter" to="Player" method="_on_interactable"]
 [connection signal="stolen" from="Steleables/Stealable-richter" to="Player" method="_on_stolen"]
+[connection signal="getting_stolen" from="Steleables/Stealable-videoGames" to="Player" method="_on_stealing"]
+[connection signal="interactable" from="Steleables/Stealable-videoGames" to="Player" method="_on_interactable"]
+[connection signal="stolen" from="Steleables/Stealable-videoGames" to="Player" method="_on_stolen"]
 [connection signal="getting_stolen" from="Steleables/Stealable-fogataDeSanJuan" to="Player" method="_on_stealing"]
 [connection signal="interactable" from="Steleables/Stealable-fogataDeSanJuan" to="Player" method="_on_interactable"]
 [connection signal="stolen" from="Steleables/Stealable-fogataDeSanJuan" to="Player" method="_on_stolen"]

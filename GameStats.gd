@@ -49,9 +49,3 @@ func get_stealable_by_id(id:String): # -> StealableModel
 		if each.id == id:
 			return each
 	printerr("No se encontro un robable con el id buscado")
-	
-func set_paint_text(text:String):
-	print("AAAAH")
-
-func delete_paint_text():
-	print("OOOOH")

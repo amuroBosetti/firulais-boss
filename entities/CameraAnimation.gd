@@ -7,6 +7,7 @@ onready var attach_camera_to_player : bool = true
 onready var fade:Node = $CameraFade
 onready var warningFade:ColorRect = $CameraFade/CanvasLayer/ColorRect
 onready var final_fade:Node = $FinalCameraFade
+onready var music:AudioStreamPlayer = get_parent().get_node('Music')
 
 var zoom_before_detection:Vector2
 var position_before_detection:Vector2
@@ -71,4 +72,6 @@ func _on_player_got_away():
 
 
 func _on_game_finished(stolen_picture, player):
+	tween.interpolate_property(music, "volume_db", music.volume_db, -5, 1)
+	tween.start()
 	final_fade.fade_out(player)

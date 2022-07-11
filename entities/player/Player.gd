@@ -124,7 +124,7 @@ func _on_stolen(is_final_goal):
 	if current_state() == stealing_state:
 		var stolen_picture = current_stealing_picture
 		current_stealing_picture = null
-		is_stealing =  false
+		is_stealing = false
 		state_machine._change_state("idle")
 		if is_final_goal:
 			emit_signal("game_finished", stolen_picture, self)

@@ -7,5 +7,5 @@ onready var tween:Tween = $Tween
 
 func _on_Zoom_body_entered(body):
 	if body is Player:
-		tween.interpolate_property(camera, "zoom", camera.zoom, Vector2(ZOOM,ZOOM), 1, Tween.TRANS_LINEAR)
+		tween.interpolate_property(camera, "zoom", camera.zoom, Vector2(ZOOM,ZOOM), 1, 1)
 		tween.start()

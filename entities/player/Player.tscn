@@ -64,7 +64,7 @@ shader_param/line_thickness = 1.0
 extents = Vector2( 20, 88.5 )
 
 [sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 27.9999, 40.0001 )
+extents = Vector2( 27.9999, 40 )
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 40, 90 )
@@ -281,7 +281,7 @@ position = Vector2( -4, 1.5 )
 shape = SubResource( 1 )
 
 [node name="Head" type="CollisionShape2D" parent="."]
-position = Vector2( -0.999997, -62 )
+position = Vector2( -0.99997, -62 )
 rotation = 1.5708
 shape = SubResource( 14 )
 
