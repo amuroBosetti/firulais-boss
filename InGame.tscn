@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://entities/enemies/TimerLasers.gd" type="Script" id=1]
 [ext_resource path="res://entities/Music.gd" type="Script" id=2]
@@ -54,6 +54,7 @@
 [ext_resource path="res://entities/world/ChangeBackground.tscn" type="PackedScene" id=52]
 [ext_resource path="res://assets/textures/fogataDeSanJuanDoodle.png" type="Texture" id=53]
 [ext_resource path="res://assets/textures/fogataDeSanJuan.png" type="Texture" id=54]
+[ext_resource path="res://assets/textures/wayfinding2.png" type="Texture" id=55]
 
 [sub_resource type="DynamicFont" id=24]
 size = 50
@@ -360,6 +361,9 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [node name="InGame" type="Node"]
 script = ExtResource( 10 )
+__meta__ = {
+"_edit_vertical_guides_": [ 12575.0 ]
+}
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 script = ExtResource( 2 )
@@ -533,6 +537,20 @@ shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
 shadow_item_cull_mask = 48
 
 [node name="Light-intro-wayfinder-B" type="Light2D" parent="Light"]
+position = Vector2( 1562, 433 )
+rotation = 1.5708
+scale = Vector2( 0.929248, 1.57776 )
+texture = ExtResource( 32 )
+color = Color( 1, 1, 1, 0.47451 )
+energy = 2.0
+range_layer_min = -1
+range_layer_max = 1
+range_item_cull_mask = 17
+shadow_enabled = true
+shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
+shadow_item_cull_mask = 48
+
+[node name="Light-intro-wayfinder-C" type="Light2D" parent="Light"]
 position = Vector2( 3944.02, 413.613 )
 rotation = 1.5708
 scale = Vector2( 1.73555, 1.75872 )
@@ -714,6 +732,12 @@ z_index = 1
 texture = ExtResource( 34 )
 
 [node name="Wayfinder-intro-B" type="Sprite" parent="Environment/wayfinders"]
+position = Vector2( 1564.33, 420 )
+scale = Vector2( 0.744444, 0.744444 )
+z_index = 1
+texture = ExtResource( 55 )
+
+[node name="Wayfinder-intro-C" type="Sprite" parent="Environment/wayfinders"]
 position = Vector2( -3557, -1813 )
 z_index = 1
 texture = ExtResource( 34 )
@@ -1140,7 +1164,7 @@ CYCLETIME = 0
 SCALE_LENGTH = 3.4
 
 [node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( -792, 484 )
+position = Vector2( 11097, -1453 )
 z_index = 1
 collision_layer = 13
 collision_mask = 4
