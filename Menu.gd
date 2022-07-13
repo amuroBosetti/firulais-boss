@@ -14,12 +14,23 @@ onready var music_player:AudioStreamPlayer = $Music
 onready var tween:Tween = $Tween
 onready var sprite:Sprite = $Sprite
 onready var haskell_sfx:AudioStream = load("res://assets/audio/haskell.ogg")
+onready var background_tween:Tween = $BackgroundTween
+onready var background1:Sprite = $Background
+onready var background1_upper_limit:Position2D = $Background/UpperLimit
+onready var background1_lower_limit:Position2D = $Background/LowerLimit
+onready var background2:Sprite = $Background2
+onready var background2_upper_limit:Position2D = $Background2/UpperLimit
+onready var background2_lower_limit:Position2D = $Background2/LowerLimit
+onready var background3:Sprite = $Background3
+onready var background3_upper_limit:Position2D = $Background3/UpperLimit
+onready var background3_lower_limit:Position2D = $Background3/LowerLimit
 
 var options:Array 
 var index = 0
 var selected_already = false
 var firulais_code:Array = ["F","I","R","U","L","A","I","S"]
 var input_tmp:Array = []
+var movement_vector = Vector2(0.868023, -0.496524)
 
 func _ready():
 	_init_colors()
@@ -29,6 +40,10 @@ func _ready():
 	music_player.stream = MENU_MUSIC
 	#music_player.volume_db = music_player.volume_db -2
 	music_player.play()
+	set_up_initial_limits()
+	
+func _physics_process(delta):
+	move_background(delta)
 
 func _input(event):
 	check_code(event)
@@ -106,3 +121,22 @@ func haskell():
 	tween.remove(sprite)
 	tween.interpolate_property(sprite, "position:x", sprite.position.x, sprite.position.x + 80, 0.3)
 	tween.start()
+	
+func move_background(delta):
+	if background1.position > background1_upper_limit.position:
+		background1.position = background1_lower_limit.position
+	if background2.position < background2_upper_limit.position:
+		background2.position = background2_lower_limit.position
+	if background3.position < background3_upper_limit.position:
+		background3.position = background3_lower_limit.position
+	background1.position += movement_vector * delta * 600
+	background2.position -= movement_vector * delta * 600
+	background3.position -= movement_vector * delta * 600
+
+func set_up_initial_limits():
+	background1_upper_limit.position = background1.position + (movement_vector * 1000)
+	background1_lower_limit.position = background1.position - (movement_vector * 1000)
+	background2_upper_limit.position = background2.position - (movement_vector * 1000)
+	background2_lower_limit.position = background2.position + (movement_vector * 1000)
+	background3_upper_limit.position = background3.position - (movement_vector * 1000)
+	background3_lower_limit.position = background3.position + (movement_vector * 1000)

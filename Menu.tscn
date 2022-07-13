@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/Koulen-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/audio/optionSelect.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/audio/menu.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/textures/haskell.png" type="Texture" id=8]
+[ext_resource path="res://assets/textures/inicio.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
@@ -27,11 +28,47 @@ margin_right = 1091.0
 margin_bottom = 599.0
 color = Color( 0.223529, 0.294118, 0.290196, 1 )
 
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 513, 354 )
+rotation = -0.523599
+scale = Vector2( 0.561985, 0.561985 )
+texture = ExtResource( 9 )
+
+[node name="UpperLimit" type="Position2D" parent="Background"]
+position = Vector2( 1391.02, -243.524 )
+rotation = 0.523599
+scale = Vector2( 1.77941, 1.77941 )
+
+[node name="LowerLimit" type="Position2D" parent="Background"]
+position = Vector2( -1510.38, -85.0778 )
+rotation = 0.523599
+scale = Vector2( 1.77941, 1.77941 )
+
+[node name="Background2" type="Sprite" parent="."]
+position = Vector2( 446, -50 )
+rotation = -0.523599
+scale = Vector2( 0.561985, 0.561985 )
+texture = ExtResource( 9 )
+
+[node name="UpperLimit" type="Position2D" parent="Background2"]
+
+[node name="LowerLimit" type="Position2D" parent="Background2"]
+
+[node name="Background3" type="Sprite" parent="."]
+position = Vector2( 1000, 487 )
+rotation = -0.523599
+scale = Vector2( 0.561985, 0.561985 )
+texture = ExtResource( 9 )
+
+[node name="UpperLimit" type="Position2D" parent="Background3"]
+
+[node name="LowerLimit" type="Position2D" parent="Background3"]
+
 [node name="Titulo" type="Label" parent="."]
-margin_left = 441.0
-margin_top = 124.0
-margin_right = 645.0
-margin_bottom = 179.0
+margin_left = 52.0
+margin_top = 432.0
+margin_right = 401.0
+margin_bottom = 508.0
 custom_colors/font_color = Color( 0.94902, 0.917647, 0.917647, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -80,6 +117,8 @@ color = Color( 0.00784314, 0.00784314, 0.00784314, 1 )
 position = Vector2( 1125, 552 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 8 )
+
+[node name="BackgroundTween" type="Tween" parent="."]
 
 [connection signal="gui_input" from="Start" to="Start" method="_on_Start_gui_input"]
 [connection signal="mouse_entered" from="Start" to="." method="_on_Start_mouse_entered"]
