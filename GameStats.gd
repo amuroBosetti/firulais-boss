@@ -12,6 +12,7 @@ func _ready():
 	time = 0.0
 	
 func initialize(stealeables):
+	time = 0.0
 	all_stealable = stealeables
 
 func reset():

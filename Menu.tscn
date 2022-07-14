@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/Koulen-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu.gd" type="Script" id=2]
@@ -9,6 +9,12 @@
 [ext_resource path="res://assets/audio/menu.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/textures/haskell.png" type="Texture" id=8]
 [ext_resource path="res://assets/textures/inicio.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=3]
+size = 45
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
@@ -64,14 +70,18 @@ texture = ExtResource( 9 )
 
 [node name="LowerLimit" type="Position2D" parent="Background3"]
 
-[node name="Titulo" type="Label" parent="."]
-margin_left = 52.0
-margin_top = 432.0
-margin_right = 401.0
-margin_bottom = 508.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+margin_top = 54.0
+margin_bottom = 136.0
+
+[node name="Titulo" type="Label" parent="CenterContainer"]
+margin_left = 393.0
+margin_right = 687.0
+margin_bottom = 82.0
 custom_colors/font_color = Color( 0.94902, 0.917647, 0.917647, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "el arte del robo"
 
 [node name="Start" type="Label" parent="."]
