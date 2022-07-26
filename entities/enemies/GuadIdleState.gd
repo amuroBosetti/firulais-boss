@@ -2,6 +2,7 @@ extends "res://entities/AbstractState.gd"
 
 func enter():
 	$IdleTimer.start()
+	parent.audio_player.stop()
 	parent.play_idle_animation()
 	
 func update(_delta: float):
@@ -15,3 +16,4 @@ func _on_Timer_timeout():
 	
 func exit():
 	$IdleTimer.stop()
+	parent._reset_fov()

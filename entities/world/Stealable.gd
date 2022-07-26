@@ -16,7 +16,7 @@ export (float) var STEAL_TIME:float = 2
 export (bool) var IS_FINAL_GOAL:bool
 export (String, MULTILINE) var DESCRIPTION:String
 
-onready var glow:Sprite = $PictureGlow
+onready var outline:ColorRect = $Outline
 onready var picture:Sprite = $Picture
 onready var doodle:Sprite = $Doodle
 onready var area2D:Area2D = $Area2D
@@ -27,7 +27,6 @@ var player = null
 var id:String
 
 func _ready():
-	glow.texture = PICTURE 
 	picture.texture = PICTURE
 	doodle.texture = DOODLE
 	set_pictures_scale(TEXTURE_SCALE)
@@ -40,7 +39,7 @@ func _interact(body):
 	if body.is_on_floor():
 		emit_signal("getting_stolen",self)
 		GameStats.add_stealable(self)
-		glow.visible = false
+		outline.visible = false
 		tween.interpolate_property(player, "global_position:x", player.global_position.x, global_position.x, 1)
 		tween.interpolate_property(picture, "modulate", picture.modulate, Color.black, STEAL_TIME)
 		tween.start()
@@ -53,7 +52,7 @@ func _on_Tween_tween_completed(_object, key):
 		emit_signal("stolen", IS_FINAL_GOAL)
 		
 func init():
-	glow.visible = false
+	outline.visible = false
 	picture.visible = true
 	doodle.visible = false
 	area2D.monitoring = true
@@ -66,13 +65,13 @@ func reset():
 func _on_Area2D_body_entered(body):
 	if body is Player:
 		emit_signal("interactable",self)
-		glow.visible = true
+		outline.visible = true
 		player = body
 
 func _on_Area2D_body_exited(body):
 	if body is Player:
 		emit_signal("interactable",null)
-		glow.visible = false
+		outline.visible = false
 		player = null
 	
 func set_picture(texture:Texture):
@@ -97,7 +96,8 @@ func set_area_position(pos:Vector2):
 
 func set_pictures_scale(scale_:Vector2):
 	picture.scale = scale_
-	glow.scale = scale_
+	outline.rect_size = (picture.texture.get_size() * scale_) + Vector2(10,10)
+	outline.rect_position = Vector2(outline.rect_size / -2)
 	doodle.scale = scale_
 
 func set_light_scale(scale_:Vector2):

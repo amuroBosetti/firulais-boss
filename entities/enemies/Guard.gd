@@ -24,9 +24,11 @@ onready var turn_around_lights = [
 	$Body/TurnAroundLight2,
 	$Body/TurnAroundLight3
 ]
+onready var fov:Area2D = $Area2D
 
 var raycast:RayCast2D
 var target = null
+var target_in_detection_area = false
 var velocity:Vector2 = Vector2()
 var direction:int
 var initial_light_position:float = -78.255
@@ -34,7 +36,6 @@ var limit_left_x:float
 var limit_right_x:float
 
 func _ready():
-	raycast = $RayCast2D
 	idle_timer.wait_time = WAIT_TIME
 	state_machine.set_parent(self)
 	if DIRECTION == "Left":
@@ -99,7 +100,9 @@ func set_limit_r(pos_x:float):
 		
 func catch_player():
 	target._caught()
-	
+	target_in_detection_area = false
+	_reset_fov()
+
 func detect_player():
 	_play_animation("detecting")
 	emit_signal("player_being_detected", $StateMachine/DetectPlayer/DetectPlayerTimer.wait_time)
@@ -109,6 +112,46 @@ func _player_got_away():
 	emit_signal("player_got_away")
 	
 func _has_to_turn():
-	return global_position.x >= limit_right_x \
-	  	or global_position.x <= limit_left_x \
+	return global_position.x >= limit_right_x and direction == 1\
+	  	or global_position.x <= limit_left_x and direction == -1\
 		or is_on_wall()
+
+func _on_Area2DAlert_body_entered(body):
+	if body is Player:
+		target_in_detection_area = true
+
+func _on_Area2DAlert_body_exited(body):
+	if body is Player:
+		target_in_detection_area = false
+		
+func _reset_fov():
+	fov.rotation_degrees = 0
+
+func _look_for_target():
+	if target_in_detection_area:
+		var degrees:float
+		if target.is_on_floor():
+			degrees = rad2deg(((target.global_position + Vector2(0,-60)) - fov.global_position).angle())
+		else:
+			degrees = rad2deg((target.global_position - fov.global_position).angle())
+		if direction == 1:
+			fov.rotation_degrees = -degrees 
+		else:
+			fov.rotation_degrees = degrees - 180
+		var position_x:float
+		if target.global_position.x - global_position.x > 300 and global_position.x <= limit_right_x:
+			position_x = 400
+			if not audio_player.playing:
+				audio_player.play()
+			if not animation_player.current_animation == "walk":
+				_play_animation("walk")
+		elif target.global_position.x - global_position.x < -300 and global_position.x >= limit_left_x:
+			position_x = -400
+			if not audio_player.playing:
+				audio_player.play()
+			if not animation_player.current_animation == "walk":
+				_play_animation("walk")
+		else:
+			audio_player.stop()
+			animation_player.stop()
+		move_and_slide(Vector2(position_x, GRAVITY), Vector2.UP)

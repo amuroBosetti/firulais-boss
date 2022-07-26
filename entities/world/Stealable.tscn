@@ -1,17 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://entities/world/Stealable.gd" type="Script" id=1]
 [ext_resource path="res://assets/shaders/Glow.gdshader" type="Shader" id=2]
-[ext_resource path="res://assets/shaders/Outline.gdshader" type="Shader" id=3]
 [ext_resource path="res://assets/textures/spotlight-circle.png" type="Texture" id=4]
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 3 )
-shader_param/color = Color( 0.87451, 0.517647, 0.647059, 1 )
-shader_param/width = 10.0
-shader_param/pattern = 0
-shader_param/inside = false
-shader_param/add_margins = true
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 2 )
@@ -37,9 +28,11 @@ shadow_enabled = true
 shadow_color = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
 shadow_item_cull_mask = 48
 
-[node name="PictureGlow" type="Sprite" parent="."]
+[node name="Outline" type="ColorRect" parent="."]
 visible = false
-material = SubResource( 2 )
+margin_right = 40.0
+margin_bottom = 40.0
+color = Color( 0.87451, 0.517647, 0.647059, 1 )
 
 [node name="Picture" type="Sprite" parent="."]
 material = SubResource( 3 )

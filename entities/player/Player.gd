@@ -81,7 +81,12 @@ func _handle_deacceleration():
 	velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
 
 func _handle_move_input():
-	move_direction = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
+	if  Input.is_action_pressed("move_right") and not move_direction == -1:
+		move_direction = 1
+	elif Input.is_action_pressed("move_left"):
+		move_direction = -1
+	else:
+		move_direction = 0
 	if move_direction != 0:
 		velocity.x = clamp(velocity.x + (move_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
 		$Hidden.flip_h = move_direction == -1
